@@ -27,19 +27,20 @@ yadm_pub_with_git_aliases() {
 alias yp='yadm_pub_with_git_aliases '
 
 upconf() {
-    "$HOME/status/update.sh"
-    y gau
-    y gst
-    read
-    y gdca
-    confirm "Continue?"
-    y gcam "Update at $(datetime)"
-    y gp
-    yp gau
-    yp gst
-    read
-    yp gdca
-    confirm "PUBLIC!!! Continue?"
-    yp gcam "Update at $(datetime)"
-    yp gp
+    "$HOME/status/update.sh" && \
+    y gau && \
+    y gst && \
+    read && \
+    y gdca && \
+    confirm "Continue?" && \
+    y gcam "Update at $(datetime)" && \
+    y gp && \
+    yp gau && \
+    yp gst && \
+    read && \
+    yp gdca && \
+    confirm "PUBLIC!!! Continue?" && \
+    yp gcam "Update at $(datetime)" && \
+    yp gp && \
+    true
 }
