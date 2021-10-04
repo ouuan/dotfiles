@@ -1,0 +1,16 @@
+set main-view-id			=	yes
+set tab-size				= 	4
+set line-graphics			=	utf-8
+set truncation-delimiter	=	utf-8 
+set wrap-lines				=	yes
+
+bind generic	H	view-help
+bind main		H	view-help
+bind generic	h	parent
+bind generic	l	enter
+bind generic	j	move-down
+bind generic	g	none
+bind generic	gg	move-first-line
+bind main		gg	:goto HEAD
+bind generic	G	move-last-line
+bind main		G	move-last-line

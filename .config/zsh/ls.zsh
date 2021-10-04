@@ -1,0 +1,7 @@
+alias ls='exa'
+alias ll='exa -l --git'
+alias l='exa -al --git'
+alias la='exa -al --git'
+alias l.='exa -a'
+alias lm='ll -s modified'
+alias tree='exa -T'

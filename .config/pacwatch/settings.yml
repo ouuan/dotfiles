@@ -1,0 +1,57 @@
+settings_version: 2
+pacman_command: paru
+groups:
+- epoch
+- major
+- major-two
+- minor
+- minor-two
+- single
+- patch
+- identifier
+- pkgrel
+rules:
+- regex: (?:(\d+):)?(\d+)\.(\d+)\.(\d+)(.*)-([^-]+)
+  parts:
+  - epoch
+  - major
+  - minor
+  - patch
+  - identifier
+  - pkgrel
+- regex: (?:(\d+):)?(\d+)\.(\d+)(.*)-([^-]+)
+  parts:
+  - epoch
+  - major-two
+  - minor-two
+  - identifier
+  - pkgrel
+- regex: (?:(\d+):)?(\w+)(.*)-([^-]+)
+  parts:
+  - epoch
+  - single
+  - identifier
+  - pkgrel
+verbose:
+- packages:
+  - firefox
+  regex: linux(-(lts|zen|hardened))?|.+-dkms
+  allGroups: true
+- packages:
+  - systemd
+  - btrfs-progs
+  - python
+  groups:
+  - minor-two
+- regex: lib.+
+  allGroups: true
+  no_verbose: true
+- regex: .*
+  groups:
+  - minor
+  explicitOnly: true
+- regex: .*
+  groups:
+  - epoch
+  - major
+  - major-two

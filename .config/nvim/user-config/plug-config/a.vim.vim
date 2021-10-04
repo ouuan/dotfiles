@@ -1,0 +1,1 @@
+nmap ga :A<cr>
