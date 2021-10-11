@@ -209,5 +209,6 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'rafamadriz/friendly-snippets', { 'branch': 'main' }
 Plug 'kdheepak/cmp-latex-symbols', { 'branch': 'main' }
 Plug 'octaltree/cmp-look'
+Plug 'kosayoda/nvim-lightbulb'
 
 call plug#end()

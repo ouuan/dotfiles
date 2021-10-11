@@ -26,7 +26,6 @@ local on_attach = function(client, bufnr)
     end
 
     require'lsp_signature'.on_attach {
-        hint_prefix = "",
     }
 
     require'aerial'.on_attach(client);
