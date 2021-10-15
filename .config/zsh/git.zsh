@@ -11,6 +11,7 @@ alias gciw='gh run watch'
 alias gi='gh issue list'
 alias gco='gcor'
 alias gcm='gco $(git_main_branch)'
+alias gupd='gaa && gcam "Update at $(date "+%Y-%m-%d %H:%M:%S")"'
 
 alias glo='tig'
 alias gsh='tig show'

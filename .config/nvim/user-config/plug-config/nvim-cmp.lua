@@ -17,7 +17,7 @@ cmp.setup({
     ['<S-Tab>'] = cmp.mapping.select_prev_item(),
     ['<C-e>'] = cmp.mapping.close(),
     ['<cr>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace,
+      behavior = cmp.ConfirmBehavior.Insert,
       select = false,
     }),
   },
@@ -46,6 +46,7 @@ cmp.setup({
   },
   formatting = {
     deprecated = true,
+    format = require'lspkind'.cmp_format({ with_text = true, maxwidth = 50 }),
   },
   experimental = {
     ghost_text = true,

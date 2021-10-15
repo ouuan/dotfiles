@@ -14,5 +14,5 @@ vimplug() {
     [[ "$2" != "" ]] && branch=", { 'branch': '$2' }"
     echo $branch
     perl -i -p0e "s;\ncall plug#end\(\);Plug '$repo'$branch\n\ncall plug#end();" ~/.config/nvim/user-config/init.vim
-    nvim +PlugInstall +bd '+e $MYVIMRC' '+cd ~/.config/nvim/user-config' "+PlugConfigEdit '$plug'"
+    nvim +PlugInstall +bd '+e ~/.config/nvim/user-config/init.vim' '+cd ~/.config/nvim/user-config' "+PlugConfigEdit '$plug'"
 }

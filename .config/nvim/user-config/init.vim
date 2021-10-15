@@ -27,6 +27,8 @@ filetype plugin on
 
 command! -bar -nargs=1 Tab setlocal tabstop=<args> | setlocal shiftwidth=<args>
 
+command! -bar Cd cd %:p:h
+
 au FileType vim set fo-=o fo-=r
 
 au FileType json,javascript,css,gohtmltmpl,vue,typescript,lua Tab 2
@@ -180,7 +182,6 @@ Plug 'farmergreg/vim-lastplace'
 Plug 'rhysd/conflict-marker.vim'
 Plug 'andymass/vim-matchup'
 Plug 'AndrewRadev/splitjoin.vim', { 'branch': 'main' }
-Plug 'sindrets/diffview.nvim', { 'branch': 'main' }
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'mboughaba/i3config.vim'
@@ -210,5 +211,11 @@ Plug 'rafamadriz/friendly-snippets', { 'branch': 'main' }
 Plug 'kdheepak/cmp-latex-symbols', { 'branch': 'main' }
 Plug 'octaltree/cmp-look'
 Plug 'kosayoda/nvim-lightbulb'
+Plug 'ahmedkhalf/project.nvim', { 'branch': 'main' }
+Plug 'lewis6991/spellsitter.nvim'
+Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'ruifm/gitlinker.nvim'
+Plug 'antoinemadec/FixCursorHold.nvim'
+Plug 'onsails/lspkind-nvim'
 
 call plug#end()
