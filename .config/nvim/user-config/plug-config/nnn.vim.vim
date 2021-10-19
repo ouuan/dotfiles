@@ -9,4 +9,4 @@ fun! NnnPickCurrent()
     endif
 endfun
 
-nmap <leader>n :call NnnPickCurrent()<cr>
+nmap <silent> <leader>n :call NnnPickCurrent()<cr>
