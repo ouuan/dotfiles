@@ -217,5 +217,6 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'ruifm/gitlinker.nvim'
 Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'onsails/lspkind-nvim'
+Plug 'luukvbaal/stabilize.nvim'
 
 call plug#end()
