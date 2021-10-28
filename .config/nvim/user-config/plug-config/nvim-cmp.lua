@@ -21,17 +21,32 @@ cmp.setup({
     {
       name = 'nvim_lsp',
       priority = 100,
+      max_item_count = 30,
     },
     {
       name = 'vsnip',
-      priority = 100,
+      priority = 99,
+      max_item_count = 5,
     },
-    { name = 'buffer' },
-    { name = 'path' },
-    { name = "latex_symbols" },
+    {
+      name = 'buffer',
+      keyword_length = 3,
+      max_item_count = 10,
+    },
+    {
+      name = 'path',
+      keyword_length = 2,
+      max_item_count = 10,
+    },
+    {
+      name = 'latex_symbols',
+      keyword_length = 2,
+      max_item_count = 20,
+    },
     {
       name = 'look',
       keyword_length = 3,
+      max_item_count = 10,
     },
   },
   completion = {
@@ -51,7 +66,7 @@ cmp.setup({
 
 require("nvim-autopairs.completion.cmp").setup({
   map_cr = true, --  map <CR> on insert mode
-  map_complete = true, -- it will auto insert `(` (map_char) after select function or method item
+  map_complete = false, -- it will auto insert `(` (map_char) after select function or method item
   auto_select = false, -- automatically select the first item
   insert = true, -- use insert confirm behavior instead of replace
   map_char = { -- modifies the function or method delimiter by filetypes
@@ -70,7 +85,5 @@ require'tabout'.setup {
       {open = '[', close = ']'},
       {open = '{', close = '}'},
       {open = '<', close = '>'},
-      {open = '“', close = '”'},
-      {open = '（', close = '）'},
     }
 }

@@ -3,3 +3,5 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
   },
 }
+
+vim.g.matchup_matchparen_offscreen = {}
