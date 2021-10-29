@@ -16,6 +16,10 @@ cmp.setup({
     ['<Tab>'] = cmp.mapping.select_next_item(),
     ['<S-Tab>'] = cmp.mapping.select_prev_item(),
     ['<C-e>'] = cmp.mapping.close(),
+    ['<CR>'] = cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Insert,
+      select = false,
+    }),
   },
   sources = {
     {
@@ -64,26 +68,15 @@ cmp.setup({
   }
 })
 
-require("nvim-autopairs.completion.cmp").setup({
-  map_cr = true, --  map <CR> on insert mode
-  map_complete = false, -- it will auto insert `(` (map_char) after select function or method item
-  auto_select = false, -- automatically select the first item
-  insert = true, -- use insert confirm behavior instead of replace
-  map_char = { -- modifies the function or method delimiter by filetypes
-    all = '(',
-    tex = '{'
-  }
-})
-
 require'tabout'.setup {
-    ignore_beginning = false,
-    tabouts = {
-      {open = "'", close = "'"},
-      {open = '"', close = '"'},
-      {open = '`', close = '`'},
-      {open = '(', close = ')'},
-      {open = '[', close = ']'},
-      {open = '{', close = '}'},
-      {open = '<', close = '>'},
-    }
+  ignore_beginning = false,
+  tabouts = {
+    {open = "'", close = "'"},
+    {open = '"', close = '"'},
+    {open = '`', close = '`'},
+    {open = '(', close = ')'},
+    {open = '[', close = ']'},
+    {open = '{', close = '}'},
+    {open = '<', close = '>'},
+  }
 }
