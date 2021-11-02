@@ -159,6 +159,7 @@ assign      [class="Zathura"]                   number $ws5
 assign      [class="cajviewer"]                 number $ws5
 assign      [class="zoom"]                      number $ws5
 assign      [class="Mendeley Desktop"]          number $ws5
+assign      [class="LorainesWhenTheyShine"]     number $ws5
 assign      [class="vlc"]                       number $ws5
 for_window  [class="Vlc"]                       kill
 
@@ -167,7 +168,6 @@ assign      [class="wps"]                       number $ws6
 assign      [class="wpp"]                       number $ws6
 assign      [class="et"]                        number $ws6
 assign      [class="Code"]                      number $ws6
-for_window  [title=" - LibreOffice Writer"]     move container to workspace $ws6
 
 set         $ws7                                7:📨
 assign      [class="TelegramDesktop"]           number $ws7
@@ -200,16 +200,16 @@ bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number $ws1
-bindsym $mod+Shift+2 move container to workspace number $ws2
-bindsym $mod+Shift+3 move container to workspace number $ws3
-bindsym $mod+Shift+4 move container to workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5
-bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10
+bindsym $mod+Shift+1 move --no-auto-back-and-forth container to workspace number $ws1
+bindsym $mod+Shift+2 move --no-auto-back-and-forth container to workspace number $ws2
+bindsym $mod+Shift+3 move --no-auto-back-and-forth container to workspace number $ws3
+bindsym $mod+Shift+4 move --no-auto-back-and-forth container to workspace number $ws4
+bindsym $mod+Shift+5 move --no-auto-back-and-forth container to workspace number $ws5
+bindsym $mod+Shift+6 move --no-auto-back-and-forth container to workspace number $ws6
+bindsym $mod+Shift+7 move --no-auto-back-and-forth container to workspace number $ws7
+bindsym $mod+Shift+8 move --no-auto-back-and-forth container to workspace number $ws8
+bindsym $mod+Shift+9 move --no-auto-back-and-forth container to workspace number $ws9
+bindsym $mod+Shift+0 move --no-auto-back-and-forth container to workspace number $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
