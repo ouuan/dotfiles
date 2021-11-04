@@ -168,6 +168,7 @@ assign      [class="wps"]                       number $ws6
 assign      [class="wpp"]                       number $ws6
 assign      [class="et"]                        number $ws6
 assign      [class="Code"]                      number $ws6
+assign      [class="Gimp"]                      number $ws6
 
 set         $ws7                                7:📨
 assign      [class="TelegramDesktop"]           number $ws7
@@ -183,6 +184,7 @@ set         $ws9                                9:🧲
 assign      [class="qBittorrent"]               number $ws9
 assign      [class="baidunetdisk"]              number $ws9
 assign      [class="dolphin"]                   number $ws9
+assign      [class="Seafile Client"]            number $ws9
 
 set         $ws10                               10:❓
 
