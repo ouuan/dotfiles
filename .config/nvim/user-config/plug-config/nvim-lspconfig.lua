@@ -26,6 +26,7 @@ local on_attach = function(client, bufnr)
   end
 
   require'lsp_signature'.on_attach {
+    auto_close_after = 3,
   }
 
   require'aerial'.on_attach(client);

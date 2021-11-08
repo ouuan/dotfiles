@@ -22,6 +22,7 @@ set termguicolors
 set colorcolumn=+1
 set foldlevel=100000
 set foldmethod=indent
+set cursorline
 
 filetype plugin on
 
@@ -61,10 +62,8 @@ fun! CloseOrQuit()
     elseif len(getbufinfo({'buflisted':1})) > 1
         " https://github.com/dstein64/nvim-scrollview/issues/10
         silent! ScrollViewDisable
-        silent! TSContextDisable
         bd
         silent! ScrollViewEnable
-        silent! TSContextEnable
     elseif s:IsOnlyWindow()
         call ConfirmQuit()
     else
@@ -154,7 +153,6 @@ Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'bkad/CamelCaseMotion'
 Plug 'akinsho/nvim-bufferline.lua'
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'ouuan/far.vim'
 Plug 'ojroques/nvim-hardline', { 'branch': 'main' }
 Plug 'tpope/vim-fugitive'
 Plug 'folke/lsp-trouble.nvim', { 'branch': 'main' }
@@ -164,10 +162,8 @@ Plug 'folke/which-key.nvim', { 'branch': 'main' }
 Plug 'rktjmp/lush.nvim', { 'branch': 'main' }
 Plug 'npxbr/gruvbox.nvim', { 'branch': 'main' }
 Plug 'pchynoweth/vim-gencode-cpp', { 'for': 'cpp' }
-Plug 'nacitar/a.vim'
-Plug 'folke/todo-comments.nvim', { 'branch': 'main' }
+Plug 'nacitar/a.vim', { 'for': 'cpp' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'romgrk/nvim-treesitter-context'
 Plug 'nacro90/numb.nvim'
 Plug 'cespare/vim-toml'
 Plug 'junegunn/goyo.vim'
@@ -192,8 +188,6 @@ Plug 'stevearc/stickybuf.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'oberblastmeister/neuron.nvim', { 'branch': 'unstable' }
-Plug 'abecodes/tabout.nvim'
-Plug 'gennaro-tedesco/nvim-jqx'
 Plug 'othree/html5.vim'
 Plug 'David-Kunz/treesitter-unit', { 'branch': 'main' }
 Plug 'leafOfTree/vim-vue-plugin'

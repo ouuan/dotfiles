@@ -67,16 +67,3 @@ cmp.setup({
     ghost_text = true,
   }
 })
-
-require'tabout'.setup {
-  ignore_beginning = false,
-  tabouts = {
-    {open = "'", close = "'"},
-    {open = '"', close = '"'},
-    {open = '`', close = '`'},
-    {open = '(', close = ')'},
-    {open = '[', close = ']'},
-    {open = '{', close = '}'},
-    {open = '<', close = '>'},
-  }
-}
