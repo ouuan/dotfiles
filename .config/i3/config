@@ -252,9 +252,24 @@ force_display_urgency_hint 500 ms
 # i3-gaps
 smart_borders on
 
+for_window [tiling] border none
+
 for_window [all] title_window_icon yes
 
 bar {
+    height 28
+    mode hide
+    tray_output none
+    font pango: sans-serif 9
+    i3bar_command i3bar --transparency
+    colors {
+        background #00000000
+    }
+}
+
+bar {
+    height 28
+    workspace_buttons no
     font pango: FontAwesome, sans-serif, Symbols Nerd Font 9
     status_command bumblebee-status \
                    -m playerctl network_traffic cpu memory battery pasink datetime \
