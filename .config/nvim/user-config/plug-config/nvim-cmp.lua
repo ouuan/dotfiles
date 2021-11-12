@@ -34,7 +34,7 @@ cmp.setup({
     },
     {
       name = 'buffer',
-      keyword_length = 3,
+      keyword_length = 2,
       max_item_count = 10,
     },
     {

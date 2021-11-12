@@ -111,10 +111,6 @@ nmap <silent> K :bprev<cr>
 nnoremap ]d ]c
 nnoremap [d [c
 
-" very magic/nomagic
-nnoremap / /\V
-nnoremap ? /\v
-
 " swap wrong quotes
 nnoremap <leader>q l?”<cr>r“/“<cr>r”:noh<cr>
 
@@ -212,5 +208,6 @@ Plug 'ruifm/gitlinker.nvim'
 Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'onsails/lspkind-nvim'
 Plug 'luukvbaal/stabilize.nvim'
+Plug 'filipdutescu/renamer.nvim'
 
 call plug#end()
