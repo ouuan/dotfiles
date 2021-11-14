@@ -209,5 +209,6 @@ Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'onsails/lspkind-nvim'
 Plug 'luukvbaal/stabilize.nvim'
 Plug 'filipdutescu/renamer.nvim'
+Plug 'romgrk/nvim-treesitter-context'
 
 call plug#end()
