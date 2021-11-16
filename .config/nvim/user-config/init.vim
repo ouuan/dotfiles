@@ -90,9 +90,6 @@ au VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
             \| PlugInstall --sync | source $MYVIMRC | call CloseOrQuit()
             \| endif
 
-" man page
-au FileType man nmap <buffer> q :qall<cr>
-
 " Use ctrl-[hjkl] to select the active split
 nmap <silent> <c-h> :wincmd h<cr>
 nmap <silent> <c-j> :wincmd j<cr>

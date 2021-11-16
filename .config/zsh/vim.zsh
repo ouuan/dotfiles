@@ -1,4 +1,4 @@
-export MANPAGER='nvim "+:Man!"'
+export MANPAGER='nvim "+call ManPager()"'
 export MANWIDTH=120
 export EDITOR="/usr/bin/nvim"
 export DIFFPROG='nvim -d'
