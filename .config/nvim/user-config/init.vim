@@ -62,7 +62,9 @@ fun! CloseOrQuit()
     elseif len(getbufinfo({'buflisted':1})) > 1
         " https://github.com/dstein64/nvim-scrollview/issues/10
         silent! ScrollViewDisable
+        silent! TSContextDisable
         bd
+        silent! TSContextEnable
         silent! ScrollViewEnable
     elseif s:IsOnlyWindow()
         call ConfirmQuit()
