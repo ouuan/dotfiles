@@ -32,7 +32,7 @@ command! -bar Cd cd %:p:h
 
 au FileType vim set fo-=o fo-=r
 
-au FileType json,javascript,css,gohtmltmpl,vue,typescript,lua Tab 2
+au FileType json,javascript,css,gohtmltmpl,vue,typescript,lua,xml Tab 2
 
 au FileType markdown set suffixesadd+=.md
 

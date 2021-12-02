@@ -43,6 +43,10 @@ verbose:
   - python
   groups:
   - minor-two
+- packages:
+  - mkinitcpio
+  groups:
+  - single
 - regex: lib.+
   allGroups: true
   no_verbose: true
