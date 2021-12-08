@@ -300,6 +300,6 @@ for_window [class="copyq"] floating enable
 
 exec --no-startup-id feh --bg-fill "$HOME/Pictures/geolanes.png"
 
-exec --no-startup-id ~/.autostart.sh
+exec --no-startup-id ~/scripts/autostart.sh
 
 # vim: filetype=i3config
