@@ -43,6 +43,7 @@ verbose:
   - python
   groups:
   - minor-two
+  - minor
 - packages:
   - mkinitcpio
   groups:
