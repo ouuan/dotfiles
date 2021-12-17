@@ -281,7 +281,7 @@ bar {
                    -t night-powerline \
                    -p datetime.format='%Y/%m/%d %H:%M'\
                       memory.format='{used}/{total}' \
-                      playerctl.format='{{artist}} - {{title}} {{duration(position)}}/{{duration(mpris:length)}}@{{playerName}}' \
+                      playerctl.format='{{trunc(artist, 20)}} - {{trunc(title, 25)}} {{duration(position)}}/{{duration(mpris:length)}}@{{playerName}}' \
                       playerctl.args='-p vlc,%any'
 }
 

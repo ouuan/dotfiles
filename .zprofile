@@ -1,3 +1,7 @@
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+
 ssh_auto_sock_path="/tmp/ssh-auto-sock-$(whoami)"
 if [[ ! -S "$ssh_auto_sock_path" ]]; then
   eval $(ssh-agent)

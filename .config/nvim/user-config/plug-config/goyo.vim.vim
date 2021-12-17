@@ -10,5 +10,6 @@ fun! ManPager()
     Man!
     noau Goyo
     nnoremap <buffer> q :qall<cr>
+    nnoremap <buffer> Q :qall<cr>
     nnoremap gd :call ManGoto()<cr>
 endf
