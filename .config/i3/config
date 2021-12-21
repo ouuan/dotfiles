@@ -148,6 +148,7 @@ assign      [class="qutebrowser"]               number $ws3
 
 set         $ws4                                4:🚀
 assign      [class="CP Editor|cpeditor"]        number $ws4
+for_window  [class="CP Editor|cpeditor"]        border normal
 assign      [class="Luogu-motaki"]              number $ws4
 # Tauri dev
 assign      [class="App"]                       number $ws4
