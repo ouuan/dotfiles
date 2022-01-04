@@ -132,6 +132,18 @@ bindsym $mod+a focus parent
 # focus the child container
 bindsym $mod+b focus child
 
+workspace_auto_back_and_forth yes
+
+force_display_urgency_hint 500 ms
+
+for_window [all] title_window_icon yes
+
+# i3-gaps
+smart_borders on
+smart_gaps on
+gaps inner 5
+for_window [tiling] border pixel 2
+
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 
@@ -158,6 +170,7 @@ assign      [class="Zeal"]                      number $ws5
 assign      [class="assistant"]                 number $ws5
 assign      [class="qimgv"]                     number $ws5
 assign      [class="okular"]                    number $ws5
+for_window  [class="okular"]                    border normal
 assign      [class="Zathura"]                   number $ws5
 assign      [class="cajviewer"]                 number $ws5
 assign      [class="zoom"]                      number $ws5
@@ -247,18 +260,6 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-
-workspace_auto_back_and_forth yes
-
-force_display_urgency_hint 500 ms
-
-for_window [all] title_window_icon yes
-
-# i3-gaps
-smart_borders on
-smart_gaps on
-gaps inner 5
-for_window [tiling] border pixel 2
 
 bar {
     id buttons

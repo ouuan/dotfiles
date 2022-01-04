@@ -35,19 +35,17 @@ rules:
 verbose:
 - packages:
   - firefox
+  - systemd
   regex: linux(-(lts|zen|hardened))?|.+-dkms
   allGroups: true
 - packages:
-  - systemd
-  - btrfs-progs
   - python
-  groups:
-  - minor-two
-  - minor
-- packages:
   - mkinitcpio
+  - btrfs-progs
   groups:
   - single
+  - minor-two
+  - minor
 - regex: lib.+
   allGroups: true
   no_verbose: true
