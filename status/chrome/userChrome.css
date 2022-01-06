@@ -1,0 +1,33 @@
+/* 隐藏默认标签栏（使用 TST） */
+#main-window[tabsintitlebar="true"]:not([extradragspace="true"]) #TabsToolbar > .toolbar-items {
+  opacity: 0;
+  pointer-events: none;
+}
+#main-window:not([tabsintitlebar="true"]) #TabsToolbar {
+    visibility: collapse !important;
+}
+
+/* 隐藏无用右键菜单 */
+#contentAreaContextMenu #context-openlinkincurrent,
+#contentAreaContextMenu #context-openlinkinusercontext-menu,
+#contentAreaContextMenu #context-bookmarklink,
+#contentAreaContextMenu #context-selectall,
+#contentAreaContextMenu #context-sendlinktodevice,
+#contentAreaContextMenu #context-sendpagetodevice,
+#contentAreaContextMenu #context-sep-sendlinktodevice,
+#contentAreaContextMenu #context-sep-sendpagetodevice,
+#contentAreaContextMenu #context-viewpartialsource-selection {
+  display: none !important;
+}
+
+/* 全屏时隐藏侧边栏 */
+#main-window[inFullscreen] #sidebar-box,
+#main-window[inFullscreen] #sidebar-splitter {
+  display: none !important;
+  width: 0px !important;
+}
+
+/* 不显示侧边栏标题 */
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
+  display: none;
+}
