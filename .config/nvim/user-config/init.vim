@@ -42,7 +42,7 @@ au BufEnter fstab* Tab 8 \| setlocal ft=fstab \| setlocal noexpandtab \| setloca
 let mapleader=' '
 
 fun! s:IsOnlyWindow()
-    return len(filter(getwininfo(), '!has_key(v:val.variables, "scrollview_key") && !has_key(v:val.variables, "treesitter_context")')) == 1
+    return len(filter(getwininfo(), '!has_key(v:val.variables, "treesitter_context")')) == 1
 endfun
 
 fun! ConfirmQuit()
@@ -60,12 +60,10 @@ fun! CloseOrQuit()
     if len(gettabinfo()) > 1
         tabclose
     elseif len(getbufinfo({'buflisted':1})) > 1
-        " https://github.com/dstein64/nvim-scrollview/issues/10
-        silent! ScrollViewDisable
+        " https://github.com/neovim/neovim/issues/13628
         silent! TSContextDisable
         bd
         silent! TSContextEnable
-        silent! ScrollViewEnable
     elseif s:IsOnlyWindow()
         call ConfirmQuit()
     else
@@ -143,7 +141,6 @@ Plug 'kana/vim-textobj-entire'
 Plug 'm-pilia/vim-pkgbuild'
 Plug 'fatih/vim-go'
 Plug 'neovim/nvim-lspconfig'
-Plug 'dstein64/nvim-scrollview', { 'branch': 'main' }
 Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'bkad/CamelCaseMotion'
 Plug 'akinsho/nvim-bufferline.lua'
@@ -209,5 +206,6 @@ Plug 'onsails/lspkind-nvim'
 Plug 'luukvbaal/stabilize.nvim'
 Plug 'filipdutescu/renamer.nvim'
 Plug 'romgrk/nvim-treesitter-context'
+Plug 'petertriho/nvim-scrollbar', { 'branch': 'main' }
 
 call plug#end()
