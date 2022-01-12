@@ -207,5 +207,6 @@ Plug 'luukvbaal/stabilize.nvim'
 Plug 'filipdutescu/renamer.nvim'
 Plug 'romgrk/nvim-treesitter-context'
 Plug 'petertriho/nvim-scrollbar', { 'branch': 'main' }
+Plug 'jubnzv/virtual-types.nvim'
 
 call plug#end()

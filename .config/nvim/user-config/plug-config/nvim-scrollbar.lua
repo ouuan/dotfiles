@@ -15,3 +15,16 @@ require'scrollbar'.setup {
     Misc   = { text = { "━", "━" }, priority = 5, color = colors.purple },
   },
 }
+
+require("hlslens").setup({
+  build_position_cb = function(plist)
+      require('scrollbar.handlers.search').handler.show(plist.start_pos)
+  end
+})
+
+vim.cmd([[
+  augroup scrollbar_search_hide
+    autocmd!
+    autocmd CmdlineLeave : lua require('scrollbar.handlers.search').handler.hide()
+  augroup END
+]])

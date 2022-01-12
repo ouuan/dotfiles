@@ -25,6 +25,9 @@ local on_attach = function(client, bufnr)
   if client.resolved_capabilities.document_range_formatting then
     buf_set_keymap("v", "<leader>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
   end
+  if client.resolved_capabilities.code_lens then
+    require'virtualtypes'.on_attach()
+  end
 
   require'lsp_signature'.on_attach {
     auto_close_after = 3,
