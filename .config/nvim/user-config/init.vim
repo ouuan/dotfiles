@@ -208,5 +208,6 @@ Plug 'filipdutescu/renamer.nvim'
 Plug 'romgrk/nvim-treesitter-context'
 Plug 'petertriho/nvim-scrollbar', { 'branch': 'main' }
 Plug 'jubnzv/virtual-types.nvim'
+Plug 'machakann/vim-highlightedyank'
 
 call plug#end()

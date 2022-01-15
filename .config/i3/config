@@ -297,6 +297,8 @@ bindsym $mod+Ctrl+s exec flameshot gui
 
 bindsym $mod+Ctrl+f exec fcitx5
 
+bindsym $mod+Ctrl+t exec ~/scripts/translate.sh
+
 bindsym $mod+c exec copyq toggle
 for_window [class="copyq"] floating enable
 
