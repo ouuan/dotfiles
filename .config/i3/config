@@ -144,90 +144,13 @@ smart_gaps on
 gaps inner 5
 for_window [tiling] border pixel 2
 
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
-
-set         $ws1                                1:⌨️
-assign      [class="konsole"]                   number $ws1
-
-set         $ws2                                2:🔌
-workspace   $ws2                                output HDMI-0
-
-set         $ws3                                3:🌎️
-assign      [class="firefox"]                   number $ws3
-assign      [class="Google-chrome"]             number $ws3
-assign      [class="qutebrowser"]               number $ws3
-
-set         $ws4                                4:🚀
-assign      [class="CP Editor|cpeditor"]        number $ws4
-for_window  [class="CP Editor|cpeditor"]        border normal
-assign      [class="Luogu-motaki"]              number $ws4
-# Tauri dev
-assign      [class="App"]                       number $ws4
-
-set         $ws5                                5:📖
-assign      [class="Zeal"]                      number $ws5
-assign      [class="assistant"]                 number $ws5
-assign      [class="qimgv"]                     number $ws5
-assign      [class="okular"]                    number $ws5
-for_window  [class="okular"]                    border normal
-assign      [class="Zathura"]                   number $ws5
-assign      [class="cajviewer"]                 number $ws5
-assign      [class="zoom"]                      number $ws5
-assign      [class="Mendeley Desktop"]          number $ws5
-assign      [class="LorainesWhenTheyShine"]     number $ws5
-assign      [class="vlc"]                       number $ws5
-for_window  [class="Vlc"]                       kill
-
-set         $ws6                                6:📝
-assign      [class="wps"]                       number $ws6
-assign      [class="wpp"]                       number $ws6
-assign      [class="et"]                        number $ws6
-assign      [class="Code"]                      number $ws6
-assign      [class="Gimp"]                      number $ws6
-
-set         $ws7                                7:📨
-assign      [class="TelegramDesktop"]           number $ws7
-assign      [class="icalingua"]                 number $ws7
-assign      [title="微信"]                      number $ws7
-for_window  [title="微信文件"]                  floating enable
-
-set         $ws8                                8:
-assign      [instance="VirtualBox"]             number $ws8
-for_window  [class="VirtualBox Machine"]        fullscreen enable
-
-set         $ws9                                9:🧲
-assign      [class="qBittorrent"]               number $ws9
-assign      [class="baidunetdisk"]              number $ws9
-assign      [class="dolphin"]                   number $ws9
-assign      [class="Seafile Client"]            number $ws9
-
-set         $ws10                               10:❓
-
-
-# switch to workspace
-bindsym $mod+1 workspace number $ws1
-bindsym $mod+2 workspace number $ws2
-bindsym $mod+3 workspace number $ws3
-bindsym $mod+4 workspace number $ws4
-bindsym $mod+5 workspace number $ws5
-bindsym $mod+6 workspace number $ws6
-bindsym $mod+7 workspace number $ws7
-bindsym $mod+8 workspace number $ws8
-bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
-
-# move focused container to workspace
-bindsym $mod+Ctrl+1 move --no-auto-back-and-forth container to workspace number $ws1
-bindsym $mod+Ctrl+2 move --no-auto-back-and-forth container to workspace number $ws2
-bindsym $mod+Ctrl+3 move --no-auto-back-and-forth container to workspace number $ws3
-bindsym $mod+Ctrl+4 move --no-auto-back-and-forth container to workspace number $ws4
-bindsym $mod+Ctrl+5 move --no-auto-back-and-forth container to workspace number $ws5
-bindsym $mod+Ctrl+6 move --no-auto-back-and-forth container to workspace number $ws6
-bindsym $mod+Ctrl+7 move --no-auto-back-and-forth container to workspace number $ws7
-bindsym $mod+Ctrl+8 move --no-auto-back-and-forth container to workspace number $ws8
-bindsym $mod+Ctrl+9 move --no-auto-back-and-forth container to workspace number $ws9
-bindsym $mod+Ctrl+0 move --no-auto-back-and-forth container to workspace number $ws10
+# Workspaces are in a separate file to protect privacy. Samples are as follows:
+#
+# set         $ws1                                    1:⌨️
+# assign      [class="konsole"]                       number $ws1
+# bindsym $mod+1 workspace number $ws1
+# bindsym $mod+Ctrl+1 move --no-auto-back-and-forth container to workspace number $ws1
+include ~/.config/i3/workspaces
 
 # reload the configuration file
 bindsym $mod+Ctrl+c reload

@@ -38,7 +38,6 @@ local on_attach = function(client, bufnr)
 end
 
 local no_setup_servers = {
-  'clangd',
   'vimls',
   'yamlls',
   'pyright',
@@ -73,6 +72,11 @@ lsp.jsonls.setup {
       end
     }
   }
+}
+
+lsp.clangd.setup {
+  on_attach = on_attach,
+  cmd = { "clangd", "--background-index" },
 }
 
 local add_format_attach = function(client, bufnr)
