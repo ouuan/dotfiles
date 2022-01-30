@@ -122,7 +122,9 @@ let g:plug_config_lua_dir = stdpath('config') . "/user-config/plug-config"
 command -nargs=0 P PlugClean | PlugConfigClean | PlugUpdate
 
 " put it in a separate line to prevent commenting it out and being hard to revert
-Plug 'tpope/vim-commentary'
+Plug 'numToStr/Comment.nvim'
+Plug 'kana/vim-textobj-user'
+Plug 'glts/vim-textobj-comment'
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'junegunn/fzf.vim'
@@ -135,7 +137,6 @@ Plug 'godlygeek/tabular'
 Plug 'dkarter/bullets.vim'
 Plug 'tpope/vim-repeat'
 Plug 'mcchrish/nnn.vim'
-Plug 'kana/vim-textobj-user'
 Plug 'takac/vim-hardtime'
 Plug 'kana/vim-textobj-entire'
 Plug 'm-pilia/vim-pkgbuild'
@@ -209,5 +210,7 @@ Plug 'romgrk/nvim-treesitter-context'
 Plug 'petertriho/nvim-scrollbar', { 'branch': 'main' }
 Plug 'jubnzv/virtual-types.nvim'
 Plug 'machakann/vim-highlightedyank'
+Plug 'j-hui/fidget.nvim', { 'branch': 'main' }
+Plug 'danymat/neogen', { 'branch': 'main' }
 
 call plug#end()
