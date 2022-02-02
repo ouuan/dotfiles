@@ -4,6 +4,7 @@ original="$(xclip -o)"
 translated="$(trans -b "$original")"
 
 if [[ $(echo "$original" | wc -w) == 1 && $(echo "$original" | wc -c) -lt 20 ]]; then
+    printf "%-30s$(date '+%Y/%m/%d %H:%M')    $(xdotool getwindowname $(xdotool getactivewindow))\n" "$original" >> ~/.cache/translated-words.txt
     url="https://fanyi.baidu.com/#auto/zh/$original"
     notify-send "翻译" "$original: $translated
 

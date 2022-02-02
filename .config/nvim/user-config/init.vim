@@ -111,6 +111,9 @@ nnoremap [d [c
 " swap wrong quotes
 nnoremap <leader>q l?”<cr>r“/“<cr>r”:noh<cr>
 
+" https://gist.github.com/ouuan/909f25f18a74d9e04e1e0881d3316905
+au BufEnter translated-words.txt nnoremap <silent> gt :silent exec "!xdg-open https://fanyi.baidu.com/\\#auto/zh/<cWORD>"<cr>
+
 " Restore cursor shape on VimLeave
 au VimLeave * set guicursor=a:ver1
 
