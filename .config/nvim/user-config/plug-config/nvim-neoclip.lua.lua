@@ -1,5 +1,5 @@
 require('neoclip').setup({
-  history = 100,
+  history = 20,
   content_spec_column = true,
   enable_persistant_history = true,
   keys = {

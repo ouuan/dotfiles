@@ -5,7 +5,7 @@ require'treesitter-context'.setup{
     patterns = {
         -- For all filetypes
         default = {
-            -- 'class',
+            'class',
             'function',
             'method',
             'for',

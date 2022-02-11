@@ -101,6 +101,9 @@ nmap <c-c> "+y
 vmap <c-c> "+y
 inoremap <c-r> <c-r><c-p>
 
+" https://jdhao.github.io/2019/03/28/nifty_nvim_techniques_s1/#how-do-we-select-the-current-line-but-not-including-the-newline-character
+xnoremap $ g_
+
 nmap <silent> J :bnext<cr>
 nmap <silent> K :bprev<cr>
 
@@ -133,7 +136,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
 Plug 'wakatime/vim-wakatime'
-Plug 'lilydjwg/fcitx.vim', { 'branch': 'fcitx5', 'for': ['markdown', 'gitcommit', 'scratch', 'text'] }
+Plug 'lilydjwg/fcitx.vim', { 'branch': 'fcitx5', 'for': ['markdown', 'gitcommit', 'scratch', 'text', 'tex'] }
 Plug 'Chiel92/vim-autoformat'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'godlygeek/tabular'
