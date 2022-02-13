@@ -65,5 +65,40 @@ cmp.setup({
   },
   experimental = {
     ghost_text = true,
+  },
+  sorting = {
+    comparators = {
+      cmp.config.compare.offset,
+      cmp.config.compare.exact,
+      cmp.config.compare.score,
+      require "cmp-under-comparator".under,
+      cmp.config.compare.kind,
+      cmp.config.compare.sort_text,
+      cmp.config.compare.length,
+      cmp.config.compare.order,
+    },
+  },
+})
+
+cmp.setup.cmdline('/', {
+  sources = {
+    {
+      name = 'buffer',
+      max_item_count = 10,
+    }
   }
+})
+
+cmp.setup.cmdline(':', {
+  sources = cmp.config.sources({
+    {
+      name = 'path',
+      max_item_count = 15,
+    }
+  }, {
+    {
+      name = 'cmdline',
+      max_item_count = 15,
+    }
+  })
 })

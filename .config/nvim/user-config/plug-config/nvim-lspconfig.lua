@@ -1,29 +1,25 @@
 local lsp = require('lspconfig')
 local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_keymap(mode, lhs, rhs)
+    vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, silent = true })
+  end
 
-  -- Mappings.
-  local opts = { noremap=true, silent=true }
-  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'H', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  -- buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  -- buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<leader>rn', '<cmd>lua require("renamer").rename({ empty = true })<CR>', opts)
-  buf_set_keymap('v', '<leader>rn', '<cmd>lua require("renamer").rename({ empty = true })<CR>', opts)
-  -- buf_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', '<leader>ca', '<cmd>CodeActionMenu<CR>', opts)
-  -- buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  -- buf_set_keymap('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  -- buf_set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  buf_set_keymap('n', 'gD', vim.lsp.buf.declaration)
+  buf_set_keymap('n', 'gd', vim.lsp.buf.definition)
+  buf_set_keymap('n', 'H', vim.lsp.buf.hover)
+  -- buf_set_keymap('n', 'gi', vim.lsp.buf.implementation)
+  buf_set_keymap('n', '<leader>D', vim.lsp.buf.type_definition)
+  buf_set_keymap({'n', 'v'}, '<leader>rn', function() require("renamer").rename({ empty = true }) end)
+  -- buf_set_keymap('n', '<leader>ca', vim.lsp.buf.code_action)
+  buf_set_keymap('n', '<leader>ca',  '<cmd>CodeActionMenu<cr>')
+  -- buf_set_keymap({'n', 'v'}, 'gr', vim.lsp.buf.references)
+  buf_set_keymap("n", '<leader>rf', "<cmd>TroubleToggle lsp_references<cr>")
 
-  -- Set some keybinds conditional on server capabilities
   if client.resolved_capabilities.document_formatting then
-    buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+    buf_set_keymap("n", "<leader>f", vim.lsp.buf.formatting)
   end
   if client.resolved_capabilities.document_range_formatting then
-    buf_set_keymap("v", "<leader>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+    buf_set_keymap("v", "<leader>f", vim.lsp.buf.range_formatting)
   end
   if client.resolved_capabilities.code_lens then
     require'virtualtypes'.on_attach()
@@ -34,7 +30,7 @@ local on_attach = function(client, bufnr)
   }
 
   require'aerial'.on_attach(client);
-  buf_set_keymap("n", "<leader>a", "<cmd>AerialOpen<cr>", opts)
+  buf_set_keymap("n", "<leader>a", "<cmd>AerialOpen<cr>")
 end
 
 local no_setup_servers = {

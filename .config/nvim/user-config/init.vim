@@ -167,7 +167,6 @@ Plug 'nacro90/numb.nvim'
 Plug 'cespare/vim-toml'
 Plug 'junegunn/goyo.vim'
 Plug 'psliwka/vim-smoothie'
-Plug 'svermeulen/vimpeccable'
 Plug 'windwp/nvim-autopairs'
 Plug 'lervag/vimtex'
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
@@ -198,6 +197,8 @@ Plug 'hrsh7th/nvim-cmp', { 'branch': 'main' }
 Plug 'hrsh7th/cmp-nvim-lsp', { 'branch': 'main' }
 Plug 'hrsh7th/cmp-buffer', { 'branch': 'main' }
 Plug 'hrsh7th/cmp-path', { 'branch': 'main' }
+Plug 'hrsh7th/cmp-cmdline', { 'branch': 'main' }
+Plug 'lukas-reineke/cmp-under-comparator'
 Plug 'hrsh7th/cmp-vsnip', { 'branch': 'main' }
 Plug 'hrsh7th/vim-vsnip'
 Plug 'rafamadriz/friendly-snippets', { 'branch': 'main' }
@@ -218,5 +219,6 @@ Plug 'jubnzv/virtual-types.nvim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'j-hui/fidget.nvim', { 'branch': 'main' }
 Plug 'danymat/neogen', { 'branch': 'main' }
+Plug 'AndrewRadev/switch.vim'
 
 call plug#end()
