@@ -34,19 +34,20 @@ local on_attach = function(client, bufnr)
 end
 
 local no_setup_servers = {
+  'cmake',
+  'cssls',
+  'dockerls',
+  'gopls',
+  'graphql',
+  'html',
+  'intelephense',
+  'jdtls',
+  'pyright',
+  'rust_analyzer',
+  'svelte',
+  'texlab',
   'vimls',
   'yamlls',
-  'pyright',
-  'cmake',
-  'rust_analyzer',
-  'texlab',
-  'gopls',
-  'intelephense',
-  'graphql',
-  'jdtls',
-  'dockerls',
-  'html',
-  'cssls',
 }
 
 for _,server in pairs(no_setup_servers) do

@@ -1,28 +1,29 @@
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set smarttab
-set smartindent
-set scrolloff=10
-set smartcase ignorecase
-set lazyredraw
-set confirm
-set list
-set listchars=tab:\ \ |
-set hidden
-set exrc
-set secure
-set wildmode=longest:full,full
-set updatetime=300
-set number relativenumber
-set mouse=a
-set splitbelow
-set splitright
-set termguicolors
 set colorcolumn=+1
+set confirm
+set cursorline
+set expandtab
+set exrc
 set foldlevel=100000
 set foldmethod=indent
-set cursorline
+set hidden
+set lazyredraw
+set list
+set listchars=tab:\ \ |
+set mouse=a
+set number relativenumber
+set scrolloff=10
+set secure
+set shiftround
+set shiftwidth=4
+set smartcase ignorecase
+set smartindent
+set smarttab
+set splitbelow
+set splitright
+set tabstop=4
+set termguicolors
+set updatetime=300
+set wildmode=longest:full,full
 
 filetype plugin on
 
@@ -220,5 +221,6 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'j-hui/fidget.nvim', { 'branch': 'main' }
 Plug 'danymat/neogen', { 'branch': 'main' }
 Plug 'AndrewRadev/switch.vim'
+Plug 'rbong/vim-buffest'
 
 call plug#end()

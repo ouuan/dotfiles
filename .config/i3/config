@@ -15,33 +15,17 @@ font pango:DejaVu Sans Mono, Terminus Bold Semi-Condensed 8
 # screen before suspend. Use loginctl lock-session to lock your screen.
 
 # i3lock is actually i3lock-color
-exec --no-startup-id xss-lock --transfer-sleep-lock -- bash -c ' \
-     dunstctl set-paused true \
-     && i3-msg workspace "l$(pwgen -s 7 1)" \
-     && i3-msg bar mode invisible buttons \
-     && i3lock \
-     -i "$HOME/Pictures/arch.png" \
-     --ind-pos w/2:h/2-35 \
-     --greeter-text="Yufan You" \
-     --greeter-size=30 \
-     --greeter-color=ffffff66 \
-     --clock \
-     --date-font "Noto Sans CJK SC" \
-     --date-str "%Y/%m/%d (%a)" \
-     --date-size=18 \
-     --date-color=ffffff66 \
-     --time-str "%H:%M" \
-     --time-size=50 \
-     --time-pos "ix:iy+200" \
-     --time-color=ffffff66 \
-     --pass-media-key \
-     --nofork \
-     && i3-msg bar mode hide buttons \
-     && dunstctl set-paused false '
-
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
+exec --no-startup-id blueman-applet
+exec --no-startup-id copyq
+exec --no-startup-id dunst
+exec --no-startup-id fcitx5
+exec --no-startup-id feh --bg-fill "$HOME/Pictures/geolanes.png"
 exec --no-startup-id nm-applet
+exec --no-startup-id picom
+exec --no-startup-id playerctld
+exec --no-startup-id redshift
+exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/scripts/lock.sh
+exec --no-startup-id ~/scripts/autostart.sh
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status pkill -f -SIGUSR1 /usr/bin/bumblebee-status
@@ -87,7 +71,7 @@ bindsym $mod+e exec "$rofi -modi emoji -show emoji"
 workspace_layout tabbed
 bindsym $mod+j focus right
 bindsym $mod+k focus left
-bindsym $mod+l exec loginctl lock-session self
+bindsym $mod+l exec --no-startup-id loginctl lock-session self
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -203,10 +187,11 @@ bar {
     workspace_buttons no
     font pango: FontAwesome, sans-serif, Symbols Nerd Font 9
     status_command bumblebee-status \
-                   -m playerctl network_traffic cpu memory battery pasink datetime \
+                   -m playerctl network_traffic cpu memory battery pasink datetime dunstctl \
                    -t night-powerline \
-                   -p datetime.format='%Y/%m/%d (%a) %H:%M'\
-                      memory.format='{used}/{total}' \
+                   -p \
+                      datetime.format='%Y/%m/%d (%a) %H:%M' \
+                      memory.format='{used}' \
                       playerctl.format='{{trunc(artist, 20)}} - {{trunc(title, 25)}} {{duration(position)}}/{{duration(mpris:length)}}@{{playerName}}' \
                       playerctl.args='-p vlc,%any'
 }
@@ -219,15 +204,11 @@ bindsym --whole-window --border $mod+button5 workspace next
 
 bindsym $mod+Ctrl+s exec flameshot gui
 
-bindsym $mod+Ctrl+f exec fcitx5
+bindsym $mod+Ctrl+f exec --no-startup-id fcitx5
 
-bindsym $mod+Ctrl+t exec ~/scripts/translate.sh
+bindsym $mod+Ctrl+t exec --no-startup-id ~/scripts/translate.sh
 
-bindsym $mod+c exec copyq toggle
+bindsym $mod+c exec --no-startup-id copyq toggle
 for_window [class="copyq"] floating enable
-
-exec --no-startup-id feh --bg-fill "$HOME/Pictures/geolanes.png"
-
-exec --no-startup-id ~/scripts/autostart.sh
 
 # vim: filetype=i3config
