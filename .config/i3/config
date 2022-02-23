@@ -187,7 +187,7 @@ bar {
     workspace_buttons no
     font pango: FontAwesome, sans-serif, Symbols Nerd Font 9
     status_command bumblebee-status \
-                   -m playerctl network_traffic cpu memory battery pasink datetime dunstctl \
+                   -m playerctl network_traffic cpu memory battery pasink datetime \
                    -t night-powerline \
                    -p \
                       datetime.format='%Y/%m/%d (%a) %H:%M' \

@@ -23,6 +23,11 @@ cmp.setup({
   },
   sources = {
     {
+      name = 'zsh',
+      priority = 200,
+      max_item_count = 10,
+    },
+    {
       name = 'nvim_lsp',
       priority = 100,
       max_item_count = 30,
@@ -45,7 +50,7 @@ cmp.setup({
     {
       name = 'latex_symbols',
       keyword_length = 2,
-      max_item_count = 20,
+      max_item_count = 30,
     },
     {
       name = 'look',

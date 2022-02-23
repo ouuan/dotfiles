@@ -157,7 +157,7 @@ Plug 'ojroques/nvim-hardline', { 'branch': 'main' }
 Plug 'tpope/vim-fugitive'
 Plug 'folke/lsp-trouble.nvim', { 'branch': 'main' }
 Plug 'lewis6991/gitsigns.nvim', { 'branch': 'main' }
-Plug 'phaazon/hop.nvim'
+Plug 'ouuan/hop.nvim', { 'branch': 'fix-inclusive' }
 Plug 'folke/which-key.nvim', { 'branch': 'main' }
 Plug 'rktjmp/lush.nvim', { 'branch': 'main' }
 Plug 'npxbr/gruvbox.nvim', { 'branch': 'main' }
@@ -222,5 +222,6 @@ Plug 'j-hui/fidget.nvim', { 'branch': 'main' }
 Plug 'danymat/neogen', { 'branch': 'main' }
 Plug 'AndrewRadev/switch.vim'
 Plug 'rbong/vim-buffest'
+Plug 'tamago324/cmp-zsh', { 'branch': 'main' }
 
 call plug#end()
