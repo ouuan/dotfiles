@@ -43,7 +43,7 @@ au BufEnter fstab* Tab 8 \| setlocal ft=fstab \| setlocal noexpandtab \| setloca
 let mapleader=' '
 
 fun! s:IsOnlyWindow()
-    return len(filter(getwininfo(), '!has_key(v:val.variables, "treesitter_context")')) == 1
+    return len(filter(getwininfo(), '!has_key(v:val.variables, "scrollview_key") && !has_key(v:val.variables, "treesitter_context")')) == 1
 endfun
 
 fun! ConfirmQuit()
@@ -63,7 +63,9 @@ fun! CloseOrQuit()
     elseif len(getbufinfo({'buflisted':1})) > 1
         " https://github.com/neovim/neovim/issues/13628
         silent! TSContextDisable
+        silent! ScrollViewDisable
         bd
+        silent! ScrollViewEnable
         silent! TSContextEnable
     elseif s:IsOnlyWindow()
         call ConfirmQuit()
@@ -205,17 +207,18 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'rafamadriz/friendly-snippets', { 'branch': 'main' }
 Plug 'kdheepak/cmp-latex-symbols', { 'branch': 'main' }
 Plug 'octaltree/cmp-look'
+Plug 'onsails/lspkind-nvim'
 Plug 'kosayoda/nvim-lightbulb'
 Plug 'ahmedkhalf/project.nvim', { 'branch': 'main' }
 Plug 'lewis6991/spellsitter.nvim'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'ruifm/gitlinker.nvim'
 Plug 'antoinemadec/FixCursorHold.nvim'
-Plug 'onsails/lspkind-nvim'
 Plug 'luukvbaal/stabilize.nvim'
 Plug 'filipdutescu/renamer.nvim'
 Plug 'romgrk/nvim-treesitter-context'
-Plug 'petertriho/nvim-scrollbar', { 'branch': 'main' }
+Plug 'dstein64/nvim-scrollview', { 'branch': 'main' }
+" Plug 'petertriho/nvim-scrollbar', { 'branch': 'main' }
 Plug 'jubnzv/virtual-types.nvim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'j-hui/fidget.nvim', { 'branch': 'main' }

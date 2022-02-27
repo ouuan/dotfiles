@@ -187,13 +187,14 @@ bar {
     workspace_buttons no
     font pango: FontAwesome, sans-serif, Symbols Nerd Font 9
     status_command bumblebee-status \
-                   -m playerctl network_traffic cpu memory battery pasink datetime \
+                   -m playerctl network_traffic cpu memory battery pasink datetime pomodoro \
                    -t night-powerline \
                    -p \
                       datetime.format='%Y/%m/%d (%a) %H:%M' \
                       memory.format='{used}' \
                       playerctl.format='{{trunc(artist, 20)}} - {{trunc(title, 25)}} {{duration(position)}}/{{duration(mpris:length)}}@{{playerName}}' \
-                      playerctl.args='-p vlc,%any'
+                      playerctl.args='-p vlc,%any' \
+                      pomodoro.notify='kdialog --title Pomodoro --msgbox "番茄钟时间到！"'
 }
 
 bindsym $mod+Tab workspace next
