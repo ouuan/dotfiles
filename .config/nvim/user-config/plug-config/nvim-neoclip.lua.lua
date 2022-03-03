@@ -13,4 +13,4 @@ require('neoclip').setup({
   },
 })
 
-vim.cmd[[nmap <leader>" :lua require('telescope').extensions.neoclip.default()<cr>]]
+vim.keymap.set('n', '<leader>"', require'telescope'.extensions.neoclip.default)

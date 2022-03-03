@@ -8,6 +8,7 @@ dunstctl set-paused true
 i3-msg workspace "l$(pwgen -s 10 1)"
 i3-msg bar mode invisible buttons
 
+# i3lock is actually i3lock-color
 i3lock \
     -i "$HOME/Pictures/arch.png" \
     --ind-pos w/2:h/2-35 \

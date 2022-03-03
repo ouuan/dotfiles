@@ -10,4 +10,4 @@ require'project_nvim'.setup {
 }
 
 require('telescope').load_extension('projects')
-vim.cmd[[nmap <leader>j :Telescope projects<cr>]]
+vim.keymap.set('n', '<leader>j', '<cmd>Telescope projects<cr>')
