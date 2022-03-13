@@ -13,6 +13,7 @@ exec --no-startup-id copyq
 exec --no-startup-id dunst
 exec --no-startup-id fcitx5
 exec --no-startup-id feh --bg-fill "$HOME/Pictures/geolanes.png"
+exec --no-startup-id libinput-gestures
 exec --no-startup-id nm-applet
 exec --no-startup-id picom
 exec --no-startup-id playerctld
@@ -110,6 +111,8 @@ workspace_auto_back_and_forth yes
 
 force_display_urgency_hint 500 ms
 
+popup_during_fullscreen leave_fullscreen
+
 for_window [all] title_window_icon yes
 
 # i3-gaps
@@ -176,18 +179,19 @@ bar {
     workspace_buttons no
     font pango: FontAwesome, sans-serif, Symbols Nerd Font 9
     status_command bumblebee-status \
-                   -m playerctl network_traffic cpu memory battery pasink datetime pomodoro \
+                   -m playerctl network_traffic cpu memory battery pasink datetime \
                    -t night-powerline \
                    -p \
                       datetime.format='%Y/%m/%d (%a) %H:%M' \
                       memory.format='{used}' \
                       playerctl.format='{{trunc(artist, 20)}} - {{trunc(title, 25)}} {{duration(position)}}/{{duration(mpris:length)}}@{{playerName}}' \
-                      playerctl.args='-p vlc,%any' \
-                      pomodoro.notify='kdialog --title Pomodoro --msgbox "番茄钟时间到！"'
+                      playerctl.args='-p vlc,%any'
 }
 
 bindsym $mod+Tab workspace next
 bindsym $mod+Ctrl+Tab workspace prev
+
+bindsym $mod+Ctrl+w exec --no-startup-id bash -c "i3-msg workspace w$(pwgen -s 10 1)"
 
 bindsym --whole-window --border $mod+button4 workspace prev
 bindsym --whole-window --border $mod+button5 workspace next
