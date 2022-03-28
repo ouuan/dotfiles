@@ -61,12 +61,7 @@ fun! CloseOrQuit()
     if len(gettabinfo()) > 1
         tabclose
     elseif len(getbufinfo({'buflisted':1})) > 1
-        " https://github.com/neovim/neovim/issues/13628
-        silent! TSContextDisable
-        silent! ScrollViewDisable
         bd
-        silent! ScrollViewEnable
-        silent! TSContextEnable
     elseif s:IsOnlyWindow()
         call ConfirmQuit()
     else

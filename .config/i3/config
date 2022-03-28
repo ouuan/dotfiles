@@ -13,13 +13,13 @@ exec --no-startup-id copyq
 exec --no-startup-id dunst
 exec --no-startup-id fcitx5
 exec --no-startup-id feh --bg-fill "$HOME/Pictures/geolanes.png"
-exec --no-startup-id libinput-gestures
 exec --no-startup-id nm-applet
 exec --no-startup-id picom
 exec --no-startup-id playerctld
 exec --no-startup-id redshift
 exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/scripts/lock.sh
 exec --no-startup-id ~/scripts/autostart.sh
+exec --no-startup-id ~/scripts/take-a-break.sh
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status pkill -f -SIGUSR1 /usr/bin/bumblebee-status
@@ -200,7 +200,8 @@ bindsym $mod+Ctrl+s exec flameshot gui
 
 bindsym $mod+Ctrl+f exec --no-startup-id fcitx5
 
-bindsym $mod+Ctrl+t exec --no-startup-id ~/scripts/translate.sh
+bindsym $mod+t exec --no-startup-id ~/scripts/translate.sh
+bindsym $mod+Ctrl+t exec --no-startup-id bash -c 'original="$(kdialog --inputbox 翻译)" && ~/scripts/translate.sh "$original"'
 
 bindsym $mod+c exec --no-startup-id copyq toggle
 for_window [class="copyq"] floating enable
