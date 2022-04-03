@@ -6,7 +6,7 @@
 
 duration=9000
 permit=8500
-warning=8000
+warning=7800
 dialoginterval=60
 file="/tmp/take-a-break-stats"
 

@@ -138,7 +138,7 @@ Plug 'lilydjwg/fcitx.vim', { 'branch': 'fcitx5', 'for': ['markdown', 'gitcommit'
 Plug 'Chiel92/vim-autoformat'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'godlygeek/tabular'
-Plug 'dkarter/bullets.vim'
+" Plug 'dkarter/bullets.vim'
 Plug 'tpope/vim-repeat'
 Plug 'mcchrish/nnn.vim'
 Plug 'takac/vim-hardtime'
