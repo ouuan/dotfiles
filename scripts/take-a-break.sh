@@ -6,7 +6,7 @@
 
 duration=9000
 permit=8500
-warning=7800
+warning=8000
 dialoginterval=60
 file="/tmp/take-a-break-stats"
 
@@ -52,7 +52,7 @@ do
         if [[ "$used" -gt "$permit" ]]
         then
             kdialog --msgbox "TAKE A BREAK RIGHT NOW!!!" --title "Take A Break" &
-            sleep 3s
+            sleep 5s
             loginctl lock-session self
             kill "$!" || true
         elif [[ "$used" -gt "$warning" ]] && [[ "$now" -gt $(( lastdialog + dialoginterval )) ]]

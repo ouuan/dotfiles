@@ -37,9 +37,6 @@ au FileType json,javascript,css,html,gohtmltmpl,vue,typescript,lua,xml Tab 2
 
 au FileType markdown set suffixesadd+=.md
 
-" fstab
-au BufEnter fstab* Tab 8 \| setlocal ft=fstab \| setlocal noexpandtab \| setlocal tw=0
-
 let mapleader=' '
 
 fun! s:IsOnlyWindow()
@@ -123,7 +120,6 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'ouuan/vim-plug-config'
 let g:plug_config_vim_dir = stdpath('config') . "/user-config/plug-config"
 let g:plug_config_lua_dir = stdpath('config') . "/user-config/plug-config"
-command -nargs=0 P PlugClean | PlugConfigClean | PlugUpdate
 
 " put it in a separate line to prevent commenting it out and being hard to revert
 Plug 'numToStr/Comment.nvim'
@@ -203,8 +199,6 @@ Plug 'rafamadriz/friendly-snippets', { 'branch': 'main' }
 Plug 'kdheepak/cmp-latex-symbols', { 'branch': 'main' }
 Plug 'octaltree/cmp-look'
 Plug 'onsails/lspkind-nvim'
-Plug 'kosayoda/nvim-lightbulb'
-Plug 'ahmedkhalf/project.nvim', { 'branch': 'main' }
 Plug 'lewis6991/spellsitter.nvim'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'ruifm/gitlinker.nvim'
@@ -213,13 +207,13 @@ Plug 'luukvbaal/stabilize.nvim'
 Plug 'filipdutescu/renamer.nvim'
 Plug 'romgrk/nvim-treesitter-context'
 Plug 'dstein64/nvim-scrollview', { 'branch': 'main' }
-" Plug 'petertriho/nvim-scrollbar', { 'branch': 'main' }
-Plug 'jubnzv/virtual-types.nvim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'j-hui/fidget.nvim', { 'branch': 'main' }
 Plug 'danymat/neogen', { 'branch': 'main' }
 Plug 'AndrewRadev/switch.vim'
 Plug 'rbong/vim-buffest'
 Plug 'tamago324/cmp-zsh', { 'branch': 'main' }
+Plug 'ziontee113/syntax-tree-surfer'
+Plug 'mfussenegger/nvim-treehopper'
 
 call plug#end()

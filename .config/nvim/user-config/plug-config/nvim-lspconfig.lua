@@ -7,22 +7,20 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gD', vim.lsp.buf.declaration)
   buf_set_keymap('n', 'gd', vim.lsp.buf.definition)
   buf_set_keymap('n', 'H', vim.lsp.buf.hover)
-  -- buf_set_keymap('n', 'gi', vim.lsp.buf.implementation)
   buf_set_keymap('n', '<leader>D', vim.lsp.buf.type_definition)
   buf_set_keymap({'n', 'v'}, '<leader>rn', function() require("renamer").rename({ empty = true }) end)
-  -- buf_set_keymap('n', '<leader>ca', vim.lsp.buf.code_action)
-  buf_set_keymap('n', '<leader>ca',  '<cmd>CodeActionMenu<cr>')
-  -- buf_set_keymap({'n', 'v'}, 'gr', vim.lsp.buf.references)
   buf_set_keymap("n", '<leader>rf', "<cmd>TroubleToggle lsp_references<cr>")
 
-  if client.resolved_capabilities.document_formatting then
+  if client.server_capabilities.codeActionProvider then
+    buf_set_keymap('n', '<leader>ca',  '<cmd>CodeActionMenu<cr>')
+  end
+
+  if client.server_capabilities.documentFormattingProvider then
     buf_set_keymap("n", "<leader>f", vim.lsp.buf.formatting)
   end
-  if client.resolved_capabilities.document_range_formatting then
+
+  if client.server_capabilities.documentRangeFormattingProvider then
     buf_set_keymap("v", "<leader>f", vim.lsp.buf.range_formatting)
-  end
-  if client.resolved_capabilities.code_lens then
-    require'virtualtypes'.on_attach()
   end
 
   require'lsp_signature'.on_attach {
@@ -77,12 +75,13 @@ lsp.clangd.setup {
 }
 
 local add_format_attach = function(client, bufnr)
-  client.resolved_capabilities.document_formatting = true
+  client.server_capabilities.documentFormattingProvider = true
   on_attach(client, bufnr)
 end
 
 local del_format_attach = function(client, bufnr)
-  client.resolved_capabilities.document_formatting = false
+  client.server_capabilities.documentFormattingProvider = false
+  client.server_capabilities.documentRangeFormattingProvider = false
   on_attach(client, bufnr)
 end
 
@@ -107,10 +106,10 @@ lsp.eslint.setup {
   },
 }
 
-lsp.bashls.setup {
-  on_attach = on_attach,
-  filetypes = { "sh", "zsh", "PKGBUILD" }
-}
+-- lsp.bashls.setup {
+--   on_attach = on_attach,
+--   filetypes = { "sh", "zsh", "PKGBUILD" }
+-- }
 
 lsp.sumneko_lua.setup {
   cmd = {'/usr/bin/lua-language-server'},
