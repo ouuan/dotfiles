@@ -106,10 +106,10 @@ lsp.eslint.setup {
   },
 }
 
--- lsp.bashls.setup {
---   on_attach = on_attach,
---   filetypes = { "sh", "zsh", "PKGBUILD" }
--- }
+lsp.bashls.setup {
+  on_attach = on_attach,
+  filetypes = { "sh", "zsh", "PKGBUILD" }
+}
 
 lsp.sumneko_lua.setup {
   cmd = {'/usr/bin/lua-language-server'},
