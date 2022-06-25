@@ -24,8 +24,12 @@ cmp.setup({
   sources = {
     {
       name = 'zsh',
-      priority = 200,
+      priority = 100,
       max_item_count = 10,
+    },
+    {
+      name = "copilot",
+      priority = 100,
     },
     {
       name = 'nvim_lsp',
@@ -66,13 +70,22 @@ cmp.setup({
   },
   formatting = {
     deprecated = true,
-    format = require'lspkind'.cmp_format({ with_text = true, maxwidth = 50 }),
+    format = function (entry, vim_item)
+      if entry.source.name == "copilot" then
+        vim_item.kind = " Copilot"
+        vim_item.kind_hl_group = "CmpItemKindCopilot"
+        return vim_item
+      end
+      return require'lspkind'.cmp_format({ with_text = true, maxwidth = 50 })(entry, vim_item)
+    end
   },
   experimental = {
     ghost_text = true,
   },
   sorting = {
     comparators = {
+      require("copilot_cmp.comparators").prioritize,
+      require("copilot_cmp.comparators").score,
       cmp.config.compare.offset,
       cmp.config.compare.exact,
       cmp.config.compare.score,
@@ -84,6 +97,8 @@ cmp.setup({
     },
   },
 })
+
+vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg ="#6CC644"})
 
 cmp.setup.cmdline('/', {
   mapping = cmp.mapping.preset.cmdline({}),

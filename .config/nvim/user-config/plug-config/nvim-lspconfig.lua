@@ -8,26 +8,26 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gd', vim.lsp.buf.definition)
   buf_set_keymap('n', 'H', vim.lsp.buf.hover)
   buf_set_keymap('n', '<leader>D', vim.lsp.buf.type_definition)
-  buf_set_keymap({'n', 'v'}, '<leader>rn', function() require("renamer").rename({ empty = true }) end)
+  buf_set_keymap({ 'n', 'v' }, '<leader>rn', function() require("renamer").rename({ empty = true }) end)
   buf_set_keymap("n", '<leader>rf', "<cmd>TroubleToggle lsp_references<cr>")
 
   if client.server_capabilities.codeActionProvider then
-    buf_set_keymap('n', '<leader>ca',  '<cmd>CodeActionMenu<cr>')
+    buf_set_keymap('n', '<leader>ca', '<cmd>CodeActionMenu<cr>')
   end
 
   if client.server_capabilities.documentFormattingProvider then
-    buf_set_keymap("n", "<leader>f", vim.lsp.buf.formatting)
+    buf_set_keymap("n", "<leader>f", function() vim.lsp.buf.format { async = true } end)
   end
 
   if client.server_capabilities.documentRangeFormattingProvider then
     buf_set_keymap("v", "<leader>f", vim.lsp.buf.range_formatting)
   end
 
-  require'lsp_signature'.on_attach {
+  require 'lsp_signature'.on_attach {
     auto_close_after = 3,
   }
 
-  require'aerial'.on_attach(client);
+  require 'aerial'.on_attach(client);
   buf_set_keymap("n", "<leader>a", "<cmd>AerialOpen<cr>")
 end
 
@@ -48,7 +48,7 @@ local no_setup_servers = {
   'yamlls',
 }
 
-for _,server in pairs(no_setup_servers) do
+for _, server in pairs(no_setup_servers) do
   lsp[server].setup {
     on_attach = on_attach,
     capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
@@ -63,7 +63,7 @@ lsp.jsonls.setup {
   commands = {
     Format = {
       function()
-        vim.lsp.buf.range_formatting({},{0,0},{vim.fn.line("$"),0})
+        vim.lsp.buf.range_formatting({}, { 0, 0 }, { vim.fn.line("$"), 0 })
       end
     }
   }
@@ -112,7 +112,7 @@ lsp.bashls.setup {
 }
 
 lsp.sumneko_lua.setup {
-  cmd = {'/usr/bin/lua-language-server'},
+  cmd = { '/usr/bin/lua-language-server' },
   on_attach = on_attach,
   settings = {
     Lua = {
@@ -124,7 +124,7 @@ lsp.sumneko_lua.setup {
       },
       diagnostics = {
         -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
+        globals = { 'vim' },
       },
       workspace = {
         -- Make the server aware of Neovim runtime files

@@ -198,6 +198,9 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'rafamadriz/friendly-snippets', { 'branch': 'main' }
 Plug 'kdheepak/cmp-latex-symbols', { 'branch': 'main' }
 Plug 'octaltree/cmp-look'
+Plug 'zbirenbaum/copilot.lua'
+Plug 'zbirenbaum/copilot-cmp'
+Plug 'tamago324/cmp-zsh', { 'branch': 'main' }
 Plug 'onsails/lspkind-nvim'
 Plug 'lewis6991/spellsitter.nvim'
 Plug 'lukas-reineke/indent-blankline.nvim'
@@ -212,8 +215,8 @@ Plug 'j-hui/fidget.nvim', { 'branch': 'main' }
 Plug 'danymat/neogen', { 'branch': 'main' }
 Plug 'AndrewRadev/switch.vim'
 Plug 'rbong/vim-buffest'
-Plug 'tamago324/cmp-zsh', { 'branch': 'main' }
 Plug 'ziontee113/syntax-tree-surfer'
 Plug 'mfussenegger/nvim-treehopper'
+Plug 'jxnblk/vim-mdx-js'
 
 call plug#end()
