@@ -33,9 +33,11 @@ command! -bar Cd cd %:p:h
 
 au FileType vim set fo-=o fo-=r
 
-au FileType json,javascript,css,html,gohtmltmpl,vue,typescript,lua,xml Tab 2
+au FileType json,javascript,css,scss,html,gohtmltmpl,vue,typescript,lua,xml Tab 2
 
 au FileType markdown set suffixesadd+=.md
+
+au BufNewFile,BufRead *.mdx set filetype=markdown
 
 let mapleader=' '
 
@@ -128,13 +130,12 @@ Plug 'glts/vim-textobj-comment'
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-surround'
+Plug 'kylechui/nvim-surround', { 'branch': 'main' }
 Plug 'wakatime/vim-wakatime'
 Plug 'lilydjwg/fcitx.vim', { 'branch': 'fcitx5', 'for': ['markdown', 'gitcommit', 'scratch', 'text', 'tex'] }
 Plug 'Chiel92/vim-autoformat'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'godlygeek/tabular'
-" Plug 'dkarter/bullets.vim'
 Plug 'tpope/vim-repeat'
 Plug 'mcchrish/nnn.vim'
 Plug 'takac/vim-hardtime'
@@ -166,7 +167,6 @@ Plug 'lervag/vimtex'
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'ray-x/lsp_signature.nvim'
 Plug 'JoosepAlviste/nvim-ts-context-commentstring', { 'branch': 'main' }
-Plug 'farmergreg/vim-lastplace'
 Plug 'rhysd/conflict-marker.vim'
 Plug 'andymass/vim-matchup'
 Plug 'AndrewRadev/splitjoin.vim', { 'branch': 'main' }
@@ -217,6 +217,6 @@ Plug 'AndrewRadev/switch.vim'
 Plug 'rbong/vim-buffest'
 Plug 'ziontee113/syntax-tree-surfer'
 Plug 'mfussenegger/nvim-treehopper'
-Plug 'jxnblk/vim-mdx-js'
+Plug 'ethanholz/nvim-lastplace', { 'branch': 'main' }
 
 call plug#end()

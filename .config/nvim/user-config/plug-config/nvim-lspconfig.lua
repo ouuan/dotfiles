@@ -10,6 +10,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<leader>D', vim.lsp.buf.type_definition)
   buf_set_keymap({ 'n', 'v' }, '<leader>rn', function() require("renamer").rename({ empty = true }) end)
   buf_set_keymap("n", '<leader>rf', "<cmd>TroubleToggle lsp_references<cr>")
+  buf_set_keymap('n', '<leader>l', vim.diagnostic.open_float)
 
   if client.server_capabilities.codeActionProvider then
     buf_set_keymap('n', '<leader>ca', '<cmd>CodeActionMenu<cr>')

@@ -161,12 +161,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-mode "zen" {
-    bindsym $mod+Ctrl+Shift+z mode "default"
-    bindsym $mod+l exec --no-startup-id "i3-msg mode default && loginctl lock-session self"
-}
-bindsym $mod+Ctrl+Shift+z mode "zen"
-
 bar {
     id buttons
     height 28

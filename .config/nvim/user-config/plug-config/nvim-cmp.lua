@@ -28,13 +28,13 @@ cmp.setup({
       max_item_count = 10,
     },
     {
-      name = "copilot",
-      priority = 100,
-    },
-    {
       name = 'nvim_lsp',
       priority = 100,
       max_item_count = 30,
+    },
+    {
+      name = "copilot",
+      priority = 99,
     },
     {
       name = 'vsnip',
