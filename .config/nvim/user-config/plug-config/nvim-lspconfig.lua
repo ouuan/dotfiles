@@ -1,4 +1,9 @@
+vim.diagnostic.config {
+  severity_sort = true
+}
+
 local lsp = require('lspconfig')
+
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(mode, lhs, rhs)
     vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, silent = true })
@@ -49,10 +54,12 @@ local no_setup_servers = {
   'yamlls',
 }
 
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 for _, server in pairs(no_setup_servers) do
   lsp[server].setup {
     on_attach = on_attach,
-    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+    capabilities = capabilities,
   }
 end
 
@@ -61,6 +68,7 @@ snippetcaps.textDocument.completion.completionItem.snippetSupport = true
 
 lsp.jsonls.setup {
   on_attach = on_attach,
+  capabilities = capabilities,
   commands = {
     Format = {
       function()
@@ -70,9 +78,12 @@ lsp.jsonls.setup {
   }
 }
 
+local clangd_capabilities = capabilities
+clangd_capabilities.offsetEncoding = "utf-8"
 lsp.clangd.setup {
   on_attach = on_attach,
   cmd = { "clangd", "--background-index" },
+  capabilities = clangd_capabilities,
 }
 
 local add_format_attach = function(client, bufnr)
@@ -88,14 +99,17 @@ end
 
 lsp.tsserver.setup {
   on_attach = del_format_attach,
+  capabilities = capabilities,
 }
 
 lsp.volar.setup {
   on_attach = del_format_attach,
+  capabilities = capabilities,
 }
 
 lsp.eslint.setup {
   on_attach = add_format_attach,
+  capabilities = capabilities,
   filetypes = {
     "javascript",
     "javascriptreact",
@@ -109,12 +123,14 @@ lsp.eslint.setup {
 
 lsp.bashls.setup {
   on_attach = on_attach,
+  capabilities = capabilities,
   filetypes = { "sh", "zsh", "PKGBUILD" }
 }
 
 lsp.sumneko_lua.setup {
   cmd = { '/usr/bin/lua-language-server' },
   on_attach = on_attach,
+  capabilities = capabilities,
   settings = {
     Lua = {
       runtime = {
