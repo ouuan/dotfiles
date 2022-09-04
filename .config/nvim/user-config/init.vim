@@ -179,7 +179,6 @@ Plug 'stevearc/aerial.nvim'
 Plug 'stevearc/stickybuf.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'oberblastmeister/neuron.nvim', { 'branch': 'unstable' }
 Plug 'othree/html5.vim'
 Plug 'David-Kunz/treesitter-unit', { 'branch': 'main' }
 Plug 'leafOfTree/vim-vue-plugin'
@@ -193,18 +192,16 @@ Plug 'hrsh7th/cmp-buffer', { 'branch': 'main' }
 Plug 'hrsh7th/cmp-path', { 'branch': 'main' }
 Plug 'hrsh7th/cmp-cmdline', { 'branch': 'main' }
 Plug 'lukas-reineke/cmp-under-comparator'
-Plug 'hrsh7th/cmp-vsnip', { 'branch': 'main' }
-Plug 'hrsh7th/vim-vsnip'
-Plug 'rafamadriz/friendly-snippets', { 'branch': 'main' }
 Plug 'kdheepak/cmp-latex-symbols', { 'branch': 'main' }
 Plug 'octaltree/cmp-look'
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'zbirenbaum/copilot.lua'
 Plug 'zbirenbaum/copilot-cmp'
 Plug 'tamago324/cmp-zsh', { 'branch': 'main' }
 Plug 'onsails/lspkind-nvim'
 Plug 'lewis6991/spellsitter.nvim'
 Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'ruifm/gitlinker.nvim'
 Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'luukvbaal/stabilize.nvim'
 Plug 'filipdutescu/renamer.nvim'
@@ -213,10 +210,10 @@ Plug 'dstein64/nvim-scrollview', { 'branch': 'main' }
 Plug 'machakann/vim-highlightedyank'
 Plug 'j-hui/fidget.nvim', { 'branch': 'main' }
 Plug 'danymat/neogen', { 'branch': 'main' }
-Plug 'AndrewRadev/switch.vim'
 Plug 'rbong/vim-buffest'
 Plug 'ziontee113/syntax-tree-surfer'
 Plug 'mfussenegger/nvim-treehopper'
 Plug 'ethanholz/nvim-lastplace', { 'branch': 'main' }
+Plug 'mrshmllow/document-color.nvim', { 'branch': 'main' }
 
 call plug#end()

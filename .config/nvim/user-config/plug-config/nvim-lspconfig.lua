@@ -29,6 +29,10 @@ local on_attach = function(client, bufnr)
     buf_set_keymap("v", "<leader>f", vim.lsp.buf.range_formatting)
   end
 
+  if client.server_capabilities.colorProvider then
+    require 'document-color'.buf_attach(bufnr)
+  end
+
   require 'lsp_signature'.on_attach {
     auto_close_after = 3,
   }
@@ -47,7 +51,6 @@ local no_setup_servers = {
   'intelephense',
   'jdtls',
   'pyright',
-  'rust_analyzer',
   'svelte',
   'texlab',
   'vimls',
@@ -62,6 +65,18 @@ for _, server in pairs(no_setup_servers) do
     capabilities = capabilities,
   }
 end
+
+lsp.rust_analyzer.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    ["rust-analyzer"] = {
+      cargo = {
+        allFeatures = true,
+      }
+    }
+  }
+}
 
 local snippetcaps = vim.lsp.protocol.make_client_capabilities()
 snippetcaps.textDocument.completion.completionItem.snippetSupport = true

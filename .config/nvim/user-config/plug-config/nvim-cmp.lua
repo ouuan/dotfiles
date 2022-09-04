@@ -1,13 +1,8 @@
 vim.o.completeopt = "menu,menuone,noselect"
 
-local cmp = require'cmp'
+local cmp = require 'cmp'
 
 cmp.setup({
-  snippet = {
-    expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body)
-    end,
-  },
   mapping = {
     ['<C-u>'] = cmp.mapping.scroll_docs(-4),
     ['<C-d>'] = cmp.mapping.scroll_docs(4),
@@ -20,6 +15,11 @@ cmp.setup({
       behavior = cmp.ConfirmBehavior.Insert,
       select = false,
     }),
+  },
+  snippet = {
+    expand = function(args)
+      require 'luasnip'.lsp_expand(args.body)
+    end
   },
   sources = {
     {
@@ -37,9 +37,8 @@ cmp.setup({
       priority = 99,
     },
     {
-      name = 'vsnip',
-      priority = 99,
-      max_item_count = 5,
+      name = 'luasnip',
+      priority = 20,
     },
     {
       name = 'buffer',
@@ -68,15 +67,16 @@ cmp.setup({
       cmp.TriggerEvent.InsertEnter,
     },
   },
+  preselect = cmp.PreselectMode.None,
   formatting = {
     deprecated = true,
-    format = function (entry, vim_item)
+    format = function(entry, vim_item)
       if entry.source.name == "copilot" then
         vim_item.kind = " Copilot"
         vim_item.kind_hl_group = "CmpItemKindCopilot"
         return vim_item
       end
-      return require'lspkind'.cmp_format({ with_text = true, maxwidth = 50 })(entry, vim_item)
+      return require 'lspkind'.cmp_format({ with_text = true, maxwidth = 50 })(entry, vim_item)
     end
   },
   experimental = {
@@ -98,7 +98,7 @@ cmp.setup({
   },
 })
 
-vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg ="#6CC644"})
+vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 
 cmp.setup.cmdline('/', {
   mapping = cmp.mapping.preset.cmdline({}),

@@ -36,6 +36,7 @@ verbose:
 - packages:
   - firefox
   - systemd
+  - grub
   regex: linux(-(lts|zen|hardened))?|.+-dkms
   allGroups: true
 - packages:
