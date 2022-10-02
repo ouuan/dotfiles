@@ -51,6 +51,7 @@ local no_setup_servers = {
   'intelephense',
   'jdtls',
   'pyright',
+  'r_language_server',
   'svelte',
   'texlab',
   'vimls',
@@ -73,6 +74,9 @@ lsp.rust_analyzer.setup {
     ["rust-analyzer"] = {
       cargo = {
         allFeatures = true,
+      },
+      checkOnSave = {
+        command = "clippy",
       }
     }
   }

@@ -4,9 +4,9 @@
 # if you have been unlocked for more than <warning> seconds, you'll be asked to lock every <dialoginterval> seconds.
 # The stats are saved at <file>.
 
-duration=9000
-permit=8500
-warning=8000
+duration=10000
+permit=9500
+warning=9000
 dialoginterval=60
 file="/tmp/take-a-break-stats"
 
