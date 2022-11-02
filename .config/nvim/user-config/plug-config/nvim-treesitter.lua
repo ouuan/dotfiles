@@ -10,6 +10,7 @@ require'nvim-treesitter.configs'.setup {
             'bash',
             'lua',
             'c',
+            'latex',
         },
     },
 }

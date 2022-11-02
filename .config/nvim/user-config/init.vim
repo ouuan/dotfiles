@@ -19,6 +19,7 @@ set smartcase ignorecase
 set smartindent
 set smarttab
 set splitbelow
+set splitkeep=screen
 set splitright
 set tabstop=4
 set termguicolors
@@ -202,7 +203,6 @@ Plug 'tamago324/cmp-zsh', { 'branch': 'main' }
 Plug 'onsails/lspkind-nvim'
 Plug 'lewis6991/spellsitter.nvim'
 Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'luukvbaal/stabilize.nvim'
 Plug 'filipdutescu/renamer.nvim'
 Plug 'romgrk/nvim-treesitter-context'
 Plug 'dstein64/nvim-scrollview', { 'branch': 'main' }

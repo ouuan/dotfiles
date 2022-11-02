@@ -22,11 +22,11 @@ local on_attach = function(client, bufnr)
   end
 
   if client.server_capabilities.documentFormattingProvider then
-    buf_set_keymap("n", "<leader>f", function() vim.lsp.buf.format { async = true } end)
+    buf_set_keymap("n", "<leader>f", vim.lsp.buf.format)
   end
 
   if client.server_capabilities.documentRangeFormattingProvider then
-    buf_set_keymap("v", "<leader>f", vim.lsp.buf.range_formatting)
+    buf_set_keymap("v", "<leader>f", vim.lsp.buf.format)
   end
 
   if client.server_capabilities.colorProvider then
@@ -36,9 +36,6 @@ local on_attach = function(client, bufnr)
   require 'lsp_signature'.on_attach {
     auto_close_after = 3,
   }
-
-  require 'aerial'.on_attach(client);
-  buf_set_keymap("n", "<leader>a", "<cmd>AerialOpen<cr>")
 end
 
 local no_setup_servers = {
@@ -58,7 +55,7 @@ local no_setup_servers = {
   'yamlls',
 }
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 for _, server in pairs(no_setup_servers) do
   lsp[server].setup {
