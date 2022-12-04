@@ -12,7 +12,6 @@ set listchars=tab:\ \ |
 set mouse=a
 set number relativenumber
 set scrolloff=10
-set secure
 set shiftround
 set shiftwidth=4
 set smartcase ignorecase
@@ -214,5 +213,6 @@ Plug 'ziontee113/syntax-tree-surfer'
 Plug 'mfussenegger/nvim-treehopper'
 Plug 'ethanholz/nvim-lastplace', { 'branch': 'main' }
 Plug 'mrshmllow/document-color.nvim', { 'branch': 'main' }
+Plug 'Wansmer/treesj', { 'branch': 'main' }
 
 call plug#end()

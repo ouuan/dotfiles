@@ -69,15 +69,12 @@ cmp.setup({
   },
   preselect = cmp.PreselectMode.None,
   formatting = {
-    deprecated = true,
-    format = function(entry, vim_item)
-      if entry.source.name == "copilot" then
-        vim_item.kind = " Copilot"
-        vim_item.kind_hl_group = "CmpItemKindCopilot"
-        return vim_item
-      end
-      return require 'lspkind'.cmp_format({ with_text = true, maxwidth = 50 })(entry, vim_item)
-    end
+    format = require 'lspkind'.cmp_format {
+      mode = 'symbol_text',
+      maxwidth = 50,
+      ellipsis_char = '...',
+      symbol_map = { Copilot = "" }
+    }
   },
   experimental = {
     ghost_text = true,
