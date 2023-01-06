@@ -1,5 +1,5 @@
 export MANPAGER='nvim "+call ManPager()"'
-export MANWIDTH=120
+export MANWIDTH=80
 export EDITOR="/usr/bin/nvim"
 export DIFFPROG='nvim -d'
 

@@ -46,7 +46,7 @@ ghcl() {
 }
 
 gcpr () {
-    gco "pr-$1" >/dev/null 2>&1 || hub pr checkout "$1" "pr-$1"
+    gco "pr-$1" >/dev/null 2>&1 || gh pr checkout "$1" -b "pr-$1"
 }
 
 grau () {

@@ -1,4 +1,4 @@
-let g:goyo_width = 120
+let g:goyo_width = 80
 nmap <silent> <leader>z :noau Goyo<cr>
 
 fun! ManGoto()
