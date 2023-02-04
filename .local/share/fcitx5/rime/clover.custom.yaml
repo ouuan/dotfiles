@@ -1,11 +1,9 @@
 patch:
   menu/page_size: 10
-  punctuator/full_shape/[: [【, 「, 『]
-  punctuator/full_shape/]: [】, 」, 』]
-  punctuator/full_shape/\: [、]
   punctuator/half_shape/[: [【, 「, 『]
   punctuator/half_shape/]: [】, 」, 』]
   punctuator/half_shape/\: [、]
+  punctuator/half_shape/': [’, ‘, "'"]
   engine/translators:
     - punct_translator
     - script_translator

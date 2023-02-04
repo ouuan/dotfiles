@@ -138,7 +138,6 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-repeat'
 Plug 'mcchrish/nnn.vim'
-Plug 'takac/vim-hardtime'
 Plug 'kana/vim-textobj-entire'
 Plug 'm-pilia/vim-pkgbuild'
 Plug 'fatih/vim-go'
@@ -157,7 +156,7 @@ Plug 'rktjmp/lush.nvim', { 'branch': 'main' }
 Plug 'npxbr/gruvbox.nvim', { 'branch': 'main' }
 Plug 'pchynoweth/vim-gencode-cpp', { 'for': 'cpp' }
 Plug 'nacitar/a.vim', { 'for': 'cpp' }
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'nacro90/numb.nvim'
 Plug 'cespare/vim-toml'
 Plug 'junegunn/goyo.vim'
@@ -180,7 +179,6 @@ Plug 'stevearc/stickybuf.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'othree/html5.vim'
-Plug 'David-Kunz/treesitter-unit', { 'branch': 'main' }
 Plug 'leafOfTree/vim-vue-plugin'
 Plug 'Julian/lean.nvim', { 'branch': 'main' }
 Plug 'tami5/sqlite.lua'
@@ -209,10 +207,11 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'j-hui/fidget.nvim', { 'branch': 'main' }
 Plug 'danymat/neogen', { 'branch': 'main' }
 Plug 'rbong/vim-buffest'
-Plug 'ziontee113/syntax-tree-surfer'
 Plug 'mfussenegger/nvim-treehopper'
 Plug 'ethanholz/nvim-lastplace', { 'branch': 'main' }
 Plug 'mrshmllow/document-color.nvim', { 'branch': 'main' }
 Plug 'Wansmer/treesj', { 'branch': 'main' }
+Plug 'm00qek/baleia.nvim', { 'branch': 'main' }
+Plug 'samodostal/image.nvim', { 'branch': 'main' }
 
 call plug#end()
