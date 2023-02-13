@@ -24,7 +24,7 @@ set -euo pipefail
 original="${*:-$(xclip -o)}"
 if [[ $(echo "$original" | wc -w) == 1 && ${#original} -lt 20 ]]; then
     is_word=true
-    original="$(echo "$original" | tr -d '[:punct:]')"
+    original="$(echo "$original" | sed 's/^[[:punct:]]//g;s/[[:punct:]]$//g')"
 else
     is_word=false
 fi

@@ -40,39 +40,6 @@ local on_attach = function(client, bufnr)
   }
 end
 
-configs['unocss'] = {
-  default_config = {
-    cmd = { 'unocss-language-server', '--stdio' },
-    filetypes = {
-      'html',
-      'javascriptreact',
-      'rescript',
-      'typescriptreact',
-      'vue',
-      'svelte',
-      "scss",
-      "css",
-    },
-    on_new_config = function(new_config)
-      if not new_config.settings then
-        new_config.settings = {}
-      end
-      if not new_config.settings.editor then
-        new_config.settings.editor = {}
-      end
-      if not new_config.settings.editor.tabSize then
-        new_config.settings.editor.tabSize = vim.lsp.util.get_effective_tabstop()
-      end
-    end,
-    root_dir = function(fname)
-      return util.root_pattern('unocss.config.js', 'unocss.config.ts')(fname)
-          or util.find_package_json_ancestor(fname)
-          or util.find_node_modules_ancestor(fname)
-          or util.find_git_ancestor(fname)
-    end,
-  }
-}
-
 local no_setup_servers = {
   'cmake',
   'cssls',
@@ -86,7 +53,6 @@ local no_setup_servers = {
   'r_language_server',
   'svelte',
   'texlab',
-  'unocss',
   'vimls',
   'yamlls',
 }

@@ -10,12 +10,12 @@ export XMODIFIERS='@im=fcitx'
 export LANG=zh_CN.UTF-8
 export LANGUAGE=zh_CN:en_US
 
-export QT_QPA_PLATFORMTHEME=qt5ct
-export GTK_USE_PORTAL=1
-
-export WAKATIME_HOME="$HOME/.local/share/wakatime"
 export DEBUGINFOD_URLS="https://debuginfod.archlinux.org https://repo.archlinuxcn.org"
+export GTK_USE_PORTAL=1
+export QQ_DOWNLOAD_DIR="$HOME/Downloads/QQ"
+export QT_QPA_PLATFORMTHEME=qt5ct
 export SCCACHE_CACHE_SIZE=1G
+export WAKATIME_HOME="$HOME/.local/share/wakatime"
 
 clear
 
