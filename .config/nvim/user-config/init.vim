@@ -117,6 +117,9 @@ au BufEnter translated-words.txt nnoremap <silent> gt :silent exec "!xdg-open ht
 " Restore cursor shape on VimLeave
 au VimLeave * set guicursor=a:ver1
 
+" don't use pyenv for neovim Python host
+let g:python3_host_prog = '/usr/bin/python'
+
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'ouuan/vim-plug-config'
@@ -133,7 +136,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'kylechui/nvim-surround', { 'branch': 'main' }
 Plug 'wakatime/vim-wakatime'
 Plug 'lilydjwg/fcitx.vim', { 'branch': 'fcitx5', 'for': ['markdown', 'gitcommit', 'scratch', 'text', 'tex'] }
-Plug 'Chiel92/vim-autoformat'
+Plug 'vim-autoformat/vim-autoformat'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-repeat'
@@ -213,5 +216,7 @@ Plug 'mrshmllow/document-color.nvim', { 'branch': 'main' }
 Plug 'Wansmer/treesj', { 'branch': 'main' }
 Plug 'm00qek/baleia.nvim', { 'branch': 'main' }
 Plug 'samodostal/image.nvim', { 'branch': 'main' }
+Plug 'ahmedkhalf/project.nvim', { 'branch': 'main' }
+Plug 'andythigpen/nvim-coverage', { 'branch': 'main' }
 
 call plug#end()

@@ -53,6 +53,7 @@ local no_setup_servers = {
   'r_language_server',
   'svelte',
   'texlab',
+  'verible',
   'vimls',
   'yamlls',
 }
@@ -145,7 +146,7 @@ lsp.bashls.setup {
   filetypes = { "sh", "zsh", "PKGBUILD" }
 }
 
-lsp.sumneko_lua.setup {
+lsp.lua_ls.setup {
   cmd = { '/usr/bin/lua-language-server' },
   on_attach = on_attach,
   capabilities = capabilities,

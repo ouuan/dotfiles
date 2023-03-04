@@ -35,8 +35,8 @@ bindsym XF86AudioStop exec --no-startup-id "playerctl -p vlc,%any stop && $refre
 bindsym XF86AudioNext exec --no-startup-id "playerctl -p vlc,%any next && $refresh_i3status"
 bindsym XF86AudioPrev exec --no-startup-id "playerctl -p vlc,%any previous && $refresh_i3status"
 
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s 5%+ && $refresh_i3status
-bindsym XF86MonBrightnessDown exec --no-startup-id [[ $(brightnessctl g) -gt $(( $(brightnessctl max) / 20 )) ]] && brightnessctl s 5%- && $refresh_i3status
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s 2%+ && $refresh_i3status
+bindsym XF86MonBrightnessDown exec --no-startup-id [[ $(brightnessctl g) -gt $(( $(brightnessctl max) / 5 )) ]] && brightnessctl s 2%- && $refresh_i3status
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod

@@ -5,3 +5,5 @@ au BufWrite * if get(g:, 'autoformat', index(g:format_on_save_list, &ft) < 0 ? 0
 
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
+
+let g:formatters_python = ['black']

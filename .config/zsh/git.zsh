@@ -1,23 +1,29 @@
-eval "$(hub alias -s)"
 alias gh='setsocks5 gh'
 
-alias grst='gaa && grhh && gst -s | cut -c 4- | xargs -n 1 trash; gsu --init --recursive'
+alias gbro='gh browse'
+alias gci='gh run watch'
+alias gcm='gco $(git_main_branch)'
+alias gco='gcor'
 alias gdch='git diff --color-words=.'
 alias gfu='gf upstream'
-alias gsuir='g submodule update --init --recursive'
-alias gbro='git browse --'
-alias gci='gh run view'
-alias gciw='gh run watch'
 alias gi='gh issue list'
-alias gco='gcor'
-alias gcm='gco $(git_main_branch)'
+alias grst='gaa && grhh && gst -s | cut -c 4- | xargs -n 1 trash; gsuir'
+alias gsuir='gsu --init --recursive'
 alias gupd='gaa && gcam "Update at $(date "+%Y-%m-%d %H:%M:%S")"'
 
-alias glo='tig'
-alias gsh='tig show'
-alias glg='tig log'
 alias gbl='tig blame'
+alias glg='tig log'
+alias glo='tig'
 alias greflog='tig reflog'
+alias gsh='tig show'
+
+function git() {
+    if [[ "$1" =~ "^(clone|fetch|lfs|pull|push)$" && "$@" != *"-h"* ]]; then
+        ssh-agent bash -c "ssh-add && /usr/bin/git $*"
+    else
+        command git "$@"
+    fi
+}
 
 GIT_MAIN_BRANCH_PRIORITY="hugo:master:main:dev"
 

@@ -5,8 +5,8 @@
 # The stats are saved at <file>.
 
 duration=10000
-permit=9500
-warning=9000
+permit=9600
+warning=9200
 dialoginterval=60
 file="/tmp/take-a-break-stats"
 
