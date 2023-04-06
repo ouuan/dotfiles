@@ -218,5 +218,6 @@ Plug 'm00qek/baleia.nvim', { 'branch': 'main' }
 Plug 'samodostal/image.nvim', { 'branch': 'main' }
 Plug 'ahmedkhalf/project.nvim', { 'branch': 'main' }
 Plug 'andythigpen/nvim-coverage', { 'branch': 'main' }
+Plug 'chrisgrieser/nvim-early-retirement', { 'branch': 'main' }
 
 call plug#end()
