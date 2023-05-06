@@ -33,9 +33,10 @@ command! -bar Cd cd %:p:h
 
 au FileType vim set fo-=o fo-=r
 
-au FileType json,javascript,css,scss,html,gohtmltmpl,vue,typescript,lua,xml Tab 2
+au FileType json,javascript,css,scss,html,gohtmltmpl,vue,typescript,lua,xml,systemverilog Tab 2
 
 au FileType markdown set suffixesadd+=.md
+au FileType systemverilog set suffixesadd+=.sv
 
 au BufNewFile,BufRead *.mdx set filetype=markdown
 
@@ -140,7 +141,6 @@ Plug 'vim-autoformat/vim-autoformat'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-repeat'
-Plug 'mcchrish/nnn.vim'
 Plug 'kana/vim-textobj-entire'
 Plug 'm-pilia/vim-pkgbuild'
 Plug 'fatih/vim-go'
@@ -209,7 +209,6 @@ Plug 'dstein64/nvim-scrollview', { 'branch': 'main' }
 Plug 'machakann/vim-highlightedyank'
 Plug 'j-hui/fidget.nvim', { 'branch': 'main' }
 Plug 'danymat/neogen', { 'branch': 'main' }
-Plug 'rbong/vim-buffest'
 Plug 'mfussenegger/nvim-treehopper'
 Plug 'ethanholz/nvim-lastplace', { 'branch': 'main' }
 Plug 'mrshmllow/document-color.nvim', { 'branch': 'main' }
@@ -219,5 +218,8 @@ Plug 'samodostal/image.nvim', { 'branch': 'main' }
 Plug 'ahmedkhalf/project.nvim', { 'branch': 'main' }
 Plug 'andythigpen/nvim-coverage', { 'branch': 'main' }
 Plug 'chrisgrieser/nvim-early-retirement', { 'branch': 'main' }
+Plug 'jose-elias-alvarez/null-ls.nvim', { 'branch': 'main' }
+Plug 'amal-khailtash/vim-xdc-syntax'
+Plug 'luukvbaal/nnn.nvim'
 
 call plug#end()

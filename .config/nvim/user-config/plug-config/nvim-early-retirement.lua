@@ -1,1 +1,3 @@
-require 'early-retirement'.setup {}
+require 'early-retirement'.setup {
+  minimumBufferNum = 5,
+}

@@ -53,7 +53,6 @@ local no_setup_servers = {
   'r_language_server',
   'svelte',
   'texlab',
-  'verible',
   'vimls',
   'yamlls',
 }
@@ -175,4 +174,10 @@ lsp.lua_ls.setup {
       },
     },
   },
+}
+
+lsp.veridian.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  root_dir = util.root_pattern('*.xpr', '*.qpf', '.git'),
 }
