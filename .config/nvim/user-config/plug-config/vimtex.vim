@@ -1,9 +1,18 @@
 let g:vimtex_compiler_latexmk_engines = { '_' : '-xelatex' }
 
 let g:vimtex_compiler_latexmk = {
-    \ 'options': [
-        \ '-shell-escape'
-    \ ],
+\ 'build_dir' : '',
+\ 'callback' : 1,
+\ 'continuous' : 1,
+\ 'executable' : 'latexmk',
+\ 'hooks' : [],
+\ 'options' : [
+\   '-verbose',
+\   '-file-line-error',
+\   '-synctex=1',
+\   '-interaction=nonstopmode',
+\   '-shell-escape',
+\ ],
 \}
 
 let g:vimtex_quickfix_ignore_filters = [

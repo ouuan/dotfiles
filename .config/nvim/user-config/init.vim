@@ -36,7 +36,7 @@ au FileType vim set fo-=o fo-=r
 au FileType json,javascript,css,scss,html,gohtmltmpl,vue,typescript,lua,xml,systemverilog Tab 2
 
 au FileType markdown set suffixesadd+=.md
-au FileType systemverilog set suffixesadd+=.sv
+au FileType systemverilog set suffixesadd+=.sv commentstring=//%s
 
 au BufNewFile,BufRead *.mdx set filetype=markdown
 
@@ -148,7 +148,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'bkad/CamelCaseMotion'
 Plug 'akinsho/nvim-bufferline.lua'
-Plug 'kyazdani42/nvim-web-devicons'
+Plug 'nvim-tree/nvim-web-devicons'
 Plug 'ojroques/nvim-hardline', { 'branch': 'main' }
 Plug 'tpope/vim-fugitive'
 Plug 'folke/lsp-trouble.nvim', { 'branch': 'main' }
