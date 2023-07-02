@@ -25,8 +25,10 @@ original="${*:-$(xclip -o)}"
 if [[ $(echo "$original" | wc -w) == 1 && ${#original} -lt 20 ]]; then
     is_word=true
     original="$(echo "$original" | sed 's/^[[:punct:]]//g;s/[[:punct:]]$//g')"
+    url="https://fanyi.baidu.com/#auto/zh/$original"
 else
     is_word=false
+    url="https://translate.google.com/?sl=auto&tl=zh-CN&text=$(jq -rn --arg x "$original" '$x|@uri')"
 fi
 
 if [ -z ${http_proxy+x} ]; then
@@ -34,16 +36,17 @@ if [ -z ${http_proxy+x} ]; then
 else
     proxy=(-x "$http_proxy")
 fi
-translated="$(trans -e google "${proxy[@]}" -b "$original" || ( notify-send "翻译" "[ERROR] 翻译出错，请再试一次" && false ))"
+
+translated="$(trans -e google "${proxy[@]}" -b "$original" || ( notify-send "翻译" "[ERROR] 翻译出错，请再试一次
+
+$url" && false ))"
 
 if [[ $is_word == true ]]; then
     printf "%-30s$(date '+%Y/%m/%d %H:%M')    $(xdotool getwindowname "$(xdotool getactivewindow)")\n" "$original" >> ~/.cache/translated-words.txt
-    url="https://fanyi.baidu.com/#auto/zh/$original"
     notify-send -t 8000 "翻译" "$original: $translated
 
 $url"
 else
-    url="https://translate.google.com/?sl=auto&tl=zh-CN&text=$(jq -rn --arg x "$original" '$x|@uri')"
     notify-send -t $(( ${#translated} * 200 + 8000 )) "翻译" "
 $original
 

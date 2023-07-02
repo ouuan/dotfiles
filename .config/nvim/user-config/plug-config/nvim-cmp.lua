@@ -30,11 +30,10 @@ cmp.setup({
     {
       name = 'nvim_lsp',
       priority = 100,
-      max_item_count = 30,
     },
     {
       name = "copilot",
-      priority = 98,
+      priority = 99,
     },
     {
       name = 'luasnip',
@@ -53,7 +52,6 @@ cmp.setup({
     {
       name = 'latex_symbols',
       keyword_length = 2,
-      max_item_count = 30,
     },
     {
       name = 'look',
@@ -93,6 +91,9 @@ cmp.setup({
       cmp.config.compare.order,
     },
   },
+  performance = {
+    max_view_entries = 100,
+  },
 })
 
 vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
@@ -102,9 +103,11 @@ cmp.setup.cmdline('/', {
   sources = {
     {
       name = 'buffer',
-      max_item_count = 10,
     }
-  }
+  },
+  performance = {
+    max_view_entries = 10,
+  },
 })
 
 cmp.setup.cmdline(':', {
@@ -112,12 +115,13 @@ cmp.setup.cmdline(':', {
   sources = cmp.config.sources({
     {
       name = 'path',
-      max_item_count = 15,
     }
   }, {
     {
       name = 'cmdline',
-      max_item_count = 15,
     }
-  })
+  }),
+  performance = {
+    max_view_entries = 20,
+  },
 })

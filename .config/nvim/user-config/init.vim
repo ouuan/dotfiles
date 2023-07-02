@@ -207,9 +207,8 @@ Plug 'filipdutescu/renamer.nvim'
 Plug 'romgrk/nvim-treesitter-context'
 Plug 'dstein64/nvim-scrollview', { 'branch': 'main' }
 Plug 'machakann/vim-highlightedyank'
-Plug 'j-hui/fidget.nvim', { 'branch': 'main' }
+Plug 'j-hui/fidget.nvim', { 'tag': 'legacy' }
 Plug 'danymat/neogen', { 'branch': 'main' }
-Plug 'mfussenegger/nvim-treehopper'
 Plug 'ethanholz/nvim-lastplace', { 'branch': 'main' }
 Plug 'mrshmllow/document-color.nvim', { 'branch': 'main' }
 Plug 'Wansmer/treesj', { 'branch': 'main' }
@@ -221,5 +220,6 @@ Plug 'chrisgrieser/nvim-early-retirement', { 'branch': 'main' }
 Plug 'jose-elias-alvarez/null-ls.nvim', { 'branch': 'main' }
 Plug 'amal-khailtash/vim-xdc-syntax'
 Plug 'luukvbaal/nnn.nvim'
+Plug 'folke/flash.nvim', { 'branch': 'main' }
 
 call plug#end()
