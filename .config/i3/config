@@ -29,11 +29,12 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Media player controls
-bindsym XF86AudioPlay exec --no-startup-id "playerctl -p vlc,%any play-pause && $refresh_i3status"
-bindsym XF86AudioPause exec --no-startup-id "playerctl -p vlc,%any pause && $refresh_i3status"
-bindsym XF86AudioStop exec --no-startup-id "playerctl -p vlc,%any stop && $refresh_i3status"
-bindsym XF86AudioNext exec --no-startup-id "playerctl -p vlc,%any next && $refresh_i3status"
-bindsym XF86AudioPrev exec --no-startup-id "playerctl -p vlc,%any previous && $refresh_i3status"
+bindsym XF86AudioPlay  exec --no-startup-id "playerctl -p mpv,%any play-pause && $refresh_i3status"
+bindsym XF86AudioPause exec --no-startup-id "playerctl -p mpv,%any pause      && $refresh_i3status"
+bindsym XF86AudioStop  exec --no-startup-id "playerctl -p mpv,%any stop       && $refresh_i3status"
+bindsym XF86AudioNext  exec --no-startup-id "playerctl -p mpv,%any next       && $refresh_i3status"
+bindsym XF86AudioPrev  exec --no-startup-id "playerctl -p mpv,%any previous   && $refresh_i3status"
+bindsym Ctrl+Mod1+p    exec --no-startup-id "playerctl -p mpv,%any play-pause && $refresh_i3status"
 
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s 2%+ && $refresh_i3status
 bindsym XF86MonBrightnessDown exec --no-startup-id [[ $(brightnessctl g) -gt $(( $(brightnessctl max) / 5 )) ]] && brightnessctl s 2%- && $refresh_i3status
@@ -185,7 +186,7 @@ bar {
                       datetime.format='%Y/%m/%d (%a) %H:%M' \
                       memory.format='{used}' \
                       playerctl.format='{{trunc(artist, 20)}} - {{trunc(title, 25)}} {{duration(position)}}/{{duration(mpris:length)}}@{{playerName}}' \
-                      playerctl.args='-p vlc,%any'
+                      playerctl.args='-p mpv,%any'
 }
 
 bindsym $mod+Tab workspace next

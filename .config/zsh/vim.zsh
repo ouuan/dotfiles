@@ -5,6 +5,7 @@ export DIFFPROG='nvim -d'
 
 alias setvim='vim "+cd ~/.config/nvim/user-config" ~/.config/nvim/user-config/init.vim'
 alias vim='sethttp nvim'
+alias vi='vim'
 alias v.='vim "+let g:confirm_quit = 1" +Files'
 alias vimupg='sethttp ssh-agent bash -c "ssh-add && nvim +PlugClean +PlugConfigClean +PlugUpdate"'
 

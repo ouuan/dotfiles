@@ -15,6 +15,7 @@ i3lock \
     --greeter-text="Yufan You" \
     --greeter-size=30 \
     --greeter-color=ffffff66 \
+    --greeter-pos "ix:iy+300" \
     --clock \
     --date-font "Noto Sans CJK SC" \
     --date-str "%Y/%m/%d (%a)" \
@@ -29,4 +30,4 @@ i3lock \
 
 i3-msg bar mode hide buttons
 
-dunstctl set-paused $dunst_paused
+dunstctl set-paused "$dunst_paused"

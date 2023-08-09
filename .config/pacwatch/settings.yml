@@ -43,6 +43,7 @@ verbose:
   - python
   - mkinitcpio
   - btrfs-progs
+  - glibc
   groups:
   - single
   - minor-two
