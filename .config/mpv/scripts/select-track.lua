@@ -3,6 +3,8 @@ local mp = require 'mp'
 local function select_track(type)
   local args = {
     'kdialog',
+    '--icon',
+    'mpv',
     '--title',
     'Select ' .. type .. ' track - mpv',
     '--geometry',
@@ -21,7 +23,8 @@ local function select_track(type)
       table.insert(args, tostring(track.id))
       table.insert(
         args,
-        (track.title or track.lang or tostring(track.id))
+        (track.title or tostring(track.id))
+        .. (track.lang and (' (' .. track.lang .. ')') or '')
         .. (type == 'audio' and (' (' .. track['demux-channel-count'] .. ' channels)') or '')
       )
       table.insert(args, track.selected and 'on' or 'off')

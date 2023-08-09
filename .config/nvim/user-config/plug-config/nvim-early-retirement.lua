@@ -1,3 +1,4 @@
 require 'early-retirement'.setup {
-  minimumBufferNum = 5,
+  retirementAgeMins = 60,
+  minimumBufferNum = 6,
 }
