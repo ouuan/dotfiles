@@ -27,7 +27,7 @@ local function heartbeat(write)
       return
     end
     abs_path = last_path
-  elseif path:sub(1, 1) == '/' then
+  elseif path:match("^https?://") then -- don't check starting with "/": absolute paths also need symlink resolving
     abs_path = path
   end
 
@@ -53,12 +53,20 @@ local function heartbeat(write)
   timeout = false
 
   local version = mp.get_property('mpv-version'):match("([0-9.]*)$")
-  local suffix = abs_path:match("%.([^%.]+)$")
-  local language = (suffix or 'unknown') .. '-' ..
+  local is_stream = abs_path:match("^https?://")
+  local format = is_stream and "stream" or mp.get_property('file-format')
+  if format == nil or format:match("^[a-zA-Z0-9]+$") == nil then
+    local suffix = abs_path:match("%.([^%.]+)$")
+    if suffix:match("^[a-zA-Z0-9]+$") then
+      format = suffix
+    else
+      format = "unknown"
+    end
+  end
+  local language = format .. '-' ..
       (mp.get_property('current-tracks/audio/lang') or
-        mp.get_property('current-tracks/video/lang') or
-        mp.get_property('current-tracks/sub/lang') or 'unknown')
-  local dir = abs_path:match(".*/(.+)/.*")
+        mp.get_property('current-tracks/video/lang') or 'unknown')
+  local dir = is_stream and abs_path:match("^https?://([^/]+)") or abs_path:match(".*/(.+)/.*")
 
   local args = {
     opts.wakatime_cli,
@@ -67,6 +75,11 @@ local function heartbeat(write)
     '--language', language,
     '--project', dir,
   }
+
+  if is_stream then
+    table.insert(args, '--entity-type')
+    table.insert(args, 'domain')
+  end
 
   if write then
     table.insert(args, '--write')

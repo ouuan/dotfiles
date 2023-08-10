@@ -63,6 +63,7 @@ local function confirm_not_stereo()
   if channel_count ~= 2 then
     mp.set_property('pause', 'yes')
     select_track('audio')
+    mp.set_property('pause', 'no')
   end
 end
 
