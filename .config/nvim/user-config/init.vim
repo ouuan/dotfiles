@@ -133,7 +133,7 @@ Plug 'kana/vim-textobj-user'
 Plug 'glts/vim-textobj-comment'
 
 Plug 'nvim-lua/plenary.nvim'
-Plug 'junegunn/fzf.vim'
+Plug 'ibhagwan/fzf-lua', { 'branch': 'main' }
 Plug 'kylechui/nvim-surround', { 'branch': 'main' }
 Plug 'wakatime/vim-wakatime'
 Plug 'lilydjwg/fcitx.vim', { 'branch': 'fcitx5', 'for': ['markdown', 'gitcommit', 'scratch', 'text', 'tex'] }
@@ -221,5 +221,6 @@ Plug 'jose-elias-alvarez/null-ls.nvim', { 'branch': 'main' }
 Plug 'amal-khailtash/vim-xdc-syntax'
 Plug 'luukvbaal/nnn.nvim'
 Plug 'folke/flash.nvim', { 'branch': 'main' }
+Plug 'wintermute-cell/gitignore.nvim'
 
 call plug#end()

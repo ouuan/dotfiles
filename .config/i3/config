@@ -199,7 +199,7 @@ bindsym --whole-window --border $mod+button5 workspace next
 
 bindsym $mod+Ctrl+s exec flameshot gui
 
-bindsym $mod+Ctrl+f exec --no-startup-id fcitx5
+bindsym $mod+Ctrl+f exec --no-startup-id "bash -c 'killall fcitx5 ; fcitx5 &'"
 
 bindsym $mod+t exec --no-startup-id ~/scripts/translate.sh
 bindsym $mod+Ctrl+t exec --no-startup-id bash -c 'original="$(kdialog --inputbox 翻译)" && ~/scripts/translate.sh "$original"'

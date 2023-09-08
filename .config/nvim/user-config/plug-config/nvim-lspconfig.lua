@@ -15,8 +15,8 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gd', vim.lsp.buf.definition)
   buf_set_keymap('n', 'H', vim.lsp.buf.hover)
   buf_set_keymap('n', '<leader>D', vim.lsp.buf.type_definition)
-  buf_set_keymap({ 'n', 'v' }, '<leader>rn', function() require("renamer").rename({ empty = true }) end)
-  buf_set_keymap("n", '<leader>rf', "<cmd>TroubleToggle lsp_references<cr>")
+  buf_set_keymap({ 'n', 'x' }, '<leader>rn', function() require 'renamer'.rename { empty = true } end)
+  buf_set_keymap('n', '<leader>rf', '<cmd>TroubleToggle lsp_references<cr>')
   buf_set_keymap('n', '<leader>l', vim.diagnostic.open_float)
 
   if client.server_capabilities.codeActionProvider then
@@ -24,11 +24,11 @@ local on_attach = function(client, bufnr)
   end
 
   if client.server_capabilities.documentFormattingProvider then
-    buf_set_keymap("n", "<leader>f", vim.lsp.buf.format)
+    buf_set_keymap('n', '<leader>f', vim.lsp.buf.format)
   end
 
   if client.server_capabilities.documentRangeFormattingProvider then
-    buf_set_keymap("v", "<leader>f", vim.lsp.buf.format)
+    buf_set_keymap('x', '<leader>f', vim.lsp.buf.format)
   end
 
   if client.server_capabilities.colorProvider then
@@ -70,12 +70,12 @@ lsp.rust_analyzer.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   settings = {
-    ["rust-analyzer"] = {
+    ['rust-analyzer'] = {
       cargo = {
         allFeatures = true,
       },
       checkOnSave = {
-        command = "clippy",
+        command = 'clippy',
       }
     }
   }
@@ -90,17 +90,17 @@ lsp.jsonls.setup {
   commands = {
     Format = {
       function()
-        vim.lsp.buf.range_formatting({}, { 0, 0 }, { vim.fn.line("$"), 0 })
+        vim.lsp.buf.range_formatting({}, { 0, 0 }, { vim.fn.line('$'), 0 })
       end
     }
   }
 }
 
 local clangd_capabilities = capabilities
-clangd_capabilities.offsetEncoding = "utf-8"
+clangd_capabilities.offsetEncoding = 'utf-8'
 lsp.clangd.setup {
   on_attach = on_attach,
-  cmd = { "clangd", "--background-index" },
+  cmd = { 'clangd', '--background-index' },
   capabilities = clangd_capabilities,
 }
 
@@ -129,20 +129,20 @@ lsp.eslint.setup {
   on_attach = add_format_attach,
   capabilities = capabilities,
   filetypes = {
-    "javascript",
-    "javascriptreact",
-    "javascript.jsx",
-    "typescript",
-    "typescriptreact",
-    "typescript.tsx",
-    "vue",
+    'javascript',
+    'javascriptreact',
+    'javascript.jsx',
+    'typescript',
+    'typescriptreact',
+    'typescript.tsx',
+    'vue',
   },
 }
 
 lsp.bashls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = { "sh", "zsh", "PKGBUILD" }
+  filetypes = { 'sh', 'zsh', 'PKGBUILD' }
 }
 
 lsp.lua_ls.setup {

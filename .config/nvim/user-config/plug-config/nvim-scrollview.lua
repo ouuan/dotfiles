@@ -3,4 +3,5 @@ require'scrollview'.setup {
     'markdown',
     'tex',
   },
+  diagnostics_severities = {},
 }

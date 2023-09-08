@@ -7,8 +7,10 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS='@im=fcitx'
 
-export LANG=zh_CN.UTF-8
-export LANGUAGE=zh_CN:en_US
+# export LANG=zh_CN.UTF-8
+# export LANGUAGE=zh_CN:en_US
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US
 
 export DEBUGINFOD_URLS="https://debuginfod.archlinux.org https://repo.archlinuxcn.org"
 export GTK_USE_PORTAL=1

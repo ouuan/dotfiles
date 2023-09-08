@@ -37,7 +37,7 @@ else
     proxy=(-x "$http_proxy")
 fi
 
-translated="$(trans -e google "${proxy[@]}" -b "$original" || ( notify-send "翻译" "[ERROR] 翻译出错，请再试一次
+translated="$(trans -e google -t zh-CN "${proxy[@]}" -b "$original" || ( notify-send "翻译" "[ERROR] 翻译出错，请再试一次
 
 $url" && false ))"
 

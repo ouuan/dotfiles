@@ -32,10 +32,10 @@ require('gitsigns').setup {
     end, { expr = true })
 
     -- Actions
-    map({ 'n', 'v' }, '<leader>da', ':Gitsigns stage_hunk<CR>')
+    map({ 'n', 'x' }, '<leader>da', ':Gitsigns stage_hunk<CR>')
     map('n', '<leader>dA', gs.stage_buffer)
     map('n', '<leader>du', gs.undo_stage_hunk)
-    map({ 'n', 'v' }, '<leader>dr', ':Gitsigns reset_hunk<CR>')
+    map({ 'n', 'x' }, '<leader>dr', ':Gitsigns reset_hunk<CR>')
     map('n', '<leader>dR', gs.reset_buffer)
     map('n', '<leader>df', gs.preview_hunk)
     map('n', '<leader>dF', gs.diffthis)

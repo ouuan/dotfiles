@@ -73,7 +73,7 @@ local function heartbeat(write)
     '--entity', abs_path,
     '--plugin', 'mpv/' .. version .. ' mpv-wakatime/0.1',
     '--language', language,
-    '--project', dir,
+    '--alternate-project', dir,
   }
 
   if is_stream then
