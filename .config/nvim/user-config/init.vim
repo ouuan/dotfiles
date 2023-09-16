@@ -39,6 +39,7 @@ au FileType markdown set suffixesadd+=.md
 au FileType systemverilog set suffixesadd+=.sv commentstring=//%s
 
 au BufNewFile,BufRead *.mdx set filetype=markdown
+au BufNewFile,BufRead *.phar set filetype=php
 
 let mapleader=' '
 
