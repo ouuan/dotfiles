@@ -25,7 +25,7 @@ function git() {
     fi
 }
 
-GIT_MAIN_BRANCH_PRIORITY="hugo:master:main:dev"
+GIT_MAIN_BRANCH_PRIORITY="hugo:master:main:dev:masterk"
 
 # override the function in the git plugin
 function git_main_branch() {

@@ -40,6 +40,7 @@ au FileType systemverilog set suffixesadd+=.sv commentstring=//%s
 
 au BufNewFile,BufRead *.mdx set filetype=markdown
 au BufNewFile,BufRead *.phar set filetype=php
+au BufNewFile,BufRead *.vh set filetype=systemverilog
 
 let mapleader=' '
 
@@ -223,5 +224,6 @@ Plug 'amal-khailtash/vim-xdc-syntax'
 Plug 'luukvbaal/nnn.nvim'
 Plug 'folke/flash.nvim', { 'branch': 'main' }
 Plug 'wintermute-cell/gitignore.nvim'
+Plug 'kylelaker/riscv.vim'
 
 call plug#end()
