@@ -8,6 +8,7 @@ require('gitsigns').setup {
     changedelete = { hl = 'GitSignsChange', text = '≃', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
     untracked    = { hl = 'GitSignsAdd', text = '╏', numhl = 'GitSignsAddNr', linehl = 'GitSignsAddLn' }
   },
+  sign_priority = 20,
   max_file_length = 10000,
   on_attach = function(bufnr)
     local gs = package.loaded.gitsigns

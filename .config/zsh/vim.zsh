@@ -1,8 +1,3 @@
-export MANPAGER='nvim "+call ManPager()"'
-export MANWIDTH=80
-export EDITOR="/usr/bin/nvim"
-export DIFFPROG='nvim -d'
-
 alias setvim='vim "+cd ~/.config/nvim/user-config" ~/.config/nvim/user-config/init.vim'
 alias vim='sethttp nvim'
 alias vi='vim'

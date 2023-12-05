@@ -43,7 +43,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id [[ $(brightnessctl g) -gt $((
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec konsole
+bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Ctrl+q kill
@@ -202,7 +202,7 @@ bindsym $mod+Ctrl+s exec flameshot gui
 bindsym $mod+Ctrl+f exec --no-startup-id "bash -c 'killall fcitx5 ; fcitx5 &'"
 
 bindsym $mod+t exec --no-startup-id ~/scripts/translate.sh
-bindsym $mod+Ctrl+t exec --no-startup-id bash -c 'original="$(kdialog --inputbox 翻译)" && ~/scripts/translate.sh "$original"'
+bindsym $mod+Ctrl+t exec --no-startup-id bash -c 'original="$(kdialog --title 翻译 --inputbox 翻译)" && ~/scripts/translate.sh "$original"'
 
 bindsym $mod+c exec --no-startup-id copyq toggle
 for_window [class="copyq"] floating enable

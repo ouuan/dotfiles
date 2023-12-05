@@ -5,7 +5,7 @@
 
 set -euo pipefail
 
-update_param_pattern='-Sy*uy*(\s|$)'
+update_param_pattern='-Sy*uy*a?(\s|$)'
 if [[ $# == 0 || "$*" =~ $update_param_pattern ]]; then
     ssh-agent bash -c "ssh-add && paru $*"
 else

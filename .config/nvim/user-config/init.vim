@@ -3,6 +3,7 @@ set confirm
 set cursorline
 set expandtab
 set exrc
+set fileencodings=utf-8,gb2312,gbk,gb18030,ucs-bom
 set foldlevel=100000
 set foldmethod=indent
 set hidden
@@ -209,7 +210,7 @@ Plug 'filipdutescu/renamer.nvim'
 Plug 'romgrk/nvim-treesitter-context'
 Plug 'dstein64/nvim-scrollview', { 'branch': 'main' }
 Plug 'machakann/vim-highlightedyank'
-Plug 'j-hui/fidget.nvim', { 'tag': 'legacy' }
+Plug 'j-hui/fidget.nvim'
 Plug 'danymat/neogen', { 'branch': 'main' }
 Plug 'ethanholz/nvim-lastplace', { 'branch': 'main' }
 Plug 'mrshmllow/document-color.nvim', { 'branch': 'main' }
@@ -219,7 +220,7 @@ Plug 'samodostal/image.nvim', { 'branch': 'main' }
 Plug 'ahmedkhalf/project.nvim', { 'branch': 'main' }
 Plug 'andythigpen/nvim-coverage', { 'branch': 'main' }
 Plug 'chrisgrieser/nvim-early-retirement', { 'branch': 'main' }
-Plug 'jose-elias-alvarez/null-ls.nvim', { 'branch': 'main' }
+Plug 'nvimtools/none-ls.nvim', { 'branch': 'main' }
 Plug 'amal-khailtash/vim-xdc-syntax'
 Plug 'luukvbaal/nnn.nvim'
 Plug 'folke/flash.nvim', { 'branch': 'main' }
