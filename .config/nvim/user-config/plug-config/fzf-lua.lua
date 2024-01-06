@@ -1,5 +1,11 @@
 local fz = require 'fzf-lua'
 
+fz.setup {
+  grep = {
+    rg_opts = "--hidden -g '!.git' " .. fz.defaults.grep.rg_opts,
+  }
+}
+
 local opts = { noremap = true, silent = true }
 
 local function globlize(func)
