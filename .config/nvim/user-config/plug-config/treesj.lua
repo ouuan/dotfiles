@@ -4,12 +4,6 @@ require'treesj'.setup {
 
 local langs = require'treesj.langs'['presets']
 
-local disable = {
-  markdown = true,
-  text = true,
-  tex = true,
-}
-
 vim.api.nvim_create_autocmd({ 'FileType' }, {
   pattern = '*',
   callback = function()
@@ -18,9 +12,6 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
     if langs[filetype] then
       vim.keymap.set('n', 'gS', '<Cmd>TSJSplit<CR>', opts)
       vim.keymap.set('n', 'gJ', '<Cmd>TSJJoin<CR>', opts)
-    elseif not disable[filetype] then
-      vim.keymap.set('n', 'gS', '<Cmd>SplitjoinSplit<CR>', opts)
-      vim.keymap.set('n', 'gJ', '<Cmd>SplitjoinJoin<CR>', opts)
     end
   end
 })

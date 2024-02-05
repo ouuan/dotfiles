@@ -146,10 +146,8 @@ Plug 'godlygeek/tabular'
 Plug 'tpope/vim-repeat'
 Plug 'kana/vim-textobj-entire'
 Plug 'm-pilia/vim-pkgbuild'
-Plug 'fatih/vim-go'
 Plug 'neovim/nvim-lspconfig'
 Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
-Plug 'bkad/CamelCaseMotion'
 Plug 'akinsho/nvim-bufferline.lua'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'ojroques/nvim-hardline', { 'branch': 'main' }
@@ -174,8 +172,6 @@ Plug 'ray-x/lsp_signature.nvim'
 Plug 'JoosepAlviste/nvim-ts-context-commentstring', { 'branch': 'main' }
 Plug 'rhysd/conflict-marker.vim'
 Plug 'andymass/vim-matchup'
-Plug 'AndrewRadev/splitjoin.vim', { 'branch': 'main' }
-Plug 'editorconfig/editorconfig-vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'mboughaba/i3config.vim'
 Plug 'tommcdo/vim-exchange'
@@ -204,7 +200,6 @@ Plug 'zbirenbaum/copilot.lua'
 Plug 'zbirenbaum/copilot-cmp'
 Plug 'tamago324/cmp-zsh', { 'branch': 'main' }
 Plug 'onsails/lspkind-nvim'
-Plug 'lewis6991/spellsitter.nvim'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'filipdutescu/renamer.nvim'
 Plug 'romgrk/nvim-treesitter-context'
@@ -219,12 +214,12 @@ Plug 'm00qek/baleia.nvim', { 'branch': 'main' }
 Plug 'samodostal/image.nvim', { 'branch': 'main' }
 Plug 'ahmedkhalf/project.nvim', { 'branch': 'main' }
 Plug 'andythigpen/nvim-coverage', { 'branch': 'main' }
-Plug 'chrisgrieser/nvim-early-retirement', { 'branch': 'main' }
 Plug 'nvimtools/none-ls.nvim', { 'branch': 'main' }
 Plug 'amal-khailtash/vim-xdc-syntax'
 Plug 'luukvbaal/nnn.nvim'
 Plug 'folke/flash.nvim', { 'branch': 'main' }
-Plug 'wintermute-cell/gitignore.nvim'
 Plug 'kylelaker/riscv.vim'
+Plug 'chaoren/vim-wordmotion'
+Plug 'bullets-vim/bullets.vim'
 
 call plug#end()

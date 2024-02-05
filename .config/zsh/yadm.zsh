@@ -33,6 +33,7 @@ upconf() {
     read && \
     y gdca && \
     confirm "Continue?" && \
+    yadm encrypt && \
     y gcam "Update at $(datetime)" && \
     y gp && \
     yp gau && \
