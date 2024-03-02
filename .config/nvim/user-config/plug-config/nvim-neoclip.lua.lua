@@ -1,4 +1,4 @@
-require('neoclip').setup({
+require 'neoclip'.setup {
   history = 20,
   content_spec_column = true,
   enable_persistent_history = true,
@@ -11,6 +11,6 @@ require('neoclip').setup({
       },
     }
   },
-})
+}
 
-vim.keymap.set('n', '<leader>"', require'telescope'.extensions.neoclip.default)
+vim.keymap.set('n', '<leader>"', require 'telescope'.extensions.neoclip.default, { desc = "Pick clipboard" })

@@ -2,4 +2,4 @@ require('neogen').setup {
   enabled = true
 }
 
-vim.keymap.set('n', '<leader>doc', 'g_<cmd>Neogen<cr>')
+vim.keymap.set('n', '<leader>doc', 'g_<cmd>Neogen<cr>', { desc = "Generate doc comments" })

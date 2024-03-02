@@ -42,6 +42,7 @@ au FileType systemverilog set suffixesadd+=.sv commentstring=//%s
 au BufNewFile,BufRead *.mdx set filetype=markdown
 au BufNewFile,BufRead *.phar set filetype=php
 au BufNewFile,BufRead *.vh set filetype=systemverilog
+au BufNewFile,BufRead *.asm set filetype=riscv
 
 let mapleader=' '
 
@@ -145,7 +146,6 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-repeat'
 Plug 'kana/vim-textobj-entire'
-Plug 'm-pilia/vim-pkgbuild'
 Plug 'neovim/nvim-lspconfig'
 Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'akinsho/nvim-bufferline.lua'
@@ -221,5 +221,6 @@ Plug 'folke/flash.nvim', { 'branch': 'main' }
 Plug 'kylelaker/riscv.vim'
 Plug 'chaoren/vim-wordmotion'
 Plug 'bullets-vim/bullets.vim'
+Plug 'ruifm/gitlinker.nvim'
 
 call plug#end()

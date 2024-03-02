@@ -7,7 +7,6 @@ require'nvim-treesitter.configs'.setup {
         enable = true,
         disable = {
             'bash',
-            'lua',
             'c',
             'latex',
         },

@@ -34,6 +34,6 @@ flash.setup {
 --   end)
 -- end
 
-vim.keymap.set({ 'n', 'x', 'o' }, 'T', flash.treesitter)
+vim.keymap.set({ 'n', 'x', 'o' }, 'T', flash.treesitter, { desc = 'Select TreeSitter node' })
 
-vim.keymap.set('o', 'r', flash.remote)
+vim.keymap.set('o', 'r', flash.remote, { desc = 'Remote select' })

@@ -24,24 +24,24 @@ require('gitsigns').setup {
       if vim.wo.diff then return ']h' end
       vim.schedule(function() gs.next_hunk() end)
       return '<Ignore>'
-    end, { expr = true })
+    end, { expr = true, desc = 'Next Git hunk' })
 
     map('n', '[h', function()
       if vim.wo.diff then return '[h' end
       vim.schedule(function() gs.prev_hunk() end)
       return '<Ignore>'
-    end, { expr = true })
+    end, { expr = true, desc = 'Previous Git hunk' })
 
     -- Actions
     map({ 'n', 'x' }, '<leader>da', ':Gitsigns stage_hunk<CR>')
-    map('n', '<leader>dA', gs.stage_buffer)
-    map('n', '<leader>du', gs.undo_stage_hunk)
+    map('n', '<leader>dA', gs.stage_buffer, { desc = 'Git state buffer' })
+    map('n', '<leader>du', gs.undo_stage_hunk, { desc = 'Undo Git stage' })
     map({ 'n', 'x' }, '<leader>dr', ':Gitsigns reset_hunk<CR>')
-    map('n', '<leader>dR', gs.reset_buffer)
-    map('n', '<leader>df', gs.preview_hunk)
-    map('n', '<leader>dF', gs.diffthis)
-    map('n', '<leader>dh', function() gs.diffthis('~') end)
-    map('n', '<leader>bl', function() gs.blame_line { full = true } end)
+    map('n', '<leader>dR', gs.reset_buffer, { desc = 'Git reset buffer' })
+    map('n', '<leader>df', gs.preview_hunk, { desc = 'Git Preview hunk' })
+    map('n', '<leader>dF', gs.diffthis, { desc = 'Git diff buffer' })
+    map('n', '<leader>dh', function() gs.diffthis('~') end, { desc = 'Git diff against HEAD' })
+    map('n', '<leader>bl', function() gs.blame_line { full = true } end, { desc = 'Git blame line' })
 
     -- Text object
     map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')

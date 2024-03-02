@@ -4,31 +4,30 @@ vim.diagnostic.config {
 
 local lsp = require 'lspconfig'
 local util = require 'lspconfig.util'
-local configs = require 'lspconfig.configs'
 
 local on_attach = function(client, bufnr)
-  local function buf_set_keymap(mode, lhs, rhs)
-    vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, silent = true })
+  local function buf_set_keymap(mode, lhs, rhs, desc)
+    vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, silent = true, desc = desc })
   end
 
-  buf_set_keymap('n', 'gD', vim.lsp.buf.declaration)
-  buf_set_keymap('n', 'gd', vim.lsp.buf.definition)
-  buf_set_keymap('n', 'H', vim.lsp.buf.hover)
-  buf_set_keymap('n', '<leader>D', vim.lsp.buf.type_definition)
-  buf_set_keymap({ 'n', 'x' }, '<leader>rn', function() require 'renamer'.rename { empty = true } end)
-  buf_set_keymap('n', '<leader>rf', '<cmd>TroubleToggle lsp_references<cr>')
-  buf_set_keymap('n', '<leader>l', vim.diagnostic.open_float)
+  buf_set_keymap('n', 'gD', vim.lsp.buf.declaration, 'Go to declaration')
+  buf_set_keymap('n', 'gd', vim.lsp.buf.definition, 'Go to definition')
+  buf_set_keymap('n', 'H', vim.lsp.buf.hover, 'Show hover')
+  buf_set_keymap('n', '<leader>D', vim.lsp.buf.type_definition, 'Go to type definition')
+  buf_set_keymap({ 'n', 'x' }, '<leader>rn', function() require 'renamer'.rename { empty = true } end, 'Rename')
+  buf_set_keymap('n', '<leader>rf', '<cmd>TroubleToggle lsp_references<cr>', 'Show references')
+  buf_set_keymap('n', '<leader>l', vim.diagnostic.open_float, 'Show diagnostics')
 
   if client.server_capabilities.codeActionProvider then
-    buf_set_keymap('n', '<leader>ca', '<cmd>CodeActionMenu<cr>')
+    buf_set_keymap('n', '<leader>ca', '<cmd>CodeActionMenu<cr>', 'Show code actions')
   end
 
   if client.server_capabilities.documentFormattingProvider then
-    buf_set_keymap('n', '<leader>f', vim.lsp.buf.format)
+    buf_set_keymap('n', '<leader>f', vim.lsp.buf.format, 'Format codes')
   end
 
   if client.server_capabilities.documentRangeFormattingProvider then
-    buf_set_keymap('x', '<leader>f', vim.lsp.buf.format)
+    buf_set_keymap('x', '<leader>f', vim.lsp.buf.format, 'Format codes')
   end
 
   if client.server_capabilities.colorProvider then
@@ -128,14 +127,8 @@ lsp.volar.setup {
 lsp.eslint.setup {
   on_attach = add_format_attach,
   capabilities = capabilities,
-  filetypes = {
-    'javascript',
-    'javascriptreact',
-    'javascript.jsx',
-    'typescript',
-    'typescriptreact',
-    'typescript.tsx',
-    'vue',
+  settings = {
+    packageManager = 'pnpm',
   },
 }
 
@@ -180,4 +173,10 @@ lsp.veridian.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   root_dir = util.root_pattern('*.xpr', '*.qpf', '.git'),
+}
+
+lsp.matlab_ls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  root_dir = util.root_pattern('.git', '*.m'),
 }
