@@ -1,4 +1,4 @@
-yadm_with_git_aliases() {
+_yadm() {
     if [[ "$1" == "git" ]]; then
         yadm "${@:2}"
     elif [[ "$1" == "tig" ]]; then
@@ -8,13 +8,13 @@ yadm_with_git_aliases() {
     fi
 }
 
-alias y='yadm_with_git_aliases '
+alias y='_yadm '
 alias setencrypt='$EDITOR $HOME/.config/yadm/encrypt'
 alias setboot='$EDITOR $HOME/.config/yadm/bootstrap'
 alias setstatus='$EDITOR ~/status/update.sh'
 alias setetc='$EDITOR ~/status/etc.list'
 
-yadm_pub_with_git_aliases() {
+_yadm_pub() {
     if [[ "$1" == "git" ]]; then
         yadm -Y "$HOME/.config/yadm-pub" --yadm-repo "$HOME/GitHub/dotfiles" "${@:2}"
     elif [[ "$1" == "tig" ]]; then
@@ -24,7 +24,7 @@ yadm_pub_with_git_aliases() {
     fi
 }
 
-alias yp='yadm_pub_with_git_aliases '
+alias yp='_yadm_pub '
 
 upconf() {
     "$HOME/status/update.sh" && \

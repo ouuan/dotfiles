@@ -1,0 +1,38 @@
+#!/bin/bash
+
+export BROWSER=firefox
+export TERMINAL=konsole
+
+export INPUT_METHOD=fcitx
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS='@im=fcitx'
+
+export GTK_USE_PORTAL=1
+export XDG_SESSION_TYPE=x11
+
+export KDE_SESSION_VERSION=6
+export QT_QPA_PLATFORMTHEME=kde
+export XDG_CONFIG_DIRS="$HOME/.config/kdedefaults:/etc/xdg"
+export XDG_CURRENT_DESKTOP=KDE
+
+# export QT_QPA_PLATFORMTHEME=qt5ct
+# export XDG_CURRENT_DESKTOP=i3
+
+# export LANG=zh_CN.UTF-8
+# export LANGUAGE=zh_CN:en_US
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US
+
+export QQ_DOWNLOAD_DIR="$HOME/Downloads/QQ"
+
+export SSH_ASKPASS="$HOME/scripts/ssh-secret-service.sh"
+export SSH_ASKPASS_REQUIRE=prefer
+
+dbus-update-activation-environment --systemd --all
+
+xcape -e 'Super_L=Escape;Caps_Lock=Escape'
+
+exec ssh-agent i3
+
+# vim: ft=sh

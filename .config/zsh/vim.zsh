@@ -1,8 +1,8 @@
 alias setvim='vim "+cd ~/.config/nvim/user-config" ~/.config/nvim/user-config/init.vim'
-alias vim='sethttp nvim'
-alias vi='vim'
+alias vim='nvim'
+alias vi='nvim'
 alias v.='vim "+let g:confirm_quit = 1" +Files'
-alias vimupg='sethttp ssh-agent bash -c "ssh-add && nvim +PlugClean +PlugConfigClean +PlugUpdate"'
+alias vimupg='sshrun nvim +PlugClean +PlugConfigClean +PlugUpdate'
 
 vimplug() {
     local repo=$(echo "$1" | rev | cut -d/ -f-2 | rev)

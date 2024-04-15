@@ -10,6 +10,9 @@ alias gi='gh issue list'
 alias grst='gaa && grhh && gst -s | cut -c 4- | xargs -n 1 trash; gsuir'
 alias gsuir='gsu --init --recursive'
 alias gupd='gaa && gcam "Update at $(date "+%Y-%m-%d %H:%M:%S")"'
+alias gsd='g -c core.pager="git-split-diffs --color | less -RFX" diff'
+
+unalias gstaa # use gstp instead
 
 alias gbl='tig blame'
 alias glg='tig log'
@@ -19,9 +22,9 @@ alias gsh='tig show'
 
 function git() {
     if [[ "$1" =~ "^(clone|fetch|lfs|pull|push)$" && "$@" != *"-h"* ]]; then
-        ssh-agent bash -c "ssh-add && /usr/bin/git $*"
+        sshrun /usr/bin/git "$@"
     else
-        command git "$@"
+        /usr/bin/git "$@"
     fi
 }
 

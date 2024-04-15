@@ -5,38 +5,51 @@ vim.diagnostic.config {
 local lsp = require 'lspconfig'
 local util = require 'lspconfig.util'
 
+vim.keymap.set('n', 'H', '<cmd>echo "Hover is not available"<cr>', { desc = 'Hover is not available' })
+
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(mode, lhs, rhs, desc)
     vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, silent = true, desc = desc })
   end
+  local function buf_set_keymap_capability(capability, mode, lhs, rhs, desc)
+    if client.server_capabilities[capability .. 'Provider'] then
+      buf_set_keymap(mode, lhs, rhs, desc)
+    end
+  end
 
-  buf_set_keymap('n', 'gD', vim.lsp.buf.declaration, 'Go to declaration')
-  buf_set_keymap('n', 'gd', vim.lsp.buf.definition, 'Go to definition')
-  buf_set_keymap('n', 'H', vim.lsp.buf.hover, 'Show hover')
-  buf_set_keymap('n', '<leader>D', vim.lsp.buf.type_definition, 'Go to type definition')
-  buf_set_keymap({ 'n', 'x' }, '<leader>rn', function() require 'renamer'.rename { empty = true } end, 'Rename')
-  buf_set_keymap('n', '<leader>rf', '<cmd>TroubleToggle lsp_references<cr>', 'Show references')
   buf_set_keymap('n', '<leader>l', vim.diagnostic.open_float, 'Show diagnostics')
 
-  if client.server_capabilities.codeActionProvider then
-    buf_set_keymap('n', '<leader>ca', '<cmd>CodeActionMenu<cr>', 'Show code actions')
-  end
+  buf_set_keymap_capability('hover', 'n', 'H', vim.lsp.buf.hover, 'Show hover')
+  buf_set_keymap_capability('documentFormatting', 'n', '<leader>f', vim.lsp.buf.format, 'Format codes')
+  buf_set_keymap_capability('documentRangeFormatting', 'x', '<leader>f', vim.lsp.buf.format, 'Format codes')
 
-  if client.server_capabilities.documentFormattingProvider then
-    buf_set_keymap('n', '<leader>f', vim.lsp.buf.format, 'Format codes')
-  end
+  buf_set_keymap('n', '<leader>x', '<cmd>TroubleToggle document_diagnostics<cr>')
+  buf_set_keymap('n', '<leader>X', '<cmd>TroubleToggle workspace_diagnostics<cr>')
+  buf_set_keymap_capability('definition', 'n', 'gd', '<cmd>TroubleToggle lsp_definitions<cr>')
+  buf_set_keymap_capability('typeDefinition', 'n', 'gD', '<cmd>TroubleToggle lsp_type_definitions<cr>')
+  buf_set_keymap_capability('references', 'n', 'gr', '<cmd>TroubleToggle lsp_references<cr>')
+  buf_set_keymap_capability('implementation', 'n', 'gI', '<cmd>TroubleToggle lsp_implementations<cr>')
 
-  if client.server_capabilities.documentRangeFormattingProvider then
-    buf_set_keymap('x', '<leader>f', vim.lsp.buf.format, 'Format codes')
+  local rename = require 'renamer'.rename;
+  local rename_empty = function(empty)
+    return function()
+      rename { empty = empty }
+    end
   end
+  buf_set_keymap_capability('rename', { 'n', 'x' }, '<leader>r', rename_empty(true), 'Rename (empty input)')
+  buf_set_keymap_capability('rename', { 'n', 'x' }, '<leader>R', rename_empty(false), 'Rename (keep original)')
+
+  buf_set_keymap_capability('codeAction', 'n', '<leader>ca', require 'actions-preview'.code_actions, 'Show code actions')
 
   if client.server_capabilities.colorProvider then
     require 'document-color'.buf_attach(bufnr)
   end
 
-  require 'lsp_signature'.on_attach {
-    auto_close_after = 3,
-  }
+  if client.server_capabilities.signatureHelpProvider then
+    require 'lsp_signature'.on_attach {
+      auto_close_after = 3,
+    }
+  end
 end
 
 local no_setup_servers = {
@@ -47,7 +60,6 @@ local no_setup_servers = {
   'graphql',
   'html',
   'intelephense',
-  'jdtls',
   'pyright',
   'r_language_server',
   'svelte',
@@ -56,7 +68,7 @@ local no_setup_servers = {
   'yamlls',
 }
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local capabilities = require 'cmp_nvim_lsp'.default_capabilities()
 
 for _, server in pairs(no_setup_servers) do
   lsp[server].setup {
@@ -68,6 +80,16 @@ end
 lsp.rust_analyzer.setup {
   on_attach = on_attach,
   capabilities = capabilities,
+  on_init = function(client)
+    local path = client.workspace_folders[1].name
+
+    if string.find(path, 'verifyingkernel') then
+      client.config.settings['rust-analyzer'].checkOnSave.overrideCommand = { 'verus', '--expand-errors' }
+      client.notify('workspace/didChangeConfiguration', { settings = client.config.settings })
+    end
+
+    return true
+  end,
   settings = {
     ['rust-analyzer'] = {
       cargo = {
@@ -167,12 +189,6 @@ lsp.lua_ls.setup {
       },
     },
   },
-}
-
-lsp.veridian.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  root_dir = util.root_pattern('*.xpr', '*.qpf', '.git'),
 }
 
 lsp.matlab_ls.setup {

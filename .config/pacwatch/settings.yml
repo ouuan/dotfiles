@@ -60,3 +60,6 @@ verbose:
   - epoch
   - major
   - major-two
+- regex: .*
+  groups:
+  - not-installed

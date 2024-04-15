@@ -1,0 +1,12 @@
+#!/bin/sh
+
+ETH_IF="eno1"
+
+if [ "$1" = "$ETH_IF" ]; then
+    case "$2" in
+        up) nmcli radio wifi off ;;
+        down) nmcli radio wifi on ;;
+    esac
+elif [ "$(nmcli -g GENERAL.STATE device show "$ETH_IF")" = "20 (unavailable)" ]; then
+    nmcli radio wifi on
+fi

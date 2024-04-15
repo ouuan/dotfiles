@@ -37,20 +37,20 @@ else
     proxy=(-x "$http_proxy")
 fi
 
-translated="$(trans -e google -t zh-CN "${proxy[@]}" -b "$original" || ( notify-send "翻译" "[ERROR] 翻译出错，请再试一次
+translated="$(trans -e google -t zh-CN "${proxy[@]}" -b "$original" || ( notify-send -a xorg-translate "翻译" "[ERROR] 翻译出错，请再试一次
 
 $url" && false ))"
 
 if [[ $is_word == true ]]; then
     printf "%-30s$(date '+%Y/%m/%d %H:%M')    $(xdotool getwindowname "$(xdotool getactivewindow)")\n" "$original" >> ~/.cache/translated-words.txt
-    notify-send -t 8000 "翻译" "$original: $translated
+    notify-send -a xorg-translate -t 8000 "翻译" "$original: $translated
 
 $url"
 else
-    notify-send -t $(( ${#translated} * 200 + 8000 )) "翻译" "
-$original
-
+    notify-send -a xorg-translate -t $(( ${#translated} * 200 + 8000 )) "翻译" "
 $translated
+
+$original
 
 
 $url"

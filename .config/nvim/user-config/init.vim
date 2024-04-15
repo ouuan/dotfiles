@@ -39,10 +39,12 @@ au FileType json,javascript,css,scss,html,gohtmltmpl,vue,typescript,lua,xml,syst
 au FileType markdown set suffixesadd+=.md
 au FileType systemverilog set suffixesadd+=.sv commentstring=//%s
 
+au BufNewFile,BufRead *.asm set filetype=riscv
 au BufNewFile,BufRead *.mdx set filetype=markdown
 au BufNewFile,BufRead *.phar set filetype=php
 au BufNewFile,BufRead *.vh set filetype=systemverilog
-au BufNewFile,BufRead *.asm set filetype=riscv
+au BufNewFile,BufRead *.zsh-theme set filetype=zsh
+au BufNewFile,BufRead Makefrag set filetype=make
 
 let mapleader=' '
 
@@ -74,6 +76,7 @@ fun! CloseOrQuit()
 endfun
 
 nmap <leader>s :w<cr>
+nmap <leader>e :e<cr>
 nmap <silent> q :call CloseOrQuit()<cr>
 nmap <silent> Q :call ConfirmQuit()<cr>
 nmap <silent> ZZ <space>sQ
@@ -85,7 +88,7 @@ nnoremap m q
 nnoremap M m
 
 " use <leader><cr> to clear the search highlight
-nmap <leader><cr> :noh<cr>
+nmap <leader><cr> :noh\|echo<cr>
 
 " Run PlugInstall if there are missing plugins
 au VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
@@ -123,7 +126,7 @@ au BufEnter translated-words.txt nnoremap <silent> gt :silent exec "!xdg-open ht
 au VimLeave * set guicursor=a:ver1
 
 " don't use pyenv for neovim Python host
-let g:python3_host_prog = '/usr/bin/python'
+let g:python3_host_prog = '/home/ouuan/.pyenv/versions/neovim/bin/python'
 
 call plug#begin('~/.config/nvim/plugged')
 
@@ -174,18 +177,14 @@ Plug 'rhysd/conflict-marker.vim'
 Plug 'andymass/vim-matchup'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'mboughaba/i3config.vim'
-Plug 'tommcdo/vim-exchange'
 Plug 'kevinhwang91/nvim-hlslens', { 'branch': 'main' }
-Plug 'stevearc/aerial.nvim'
 Plug 'stevearc/stickybuf.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'othree/html5.vim'
-Plug 'leafOfTree/vim-vue-plugin'
 Plug 'Julian/lean.nvim', { 'branch': 'main' }
 Plug 'tami5/sqlite.lua'
 Plug 'AckslD/nvim-neoclip.lua', { 'branch': 'main' }
-Plug 'weilbith/nvim-code-action-menu', { 'branch': 'main' }
 Plug 'hrsh7th/nvim-cmp', { 'branch': 'main' }
 Plug 'hrsh7th/cmp-nvim-lsp', { 'branch': 'main' }
 Plug 'hrsh7th/cmp-buffer', { 'branch': 'main' }
@@ -202,10 +201,9 @@ Plug 'tamago324/cmp-zsh', { 'branch': 'main' }
 Plug 'onsails/lspkind-nvim'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'filipdutescu/renamer.nvim'
-Plug 'romgrk/nvim-treesitter-context'
 Plug 'dstein64/nvim-scrollview', { 'branch': 'main' }
 Plug 'machakann/vim-highlightedyank'
-Plug 'j-hui/fidget.nvim'
+Plug 'j-hui/fidget.nvim', { 'tag': 'legacy' }
 Plug 'danymat/neogen', { 'branch': 'main' }
 Plug 'ethanholz/nvim-lastplace', { 'branch': 'main' }
 Plug 'mrshmllow/document-color.nvim', { 'branch': 'main' }
@@ -215,12 +213,17 @@ Plug 'samodostal/image.nvim', { 'branch': 'main' }
 Plug 'ahmedkhalf/project.nvim', { 'branch': 'main' }
 Plug 'andythigpen/nvim-coverage', { 'branch': 'main' }
 Plug 'nvimtools/none-ls.nvim', { 'branch': 'main' }
-Plug 'amal-khailtash/vim-xdc-syntax'
 Plug 'luukvbaal/nnn.nvim'
 Plug 'folke/flash.nvim', { 'branch': 'main' }
 Plug 'kylelaker/riscv.vim'
 Plug 'chaoren/vim-wordmotion'
 Plug 'bullets-vim/bullets.vim'
 Plug 'ruifm/gitlinker.nvim'
+Plug 'lambdalisue/suda.vim'
+Plug 'aznhe21/actions-preview.nvim'
+Plug 'Bekaboo/dropbar.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'branch': 'main', 'do': 'make' }
+Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'main' }
+Plug 'gbprod/substitute.nvim', { 'branch': 'main' }
 
 call plug#end()
