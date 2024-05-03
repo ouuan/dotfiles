@@ -6,12 +6,13 @@
 # notification 中附带的链接是否能点开依赖于 notification daemon，dunst 需要在设置中的 `mouse_left_click` 处加上 `open_url`
 # 翻译的单词连同日期和窗口标题会记录在 ~/.cache/translated-words.txt
 # 可以使用 http_proxy 环境变量设置代理
+# notification 的 appname 是 "xorg-translate"，在 dunst 中可以对其进行配置，例如设置图标
 #
 # dependencies: xclip, translate-shell, jq, xdotool, libnotify 以及任意 notification daemon（例如你的桌面环境自带的或者 dunst）
 #
 # Hosted at https://gist.github.com/ouuan/909f25f18a74d9e04e1e0881d3316905
 
-#  Copyright 2022-2023 Yufan You
+#  Copyright 2022-2024 Yufan You
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
 #  you may not use this file except in compliance with the License.
@@ -37,17 +38,23 @@ else
     proxy=(-x "$http_proxy")
 fi
 
-translated="$(trans -e google -t zh-CN "${proxy[@]}" -b "$original" || ( notify-send -a xorg-translate "翻译" "[ERROR] 翻译出错，请再试一次
+pending="$(notify-send -a xorg-translate -p -u low "翻译" "正在翻译，请稍候...\n\n$original")"
+
+notify() {
+    notify-send -a xorg-translate -r "$pending" "翻译" "$@"
+}
+
+translated="$(trans -e google -t zh-CN "${proxy[@]}" -b "$original" || ( notify "[ERROR] 翻译出错，请重试
 
 $url" && false ))"
 
 if [[ $is_word == true ]]; then
     printf "%-30s$(date '+%Y/%m/%d %H:%M')    $(xdotool getwindowname "$(xdotool getactivewindow)")\n" "$original" >> ~/.cache/translated-words.txt
-    notify-send -a xorg-translate -t 8000 "翻译" "$original: $translated
+    notify -t 8000 "$original: $translated
 
 $url"
 else
-    notify-send -a xorg-translate -t $(( ${#translated} * 200 + 8000 )) "翻译" "
+    notify -t $(( ${#translated} * 200 + 8000 )) "
 $translated
 
 $original

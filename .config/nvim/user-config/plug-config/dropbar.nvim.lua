@@ -1,4 +1,20 @@
+local default_config = require 'dropbar.configs'.opts
+
 require 'dropbar'.setup {
+  general = {
+    enable = function(buf, win)
+      return default_config.general.enable(buf, win)
+        or vim.bo[buf].ft == 'fugitiveblame'
+    end,
+  },
+  bar = {
+    sources = function(buf, win)
+      if vim.bo[buf].ft == 'fugitiveblame' then
+        return {}
+      end
+      return default_config.bar.sources(buf, win)
+    end
+  },
   sources = {
     path = {
       relative_to = function() return vim.fn.expand("%:p:h:h") end,

@@ -1,4 +1,4 @@
-require('gitsigns').setup {
+require 'gitsigns'.setup {
   yadm = { enable = true },
   signs = {
     add          = { hl = 'GitSignsAdd', text = '┃', numhl = 'GitSignsAddNr', linehl = 'GitSignsAddLn' },
@@ -39,8 +39,8 @@ require('gitsigns').setup {
     map({ 'n', 'x' }, '<leader>dr', ':Gitsigns reset_hunk<CR>')
     map('n', '<leader>dR', gs.reset_buffer, { desc = 'Git reset buffer' })
     map('n', '<leader>df', gs.preview_hunk, { desc = 'Git Preview hunk' })
-    map('n', '<leader>dF', gs.diffthis, { desc = 'Git diff buffer' })
-    map('n', '<leader>dh', function() gs.diffthis('~') end, { desc = 'Git diff against HEAD' })
+    map('n', '<leader>dF', function() gs.diffthis(); vim.api.nvim_feedkeys('h', 'n', true) end, { desc = 'Git diff buffer' })
+    map('n', '<leader>dh', function() gs.diffthis('~'); vim.api.nvim_feedkeys('h', 'n', true) end, { desc = 'Git diff against HEAD' })
     map('n', '<leader>bl', function() gs.blame_line { full = true } end, { desc = 'Git blame line' })
 
     -- Text object
