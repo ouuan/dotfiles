@@ -19,6 +19,7 @@ let g:vimtex_compiler_latexmk = {
 let g:vimtex_quickfix_ignore_filters = [
     \ 'Font shape',
     \ 'Token not allowed in a PDF string',
+    \ 'pdfTeX is not running in PDF mode',
 \]
 
 let g:vimtex_view_general_viewer = 'okular'

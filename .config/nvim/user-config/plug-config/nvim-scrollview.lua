@@ -3,6 +3,7 @@ require'scrollview'.setup {
     'markdown',
     'tex',
     'text',
+    'typst',
   },
   diagnostics_severities = {},
 }

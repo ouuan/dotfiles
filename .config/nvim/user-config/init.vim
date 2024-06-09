@@ -16,7 +16,6 @@ set scrolloff=10
 set shiftround
 set shiftwidth=4
 set smartcase ignorecase
-set smartindent
 set smarttab
 set splitbelow
 set splitkeep=screen
@@ -34,10 +33,11 @@ command! -bar Cd cd %:p:h
 
 au FileType vim set fo-=o fo-=r
 
-au FileType json,javascript,css,scss,html,gohtmltmpl,vue,typescript,lua,xml,systemverilog Tab 2
+au FileType css,gohtmltmpl,html,javascript,json,lua,scss,systemverilog,typescript,typst,vue,xml Tab 2
 
 au FileType markdown set suffixesadd+=.md
-au FileType systemverilog set suffixesadd+=.sv commentstring=//%s
+au FileType systemverilog set suffixesadd+=.sv commentstring=//\ %s
+au FileType typst set commentstring=//\ %s
 
 au BufNewFile,BufRead *.mdx set filetype=markdown
 au BufNewFile,BufRead *.phar set filetype=php
@@ -133,20 +133,16 @@ Plug 'ouuan/vim-plug-config'
 let g:plug_config_vim_dir = stdpath('config') . "/user-config/plug-config"
 let g:plug_config_lua_dir = stdpath('config') . "/user-config/plug-config"
 
-" put it in a separate line to prevent commenting it out and being hard to revert
-Plug 'numToStr/Comment.nvim'
-Plug 'kana/vim-textobj-user'
-Plug 'glts/vim-textobj-comment'
-
 Plug 'nvim-lua/plenary.nvim'
 Plug 'ibhagwan/fzf-lua'
 Plug 'kylechui/nvim-surround'
 Plug 'wakatime/vim-wakatime'
-Plug 'lilydjwg/fcitx.vim', { 'branch': 'fcitx5', 'for': ['markdown', 'gitcommit', 'scratch', 'text', 'tex'] }
+Plug 'lilydjwg/fcitx.vim', { 'branch': 'fcitx5', 'for': ['markdown', 'gitcommit', 'scratch', 'text', 'tex', 'typst'] }
 Plug 'vim-autoformat/vim-autoformat'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-repeat'
+Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
 Plug 'neovim/nvim-lspconfig'
 Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
@@ -171,7 +167,6 @@ Plug 'windwp/nvim-autopairs'
 Plug 'lervag/vimtex'
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'ray-x/lsp_signature.nvim'
-Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 Plug 'rhysd/conflict-marker.vim'
 Plug 'andymass/vim-matchup'
 Plug 'ntpeters/vim-better-whitespace'
@@ -202,7 +197,7 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'filipdutescu/renamer.nvim'
 Plug 'dstein64/nvim-scrollview'
 Plug 'machakann/vim-highlightedyank'
-Plug 'j-hui/fidget.nvim', { 'tag': 'legacy' }
+Plug 'j-hui/fidget.nvim'
 Plug 'danymat/neogen'
 Plug 'ethanholz/nvim-lastplace'
 Plug 'mrshmllow/document-color.nvim'
@@ -222,9 +217,11 @@ Plug 'lambdalisue/suda.vim'
 Plug 'aznhe21/actions-preview.nvim'
 Plug 'Bekaboo/dropbar.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-Plug 'CopilotC-Nvim/CopilotChat.nvim'
+Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'canary' }
 Plug 'gbprod/substitute.nvim'
 Plug 'rcarriga/nvim-notify'
 Plug 'seanbreckenridge/yadm-git.vim'
+Plug 'folke/ts-comments.nvim'
+Plug 'chomosuke/typst-preview.nvim', { 'do': ':TypstPreviewUpdate' }
 
 call plug#end()

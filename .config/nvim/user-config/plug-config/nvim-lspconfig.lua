@@ -12,7 +12,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, silent = true, desc = desc })
   end
   local function buf_set_keymap_capability(capability, mode, lhs, rhs, desc)
-    if client.server_capabilities[capability .. 'Provider'] then
+    if client.supports_method(capability) then
       buf_set_keymap(mode, lhs, rhs, desc)
     end
   end
@@ -23,12 +23,12 @@ local on_attach = function(client, bufnr)
   buf_set_keymap_capability('documentFormatting', 'n', '<leader>f', vim.lsp.buf.format, 'Format codes')
   buf_set_keymap_capability('documentRangeFormatting', 'x', '<leader>f', vim.lsp.buf.format, 'Format codes')
 
-  buf_set_keymap('n', '<leader>x', '<cmd>TroubleToggle document_diagnostics<cr>')
-  buf_set_keymap('n', '<leader>X', '<cmd>TroubleToggle workspace_diagnostics<cr>')
-  buf_set_keymap_capability('definition', 'n', 'gd', '<cmd>TroubleToggle lsp_definitions<cr>')
-  buf_set_keymap_capability('typeDefinition', 'n', 'gD', '<cmd>TroubleToggle lsp_type_definitions<cr>')
-  buf_set_keymap_capability('references', 'n', 'gr', '<cmd>TroubleToggle lsp_references<cr>')
-  buf_set_keymap_capability('implementation', 'n', 'gI', '<cmd>TroubleToggle lsp_implementations<cr>')
+  buf_set_keymap('n', '<leader>x', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>')
+  buf_set_keymap('n', '<leader>X', '<cmd>Trouble diagnostics toggle<cr>')
+  buf_set_keymap_capability('definition', 'n', 'gd', '<cmd>Trouble lsp_definitions toggle<cr>')
+  buf_set_keymap_capability('typeDefinition', 'n', 'gD', '<cmd>Trouble lsp_type_definitions toggle<cr>')
+  buf_set_keymap_capability('references', 'n', 'gr', '<cmd>Trouble lsp_references toggle<cr>')
+  buf_set_keymap_capability('implementation', 'n', 'gI', '<cmd>Trouble lsp_implementations toggle<cr>')
 
   local rename = require 'renamer'.rename;
   local rename_empty = function(empty)
@@ -81,10 +81,21 @@ lsp.rust_analyzer.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   on_init = function(client)
-    local path = client.workspace_folders[1].name
+    local path = os.getenv('PATH')
 
-    if string.find(path, 'verifyingkernel') then
-      client.config.settings['rust-analyzer'].checkOnSave.overrideCommand = { 'verus', '--expand-errors' }
+    if path and path:find('verus/env') then
+      client.config.settings['rust-analyzer'].checkOnSave.overrideCommand = {
+        'verus',
+        '--expand-errors',
+        '--crate-type',
+        'lib',
+      }
+      client.config.settings['rust-analyzer'].diagnostics = {
+        disabled = {
+          'syntax-error',
+          'break-outside-of-loop',
+        },
+      }
       client.notify('workspace/didChangeConfiguration', { settings = client.config.settings })
     end
 
@@ -117,12 +128,10 @@ lsp.jsonls.setup {
   }
 }
 
-local clangd_capabilities = capabilities
-clangd_capabilities.offsetEncoding = 'utf-8'
 lsp.clangd.setup {
   on_attach = on_attach,
+  capabilities = capabilities,
   cmd = { 'clangd', '--background-index' },
-  capabilities = clangd_capabilities,
 }
 
 local add_format_attach = function(client, bufnr)
@@ -139,6 +148,24 @@ end
 lsp.tsserver.setup {
   on_attach = del_format_attach,
   capabilities = capabilities,
+  init_options = {
+    plugins = {
+      {
+        name = "@vue/typescript-plugin",
+        location = "/usr/lib/node_modules/@vue/typescript-plugin",
+        languages = { "vue" },
+      },
+    },
+  },
+  filetypes = {
+    'javascript',
+    'javascriptreact',
+    'javascript.jsx',
+    'typescript',
+    'typescriptreact',
+    'typescript.tsx',
+    'vue',
+  },
 }
 
 lsp.volar.setup {
@@ -195,4 +222,18 @@ lsp.matlab_ls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   root_dir = util.root_pattern('.git', '*.m'),
+}
+
+lsp.veridian.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  root_dir = util.root_pattern('*.xpr', '*.qpf', '.git'),
+}
+
+lsp.tinymist.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    formatterMode = 'typstyle',
+  },
 }

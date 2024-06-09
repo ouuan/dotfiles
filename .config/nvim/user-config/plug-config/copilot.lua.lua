@@ -10,6 +10,7 @@ vim.defer_fn(function()
       markdown = false,
       tex = false,
       text = false,
+      typst = false,
       yaml = false,
     },
   }
@@ -25,7 +26,7 @@ for _, pattern in ipairs({ '/home/ouuan/courses/**' }) do
     pattern = pattern,
     callback = function(args)
       local client = vim.lsp.get_client_by_id(args.data.client_id)
-      if client.name == 'copilot' then
+      if client and client.name == 'copilot' then
         vim.defer_fn(function()
           vim.cmd("silent Copilot detach")
         end, 10)

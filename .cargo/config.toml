@@ -10,9 +10,6 @@ registry = "sparse+https://mirrors.ustc.edu.cn/crates.io-index/"
 [build]
 rustc-wrapper = "/usr/bin/sccache"
 
-[target.x86_64-unknown-linux-gnu]
-linker = "/usr/bin/clang"
-rustflags = [
-    "-Clink-arg=-fuse-ld=/usr/bin/mold",
-    # "-Zthreads=0",
-]
+# no mold, unfortunately
+# rust-lld is coming: https://blog.rust-lang.org/2024/05/17/enabling-rust-lld-on-linux.html
+# rustflags may override project-local config: https://github.com/rust-lang/cargo/issues/5376#issuecomment-1241338420
