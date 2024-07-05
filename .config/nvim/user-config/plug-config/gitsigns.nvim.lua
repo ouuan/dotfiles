@@ -1,13 +1,16 @@
 require 'gitsigns'.setup {
-  yadm = { enable = true },
   signs = {
-    add          = { hl = 'GitSignsAdd', text = '┃', numhl = 'GitSignsAddNr', linehl = 'GitSignsAddLn' },
-    change       = { hl = 'GitSignsChange', text = '┃', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
-    delete       = { hl = 'GitSignsDelete', text = '━', numhl = 'GitSignsDeleteNr', linehl = 'GitSignsDeleteLn' },
-    topdelete    = { hl = 'GitSignsDelete', text = '━', numhl = 'GitSignsDeleteNr', linehl = 'GitSignsDeleteLn' },
-    changedelete = { hl = 'GitSignsChange', text = '≃', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
-    untracked    = { hl = 'GitSignsAdd', text = '╏', numhl = 'GitSignsAddNr', linehl = 'GitSignsAddLn' }
+    add          = { text = '┃' },
+    change       = { text = '┃' },
+    delete       = { text = '━' },
+    topdelete    = { text = '━' },
+    changedelete = { text = '≃' },
+    untracked    = { text = '╏' },
   },
+  signs_staged_enable = false,
+  _on_attach_pre = function(_, callback)
+    require "gitsigns-yadm".yadm_signs(callback)
+  end,
   sign_priority = 20,
   max_file_length = 10000,
   on_attach = function(bufnr)

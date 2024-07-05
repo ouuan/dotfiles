@@ -11,6 +11,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
 export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
 export SCCACHE_CACHE_SIZE=4G
+export TYPST_FONT_PATHS="/usr/share/fonts/Windows"
 export WAKATIME_HOME="$HOME/.local/share/wakatime"
 
 path=(

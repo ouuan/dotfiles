@@ -125,7 +125,7 @@ au BufEnter translated-words.txt nnoremap <silent> gt :silent exec "!xdg-open ht
 au VimLeave * set guicursor=a:ver1
 
 " don't use pyenv for neovim Python host
-let g:python3_host_prog = '/home/ouuan/.pyenv/versions/neovim/bin/python'
+let g:python3_host_prog = '/usr/bin/python3'
 
 call plug#begin('~/.config/nvim/plugged')
 
@@ -145,7 +145,6 @@ Plug 'tpope/vim-repeat'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
 Plug 'neovim/nvim-lspconfig'
-Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'akinsho/nvim-bufferline.lua'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'ojroques/nvim-hardline'
@@ -199,7 +198,6 @@ Plug 'dstein64/nvim-scrollview'
 Plug 'machakann/vim-highlightedyank'
 Plug 'j-hui/fidget.nvim'
 Plug 'danymat/neogen'
-Plug 'ethanholz/nvim-lastplace'
 Plug 'mrshmllow/document-color.nvim'
 Plug 'Wansmer/treesj'
 Plug 'm00qek/baleia.nvim'
@@ -221,7 +219,10 @@ Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'canary' }
 Plug 'gbprod/substitute.nvim'
 Plug 'rcarriga/nvim-notify'
 Plug 'seanbreckenridge/yadm-git.vim'
+Plug 'seanbreckenridge/gitsigns-yadm.nvim'
 Plug 'folke/ts-comments.nvim'
 Plug 'chomosuke/typst-preview.nvim', { 'do': ':TypstPreviewUpdate' }
+Plug 'vladdoster/remember.nvim'
+Plug 'brenoprata10/nvim-highlight-colors'
 
 call plug#end()
