@@ -1,0 +1,81 @@
+[user]
+    signingkey = 863A0F9FA8127FA4
+    email = ouuansteve@gmail.com
+    name = Yufan You
+[includeIf "gitdir:~/courses/**"]
+    path = ~/courses/.gitconfig
+[push]
+    default = upstream
+[commit]
+    gpgsign = true
+[color]
+    ui = true
+[pull]
+    rebase = true
+[url "git@github.com:"]
+    insteadOf = git://github.com/
+    insteadOf = https://github.com/
+[url "git@gitlab.com:"]
+    insteadOf = git://gitlab.com/
+    insteadOf = https://gitlab.com/
+[hub]
+    protocol = ssh
+[advice]
+    detachedHead = false
+[rerere]
+    enabled = true
+[init]
+    defaultBranch = master
+[core]
+    quotePath = true
+[gc]
+    rerereResolved = 4
+    rerereUnresolved = 2
+[absorb]
+    maxStack = 20
+[diff]
+    colorMoved = zebra
+[merge]
+    conflictstyle = diff3
+[core]
+    pager = delta
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    dark = true
+    navigate = true
+    side-by-side = true
+    syntax-theme = gruvbox-dark
+    wrap-max-lines = unlimited
+    wrap-right-percent = 15
+
+    ; colors are based on gruvbox and github
+
+    file-added-label = 🟩🟩
+    file-copied-label = 📋
+    file-modified-label = 🟥🟩
+    file-removed-label = 🟥🟥
+    file-renamed-label = ➡️
+    right-arrow = →
+    file-decoration-style = ul ol "#fff1d6"
+    file-style = "#ffdd99"
+
+    hunk-header-decoration-style = box "#484848"
+    hunk-header-file-style = italic "#928374"
+    hunk-header-style = file syntax italic
+
+    line-numbers = true
+    line-numbers-left-format = "{nm:^5}"
+    line-numbers-right-format = "{np:^5}"
+    line-numbers-zero-style = "#928374"
+    line-numbers-plus-style = "#fbf1c7" "#2a4c30"
+    line-numbers-minus-style = "#fbf1c7" "#663432"
+
+    zero-style = syntax
+    plus-style = syntax "#293a2c"
+    minus-style = syntax "#472e2d"
+    plus-emph-style = "#fbf1c7" "#2b6436"
+    minus-emph-style = "#fbf1c7" "#903c38"
+    map-styles = bold purple => syntax "#4c2a41", bold cyan => syntax "#2b4742", bold blue => syntax "#4c382a", bold yellow => syntax "#3b472b"
+    whitespace-error-style = "#ce4942" reverse

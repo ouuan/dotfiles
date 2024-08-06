@@ -17,8 +17,7 @@ unalias gstaa # use gstp instead
 alias gbl='tig blame'
 alias glg='tig log'
 alias glo='tig'
-alias greflog='tig reflog'
-alias gsh='tig show'
+alias grf='tig reflog'
 
 function git() {
     if [[ "$1" =~ "^(clone|fetch|lfs|pull|push)$" && "$@" != *"-h"* ]]; then

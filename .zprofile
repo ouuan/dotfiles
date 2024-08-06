@@ -4,6 +4,8 @@ export DEBUGINFOD_URLS="https://debuginfod.archlinux.org https://repo.archlinuxc
 export DIFFPROG='nvim -d'
 export EDITOR="/usr/bin/nvim"
 export FZF_DEFAULT_COMMAND='fd -H --type f -E .git'
+GEM_HOME="$(gem env user_gemhome)"
+export GEM_HOME
 export MANPAGER='nvim "+call ManPager()"'
 export MANWIDTH=80
 export PNPM_HOME="$HOME/.local/share/pnpm"
@@ -18,6 +20,7 @@ path=(
     "$HOME/.cargo/bin"
     "$PYENV_ROOT/bin"
     "$PNPM_HOME"
+    "$GEM_HOME/bin"
     "$HOME/.local/bin"
     "${path[@]}"
 )
