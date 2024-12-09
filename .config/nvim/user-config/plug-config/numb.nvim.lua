@@ -1,3 +1,2 @@
-require('numb').setup {
-    number_only = true,
+require 'numb'.setup {
 }

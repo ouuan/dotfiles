@@ -22,6 +22,7 @@ set splitkeep=screen
 set splitright
 set tabstop=4
 set termguicolors
+set undofile
 set updatetime=300
 set wildmode=longest:full,full
 
@@ -33,7 +34,7 @@ command! -bar Cd cd %:p:h
 
 au FileType vim set fo-=o fo-=r
 
-au FileType css,gohtmltmpl,html,javascript,json,lua,scss,systemverilog,typescript,typst,vue,xml Tab 2
+au FileType bib,css,gohtmltmpl,html,javascript,json,lua,scss,systemverilog,typescript,typst,vue,xml Tab 2
 
 au FileType markdown set suffixesadd+=.md
 au FileType systemverilog set suffixesadd+=.sv commentstring=//\ %s
@@ -111,12 +112,14 @@ xnoremap $ g_
 nmap <silent> J :bnext<cr>
 nmap <silent> K :bprev<cr>
 
+aug hidebufs
+    au!
+    au FileType qf setlocal nobuflisted
+aug END
+
 " next/prev diff
 nnoremap ]d ]c
 nnoremap [d [c
-
-" swap wrong quotes
-nnoremap <leader>q l?”<cr>r“/“<cr>r”:noh<cr>
 
 " https://gist.github.com/ouuan/909f25f18a74d9e04e1e0881d3316905
 au BufEnter translated-words.txt nnoremap <silent> gt :silent exec "!xdg-open https://fanyi.baidu.com/\\#auto/zh/<cWORD>"<cr>
@@ -129,9 +132,12 @@ let g:python3_host_prog = '/usr/bin/python3'
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'ouuan/vim-plug-config'
 let g:plug_config_vim_dir = stdpath('config') . "/user-config/plug-config"
 let g:plug_config_lua_dir = stdpath('config') . "/user-config/plug-config"
+Plug 'ouuan/vim-plug-config'
+
+" better than the builtin one and folke/ts-comments.nvim
+Plug 'numToStr/Comment.nvim'
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'ibhagwan/fzf-lua'
@@ -169,8 +175,8 @@ Plug 'ray-x/lsp_signature.nvim'
 Plug 'rhysd/conflict-marker.vim'
 Plug 'andymass/vim-matchup'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'mboughaba/i3config.vim'
 Plug 'kevinhwang91/nvim-hlslens'
+Plug 'haya14busa/vim-asterisk'
 Plug 'stevearc/stickybuf.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -178,7 +184,8 @@ Plug 'othree/html5.vim'
 Plug 'Julian/lean.nvim'
 Plug 'tami5/sqlite.lua'
 Plug 'AckslD/nvim-neoclip.lua'
-Plug 'hrsh7th/nvim-cmp'
+" Plug 'hrsh7th/nvim-cmp'
+Plug 'iguanacucumber/magazine.nvim', { 'as': 'nvim-cmp' }
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
@@ -201,13 +208,12 @@ Plug 'danymat/neogen'
 Plug 'mrshmllow/document-color.nvim'
 Plug 'Wansmer/treesj'
 Plug 'm00qek/baleia.nvim'
-Plug 'samodostal/image.nvim'
 Plug 'ahmedkhalf/project.nvim'
 Plug 'andythigpen/nvim-coverage'
 Plug 'nvimtools/none-ls.nvim'
 Plug 'luukvbaal/nnn.nvim'
 Plug 'folke/flash.nvim'
-" Plug 'kylelaker/riscv.vim'
+Plug 'kylelaker/riscv.vim'
 Plug 'chaoren/vim-wordmotion'
 Plug 'bullets-vim/bullets.vim'
 Plug 'ruifm/gitlinker.nvim'
@@ -215,14 +221,17 @@ Plug 'lambdalisue/suda.vim'
 Plug 'aznhe21/actions-preview.nvim'
 Plug 'Bekaboo/dropbar.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'canary' }
+Plug 'CopilotC-Nvim/CopilotChat.nvim'
 Plug 'gbprod/substitute.nvim'
 Plug 'rcarriga/nvim-notify'
-Plug 'seanbreckenridge/yadm-git.vim'
-Plug 'seanbreckenridge/gitsigns-yadm.nvim'
-Plug 'folke/ts-comments.nvim'
-Plug 'chomosuke/typst-preview.nvim', { 'do': ':TypstPreviewUpdate' }
+Plug 'purarue/yadm-git.vim'
+Plug 'purarue/gitsigns-yadm.nvim'
+Plug 'chomosuke/typst-preview.nvim'
 Plug 'vladdoster/remember.nvim'
 Plug 'brenoprata10/nvim-highlight-colors'
+Plug 'typicode/bg.nvim'
+Plug 'arp242/undofile_warn.vim'
+Plug 'ouuan/nvim-bigfile'
+Plug 'sontungexpt/url-open'
 
 call plug#end()

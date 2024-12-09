@@ -87,6 +87,7 @@ bindsym $mod+n layout toggle split
 # toggle tiling / floating
 bindsym $mod+Ctrl+space floating toggle
 
+# make current window sticky (show on all workspaces)
 bindsym $mod+g sticky toggle
 
 # change focus between tiling / floating windows
@@ -98,7 +99,20 @@ bindsym $mod+a focus parent
 # focus the child container
 bindsym $mod+b focus child
 
-workspace_auto_back_and_forth yes
+# focus the next monitor
+bindsym $mod+m focus output next
+
+# move current workspace to the next monitor
+bindsym $mod+Ctrl+m move workspace to output next
+
+# switch monitor layout
+bindsym $mod+x exec --no-startup-id ~/scripts/monitor.sh
+
+# prevent moving to another monitor
+focus_wrapping workspace
+
+# kind of confusing, especially when using multiple monitors
+workspace_auto_back_and_forth no
 
 force_display_urgency_hint 500 ms
 
@@ -131,7 +145,7 @@ bindsym $mod+Ctrl+e exec "i3-nagbar -t warning -m '你真的想要离开吗？' 
                                     -B '注销' 'loginctl terminate-session self' \
                                     -B '睡眠' 'systemctl suspend'               \
                                     -B '锁屏' 'loginctl lock-session self'      \
-                                    -f 'pango:sans-serif 11'"                   \
+                                    -f 'pango:sans-serif 11'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -167,10 +181,11 @@ bar {
 bar {
     id main
     height 28
+    tray_output primary
     workspace_buttons no
     font pango: FontAwesome, sans-serif 9
     status_command bumblebee-status \
-                   -m playerctl network_traffic cpu memory battery pasink datetime \
+                   -m playerctl network_traffic cpu memory battery-upower pasink datetime \
                    -t night-powerline \
                    -p \
                       datetime.format='%Y/%m/%d (%a) %H:%M' \

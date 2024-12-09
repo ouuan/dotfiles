@@ -23,8 +23,6 @@ local on_attach = function(client, bufnr)
   buf_set_keymap_capability('documentFormatting', 'n', '<leader>f', vim.lsp.buf.format, 'Format codes')
   buf_set_keymap_capability('documentRangeFormatting', 'x', '<leader>f', vim.lsp.buf.format, 'Format codes')
 
-  buf_set_keymap('n', '<leader>x', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>')
-  buf_set_keymap('n', '<leader>X', '<cmd>Trouble diagnostics toggle<cr>')
   buf_set_keymap_capability('definition', 'n', 'gd', '<cmd>Trouble lsp_definitions toggle<cr>')
   buf_set_keymap_capability('typeDefinition', 'n', 'gD', '<cmd>Trouble lsp_type_definitions toggle<cr>')
   buf_set_keymap_capability('references', 'n', 'gr', '<cmd>Trouble lsp_references toggle<cr>')
@@ -79,28 +77,8 @@ end
 
 lsp.rust_analyzer.setup {
   on_attach = on_attach,
+  -- https://github.com/hrsh7th/cmp-nvim-lsp/issues/72
   capabilities = capabilities,
-  on_init = function(client)
-    local path = os.getenv('PATH')
-
-    if path and path:find('verus/env') then
-      client.config.settings['rust-analyzer'].checkOnSave.overrideCommand = {
-        'verus',
-        '--expand-errors',
-        '--crate-type',
-        'lib',
-      }
-      client.config.settings['rust-analyzer'].diagnostics = {
-        disabled = {
-          'syntax-error',
-          'break-outside-of-loop',
-        },
-      }
-      client.notify('workspace/didChangeConfiguration', { settings = client.config.settings })
-    end
-
-    return true
-  end,
   settings = {
     ['rust-analyzer'] = {
       cargo = {
@@ -145,7 +123,7 @@ local del_format_attach = function(client, bufnr)
   on_attach(client, bufnr)
 end
 
-lsp.tsserver.setup {
+lsp.ts_ls.setup {
   on_attach = del_format_attach,
   capabilities = capabilities,
   init_options = {
@@ -153,7 +131,7 @@ lsp.tsserver.setup {
       {
         name = "@vue/typescript-plugin",
         location = "/usr/lib/node_modules/@vue/typescript-plugin",
-        languages = { "vue" },
+        languages = { "vue", "typescript", "javascript" },
       },
     },
   },
@@ -166,11 +144,6 @@ lsp.tsserver.setup {
     'typescript.tsx',
     'vue',
   },
-}
-
-lsp.volar.setup {
-  on_attach = del_format_attach,
-  capabilities = capabilities,
 }
 
 lsp.eslint.setup {
@@ -218,12 +191,6 @@ lsp.lua_ls.setup {
   },
 }
 
-lsp.matlab_ls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  root_dir = util.root_pattern('.git', '*.m'),
-}
-
 lsp.veridian.setup {
   on_attach = on_attach,
   capabilities = capabilities,
@@ -233,6 +200,7 @@ lsp.veridian.setup {
 lsp.tinymist.setup {
   on_attach = on_attach,
   capabilities = capabilities,
+  offset_encoding = "utf-8", -- https://github.com/Myriad-Dreamin/tinymist/issues/638
   settings = {
     formatterMode = 'typstyle',
   },

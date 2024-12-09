@@ -10,12 +10,12 @@ i3-msg bar mode invisible buttons
 
 # i3lock is actually i3lock-color
 i3lock \
-    -i "$HOME/Pictures/arch.png" \
-    --ind-pos w/2:h/2-35 \
+    -i "$HOME/Pictures/arch-tall.png" -C \
+    --ind-pos "x+w/2:y+h/2-35" \
     --greeter-text="Yufan You" \
     --greeter-size=30 \
     --greeter-color=ffffff66 \
-    --greeter-pos "ix:iy+300" \
+    --greeter-pos "ix:iy+h/6+160" \
     --clock \
     --date-font "Noto Sans CJK SC" \
     --date-str "%Y/%m/%d (%a)" \
@@ -23,7 +23,7 @@ i3lock \
     --date-color=ffffff66 \
     --time-str "%H:%M" \
     --time-size=50 \
-    --time-pos "ix:iy+200" \
+    --time-pos "ix:iy+h/8+100" \
     --time-color=ffffff66 \
     --pass-media-key \
     --nofork

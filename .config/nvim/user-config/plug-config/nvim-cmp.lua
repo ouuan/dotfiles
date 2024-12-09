@@ -33,7 +33,7 @@ cmp.setup({
     },
     {
       name = "copilot",
-      priority = 99,
+      priority = 50,
     },
     {
       name = 'luasnip',

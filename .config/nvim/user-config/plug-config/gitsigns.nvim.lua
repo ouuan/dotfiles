@@ -42,9 +42,17 @@ require 'gitsigns'.setup {
     map({ 'n', 'x' }, '<leader>dr', ':Gitsigns reset_hunk<CR>')
     map('n', '<leader>dR', gs.reset_buffer, { desc = 'Git reset buffer' })
     map('n', '<leader>df', gs.preview_hunk, { desc = 'Git Preview hunk' })
-    map('n', '<leader>dF', function() gs.diffthis(); vim.api.nvim_feedkeys('h', 'n', true) end, { desc = 'Git diff buffer' })
-    map('n', '<leader>dh', function() gs.diffthis('~'); vim.api.nvim_feedkeys('h', 'n', true) end, { desc = 'Git diff against HEAD' })
     map('n', '<leader>bl', function() gs.blame_line { full = true } end, { desc = 'Git blame line' })
+
+    local diffthis = function(base)
+      gs.diffthis(base)
+      vim.cmd('wincmd h')
+      vim.bo.buflisted = false
+      vim.b.vimtex_enabled = 0
+    end
+
+    map('n', '<leader>dF', diffthis, { desc = 'Git diff buffer' })
+    map('n', '<leader>dh', function() diffthis('~') end, { desc = 'Git diff against HEAD' })
 
     -- Text object
     map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')

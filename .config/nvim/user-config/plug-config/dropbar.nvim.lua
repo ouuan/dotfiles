@@ -1,13 +1,11 @@
 local default_config = require 'dropbar.configs'.opts
 
 require 'dropbar'.setup {
-  general = {
-    enable = function(buf, win)
-      return default_config.general.enable(buf, win)
-        or vim.bo[buf].ft == 'fugitiveblame'
-    end,
-  },
   bar = {
+    enable = function(buf, win)
+      return default_config.bar.enable(buf, win)
+          or vim.bo[buf].ft == 'fugitiveblame'
+    end,
     sources = function(buf, win)
       if vim.bo[buf].ft == 'fugitiveblame' then
         return {}
@@ -37,4 +35,4 @@ require 'dropbar'.setup {
 
 local dropbar_api = require 'dropbar.api'
 
-vim.keymap.set('n', '<leader>a', function() dropbar_api.pick(3) end)
+vim.keymap.set('n', '<leader>a', function() dropbar_api.pick(3) end, { desc = 'Dropbar Pick' })

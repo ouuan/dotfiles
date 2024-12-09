@@ -5,12 +5,16 @@ alias gci='gh run watch'
 alias gcm='gco $(git_main_branch)'
 alias gco='gcor'
 alias gdch='git diff --color-words=.'
+alias gfr='gf && grhh FETCH_HEAD'
 alias gfu='gf upstream'
 alias gi='gh issue list'
 alias grst='gaa && grhh && gst -s | cut -c 4- | xargs -n 1 trash; gsuir'
 alias gsuir='gsu --init --recursive'
 alias gupd='gaa && gcam "Update at $(date "+%Y-%m-%d %H:%M:%S")"'
 alias gsd='g -c core.pager="git-split-diffs --color | less -RFX" diff'
+
+alias gdt='g -c diff.external=difft -c core.pager="less -RFX" diff'
+alias gsht='g -c diff.external=difft -c core.pager="less -RFX" show --ext-diff'
 
 unalias gstaa # use gstp instead
 
