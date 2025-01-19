@@ -28,14 +28,12 @@ local on_attach = function(client, bufnr)
   buf_set_keymap_capability('references', 'n', 'gr', '<cmd>Trouble lsp_references toggle<cr>')
   buf_set_keymap_capability('implementation', 'n', 'gI', '<cmd>Trouble lsp_implementations toggle<cr>')
 
-  local rename = require 'renamer'.rename;
-  local rename_empty = function(empty)
-    return function()
-      rename { empty = empty }
-    end
+  buf_set_keymap_capability('rename', { 'n', 'x' }, '<leader>r', ':IncRename ', 'Rename (empty input)')
+  if client.supports_method('rename') then
+    vim.keymap.set({ 'n', 'x' }, '<leader>R', function()
+      return ":IncRename " .. vim.fn.expand("<cword>")
+    end, { buffer = bufnr, silent = true, desc = 'Rename (keep original)', expr = true })
   end
-  buf_set_keymap_capability('rename', { 'n', 'x' }, '<leader>r', rename_empty(true), 'Rename (empty input)')
-  buf_set_keymap_capability('rename', { 'n', 'x' }, '<leader>R', rename_empty(false), 'Rename (keep original)')
 
   buf_set_keymap_capability('codeAction', 'n', '<leader>ca', require 'actions-preview'.code_actions, 'Show code actions')
 
@@ -58,6 +56,7 @@ local no_setup_servers = {
   'graphql',
   'html',
   'intelephense',
+  'matlab_ls',
   'pyright',
   'r_language_server',
   'svelte',
@@ -77,7 +76,6 @@ end
 
 lsp.rust_analyzer.setup {
   on_attach = on_attach,
-  -- https://github.com/hrsh7th/cmp-nvim-lsp/issues/72
   capabilities = capabilities,
   settings = {
     ['rust-analyzer'] = {
@@ -200,7 +198,6 @@ lsp.veridian.setup {
 lsp.tinymist.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  offset_encoding = "utf-8", -- https://github.com/Myriad-Dreamin/tinymist/issues/638
   settings = {
     formatterMode = 'typstyle',
   },
