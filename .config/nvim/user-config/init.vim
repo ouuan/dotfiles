@@ -235,5 +235,7 @@ Plug 'sontungexpt/url-open'
 Plug 'ZWindL/orphans.nvim'
 Plug 'smjonas/inc-rename.nvim'
 Plug 'petRUShka/vim-sage'
+Plug 'nvzone/volt'
+Plug 'nvzone/typr'
 
 call plug#end()

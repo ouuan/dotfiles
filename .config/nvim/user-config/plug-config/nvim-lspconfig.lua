@@ -1,5 +1,9 @@
+local virtual_lines = false
+
 vim.diagnostic.config {
-  severity_sort = true
+  severity_sort = true,
+  virtual_text = not virtual_lines,
+  virtual_lines = virtual_lines,
 }
 
 local lsp = require 'lspconfig'
@@ -18,6 +22,11 @@ local on_attach = function(client, bufnr)
   end
 
   buf_set_keymap('n', '<leader>l', vim.diagnostic.open_float, 'Show diagnostics')
+  -- for v0.11
+  -- buf_set_keymap('n', '<leader>l', function()
+  --   virtual_lines = not virtual_lines
+  --   vim.diagnostic.config({ virtual_lines = virtual_lines, virtual_text = not virtual_lines })
+  -- end, 'Toggle diagnostics display')
 
   buf_set_keymap_capability('hover', 'n', 'H', vim.lsp.buf.hover, 'Show hover')
   buf_set_keymap_capability('documentFormatting', 'n', '<leader>f', vim.lsp.buf.format, 'Format codes')
@@ -56,7 +65,6 @@ local no_setup_servers = {
   'graphql',
   'html',
   'intelephense',
-  'matlab_ls',
   'pyright',
   'r_language_server',
   'svelte',

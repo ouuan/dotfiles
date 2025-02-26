@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [[ "$2" == up ]]; then
+    case "$1" in
+        eno1|wlan0) timedatectl set-timezone "$(curl --fail https://ipapi.co/timezone)" ;;
+    esac
+fi

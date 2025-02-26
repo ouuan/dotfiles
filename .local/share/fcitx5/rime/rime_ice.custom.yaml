@@ -1,0 +1,17 @@
+patch:
+  speller/alphabet: zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA\
+  engine/+:
+    translators/+:
+      - table_translator@latex_input
+  "recognizer/patterns/latex_input": "^\\\\[a-zA-Z]+$"
+  schema/dependencies/+:
+    - latex
+  latex_input:
+    tag: latex_input
+    dictionary: latex
+    prefix: "\\"
+    enable_sentence: false
+    enable_completion: true
+    tips: "[LaTeX]"
+  pin_cand_filter:
+  reduce_english_filter/mode: all

@@ -1,3 +1,42 @@
 patch:
-  schema_list:
-    - schema: clover
+  __include: rime_ice_suggestion:/
+  menu/page_size: 10
+  punctuator/half_shape/\: [、] # for latex
+  punctuator/half_shape: # based on clover pinyin
+    "'": ['’', '‘', "'"]
+    '!': '！'
+    '"': {pair: ['“', '”']}
+    '#': '#'
+    '$': '￥'
+    '%': '%'
+    '&': '&'
+    '(': '（'
+    ')': '）'
+    '*': '×'
+    '+': '+'
+    ',': '，'
+    '-': '-'
+    '.': '。'
+    '/': '、'
+    ':': '：'
+    ';': '；'
+    '<': '《'
+    '=': '='
+    '>': '》'
+    '?': '？'
+    '@': '@'
+    '[': ['【', '「', '『']
+    ']': ['】', '」', '』']
+    '^': '……'
+    '_': '——'
+    '`': '·'
+    '{': '｛'
+    '|': '｜'
+    '}': '｝'
+    '~': '～'
+  key_binder/bindings:
+    - { accept: comma, send: Page_Up, when: paging }
+    - { accept: period, send: Page_Down, when: has_menu }
+    - { accept: "Alt+e", toggle: emoji, when: always }
+    - { accept: "Alt+t", toggle: traditionalization, when: always }
+    - { accept: "Alt+s", toggle: search_single_char, when: always }
