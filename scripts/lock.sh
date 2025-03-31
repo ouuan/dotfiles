@@ -8,6 +8,9 @@ dunstctl set-paused true
 i3-msg workspace "l$(pwgen -s 10 1)"
 i3-msg bar mode invisible buttons
 
+# picom fails after suspend
+killall picom || true
+
 # i3lock is actually i3lock-color
 i3lock \
     -i "$HOME/Pictures/arch-tall.png" -C \
@@ -27,6 +30,8 @@ i3lock \
     --time-color=ffffff66 \
     --pass-media-key \
     --nofork
+
+picom -b
 
 i3-msg bar mode hide buttons
 

@@ -1,4 +1,4 @@
-au FileType tex nmap <buffer> <leader>p :VimtexCompile<cr>
+au FileType tex nmap <buffer> <leader>p <cmd>VimtexCompile<cr>
 
 let g:vimtex_compiler_latexmk_engines = { '_' : '-xelatex' }
 

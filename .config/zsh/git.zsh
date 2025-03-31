@@ -16,8 +16,6 @@ alias gsd='g -c core.pager="git-split-diffs --color | less -RFX" diff'
 alias gdt='g -c diff.external=difft -c core.pager="less -RFX" diff'
 alias gsht='g -c diff.external=difft -c core.pager="less -RFX" show --ext-diff'
 
-unalias gstaa # use gstp instead
-
 alias gbl='tig blame'
 alias glg='tig log'
 alias glo='tig'

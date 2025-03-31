@@ -8,8 +8,8 @@ require 'gitsigns'.setup {
     untracked    = { text = '╏' },
   },
   signs_staged_enable = false,
-  _on_attach_pre = function(_, callback)
-    require "gitsigns-yadm".yadm_signs(callback)
+  _on_attach_pre = function(bufnr, callback)
+    require 'gitsigns-yadm'.yadm_signs(callback, { bufnr = bufnr })
   end,
   sign_priority = 20,
   max_file_length = 10000,
@@ -36,10 +36,10 @@ require 'gitsigns'.setup {
     end, { expr = true, desc = 'Previous Git hunk' })
 
     -- Actions
-    map({ 'n', 'x' }, '<leader>da', ':Gitsigns stage_hunk<CR>')
+    map({ 'n', 'x' }, '<leader>da', '<cmd>Gitsigns stage_hunk<CR>')
     map('n', '<leader>dA', gs.stage_buffer, { desc = 'Git state buffer' })
     map('n', '<leader>du', gs.undo_stage_hunk, { desc = 'Undo Git stage' })
-    map({ 'n', 'x' }, '<leader>dr', ':Gitsigns reset_hunk<CR>')
+    map({ 'n', 'x' }, '<leader>dr', '<cmd>Gitsigns reset_hunk<CR>')
     map('n', '<leader>dR', gs.reset_buffer, { desc = 'Git reset buffer' })
     map('n', '<leader>df', gs.preview_hunk, { desc = 'Git Preview hunk' })
     map('n', '<leader>bl', function() gs.blame_line { full = true } end, { desc = 'Git blame line' })
@@ -55,6 +55,6 @@ require 'gitsigns'.setup {
     map('n', '<leader>dh', function() diffthis('~') end, { desc = 'Git diff against HEAD' })
 
     -- Text object
-    map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+    map({ 'o', 'x' }, 'ih', '<cmd>Gitsigns select_hunk<CR>')
   end,
 }

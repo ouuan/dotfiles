@@ -1,1 +1,1 @@
-au FileType markdown nmap <buffer> <leader>p :MarkdownPreviewToggle<cr>
+au FileType markdown nmap <buffer> <leader>p <cmd>MarkdownPreviewToggle<cr>

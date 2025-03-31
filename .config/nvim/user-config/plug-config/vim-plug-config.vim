@@ -1,1 +1,1 @@
-nmap <leader>gp :PlugConfigEditUnderCursor<cr>
+nmap <leader>gp <cmd>PlugConfigEditUnderCursor<cr>

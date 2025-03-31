@@ -1,1 +1,1 @@
-nmap ga :A<cr>
+nmap ga <cmd>A<cr>

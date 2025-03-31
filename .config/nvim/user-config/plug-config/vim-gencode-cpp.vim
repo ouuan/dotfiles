@@ -1,1 +1,1 @@
-nmap <silent> <leader>gd :GenDefinition<cr>:A<cr>
+nmap <silent> <leader>gd <cmd>GenDefinition<cr>:A<cr>

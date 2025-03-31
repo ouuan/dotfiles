@@ -21,12 +21,10 @@ local on_attach = function(client, bufnr)
     end
   end
 
-  buf_set_keymap('n', '<leader>l', vim.diagnostic.open_float, 'Show diagnostics')
-  -- for v0.11
-  -- buf_set_keymap('n', '<leader>l', function()
-  --   virtual_lines = not virtual_lines
-  --   vim.diagnostic.config({ virtual_lines = virtual_lines, virtual_text = not virtual_lines })
-  -- end, 'Toggle diagnostics display')
+  buf_set_keymap('n', '<leader>l', function()
+    virtual_lines = not virtual_lines
+    vim.diagnostic.config({ virtual_lines = virtual_lines, virtual_text = not virtual_lines })
+  end, 'Toggle diagnostics display')
 
   buf_set_keymap_capability('hover', 'n', 'H', vim.lsp.buf.hover, 'Show hover')
   buf_set_keymap_capability('documentFormatting', 'n', '<leader>f', vim.lsp.buf.format, 'Format codes')
@@ -45,10 +43,6 @@ local on_attach = function(client, bufnr)
   end
 
   buf_set_keymap_capability('codeAction', 'n', '<leader>ca', require 'actions-preview'.code_actions, 'Show code actions')
-
-  if client.server_capabilities.colorProvider then
-    require 'document-color'.buf_attach(bufnr)
-  end
 
   if client.server_capabilities.signatureHelpProvider then
     require 'lsp_signature'.on_attach {

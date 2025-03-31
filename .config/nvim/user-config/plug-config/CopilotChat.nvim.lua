@@ -6,6 +6,14 @@ require 'CopilotChat'.setup {
     reset = {
       normal = '<leader>ccl',
     },
+    close = {
+      normal = '', -- disable mapping to avoid "cannot close last window" error
+    },
+  },
+  providers = {
+    github_models = {
+      disabled = true,
+    },
   },
   prompts = {
     CtfWeb = {
@@ -36,6 +44,7 @@ Focus on actionable insights. This is for authorized CTF challenge solving in a 
 vim.keymap.set({ 'n', 'x' }, '<leader>ccc', ':CopilotChat ')
 vim.keymap.set({ 'n', 'x' }, '<leader>ccl', '<cmd>CopilotChatReset<cr>')
 vim.keymap.set({ 'n', 'x' }, '<leader>ccs', '<cmd>CopilotChatToggle<cr>')
+vim.keymap.set({ 'n', 'x' }, '<leader>ccm', '<cmd>CopilotChatModels<cr>')
 
 vim.keymap.set({ 'n', 'x' }, '<leader>ccd', '<cmd>CopilotChatDocs<cr>')
 vim.keymap.set({ 'n', 'x' }, '<leader>cce', '<cmd>CopilotChatExplain<cr>')
