@@ -21,6 +21,12 @@ alias glg='tig log'
 alias glo='tig'
 alias grf='tig reflog'
 
+unalias gpsup
+function gpsup() {
+    local remote="${1:-origin}"
+    git push --set-upstream "$remote" "$(git_current_branch)"
+}
+
 function git() {
     if [[ "$1" =~ "^(clone|fetch|lfs|pull|push)$" && "$@" != *"-h"* ]]; then
         sshrun /usr/bin/git "$@"

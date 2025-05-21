@@ -89,8 +89,7 @@ local function copilot_chat_source()
   return vim.fn.fnamemodify(path, ":.")
 end
 
-local dim_fg = '#C0AE8E';
-local dim_col = { fg = dim_fg }
+local dim_col = 'GruvboxFg3'
 local warn_hl = vim.api.nvim_get_hl(0, { name = 'DiagnosticWarn', link = false })
 local warn_fg = string.format("#%06x", warn_hl.fg)
 local warn_col = { fg = warn_fg }

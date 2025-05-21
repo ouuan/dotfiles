@@ -1,13 +1,25 @@
 require 'CopilotChat'.setup {
-  model = 'claude-3.7-sonnet',
+  model = 'claude-3.7-sonnet-thought',
   proxy = 'socks5h://127.0.0.1:7891',
   log_level = 'warn',
+  window = {
+    layout = function()
+      if vim.o.columns > 2 * vim.o.lines then
+        return 'vertical'
+      else
+        return 'horizontal'
+      end
+    end
+  },
   mappings = {
     reset = {
       normal = '<leader>ccl',
     },
     close = {
-      normal = '', -- disable mapping to avoid "cannot close last window" error
+      callback = function()
+        -- avoid the "cannot close last window" error
+        vim.cmd('q')
+      end
     },
   },
   providers = {

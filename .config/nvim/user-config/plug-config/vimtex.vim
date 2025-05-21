@@ -1,4 +1,5 @@
 au FileType tex nmap <buffer> <leader>p <cmd>VimtexCompile<cr>
+au FileType tex nmap <buffer> <cr> <cmd>VimtexView<cr>
 
 let g:vimtex_compiler_latexmk_engines = { '_' : '-xelatex' }
 
@@ -11,8 +12,7 @@ let g:vimtex_quickfix_ignore_filters = [
     \ 'most likely cause issues with the appearance of inserted todonotes',
 \]
 
-let g:vimtex_view_general_viewer = 'okular'
-let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+let g:vimtex_view_method = 'zathura'
 
 augroup vimtex_clean
     au!

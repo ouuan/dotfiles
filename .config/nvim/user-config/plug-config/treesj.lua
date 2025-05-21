@@ -1,8 +1,9 @@
-require'treesj'.setup {
+require 'treesj'.setup {
   use_default_keymaps = false,
 }
 
-local langs = require'treesj.langs'['presets']
+local langs = require 'treesj.langs'['presets']
+langs.typescriptreact = langs.tsx
 
 vim.api.nvim_create_autocmd({ 'FileType' }, {
   pattern = '*',

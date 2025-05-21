@@ -1,0 +1,33 @@
+set adjust-open width
+set database sqlite
+set double-click-follow false
+set font 'sans-serif 16'
+set guioptions ' '
+set page-cache-size 25
+set recolor-keephue true
+set scroll-page-aware true
+set selection-notification false
+set show-signature-information true
+set statusbar-basename true
+set window-title-basename true
+
+set highlight-color rgba(61,174,233,.4)
+set highlight-active-color rgba(254,128,25,.4)
+set index-active-bg "#3597c8"
+set index-active-fg "#fcfcfc"
+set recolor-lightcolor "#1c1c1d"
+set recolor-darkcolor "#d0d3d8"
+
+set completion-highlight-bg "#3597c8"
+set completion-highlight-fg "#fcfcfc"
+set inputbar-bg "#282828"
+set inputbar-fg "#ebdbb2"
+set statusbar-bg "#282828"
+set statusbar-fg "#ebdbb2"
+
+map y exec 'bash -c "xclip -selection primary -o | xclip -selection clipboard"'
+map <C-c> feedkeys y
+map j feedkeys '<C-Down>'
+map k feedkeys '<C-Up>'
+map w adjust_window width
+map p adjust_window best-fit

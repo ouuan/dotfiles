@@ -25,6 +25,8 @@ set termguicolors
 set undofile
 set updatetime=300
 set wildmode=longest:full,full
+set winblend=5
+set winborder=rounded
 
 filetype plugin on
 
@@ -34,7 +36,7 @@ command! -bar Cd cd %:p:h
 
 au FileType vim set fo-=o fo-=r
 
-au FileType bib,css,gohtmltmpl,html,javascript,json,lua,scss,systemverilog,toml,typescript,typst,vue,xml Tab 2
+au FileType bib,css,gohtmltmpl,html,javascript,json,lua,scss,systemverilog,toml,typescript,typst,vue,xml,xslt Tab 2
 
 au FileType markdown set suffixesadd+=.md
 au FileType systemverilog set suffixesadd+=.sv commentstring=//\ %s
@@ -50,7 +52,11 @@ let mapleader=' '
 
 fun! CloseOrQuit()
     if len(getbufinfo({'buflisted':1})) > 1
-        bd
+        if &buftype == ''
+            Bdelete
+        else
+            bdelete
+        endif
     else
         quit
     endif
@@ -138,8 +144,14 @@ Plug 'ouuan/vim-plug-config'
 
 " better than the builtin one and folke/ts-comments.nvim
 Plug 'numToStr/Comment.nvim'
-
 Plug 'nvim-lua/plenary.nvim'
+
+Plug 'Saghen/blink.cmp', { 'do': 'cargo build --release' }
+Plug 'fang2hou/blink-copilot'
+Plug 'zbirenbaum/copilot.lua'
+Plug 'Kaiser-Yang/blink-cmp-dictionary'
+Plug 'rafamadriz/friendly-snippets'
+
 Plug 'ibhagwan/fzf-lua'
 Plug 'kylechui/nvim-surround'
 Plug 'wakatime/vim-wakatime'
@@ -169,7 +181,6 @@ Plug 'psliwka/vim-smoothie'
 Plug 'windwp/nvim-autopairs'
 Plug 'lervag/vimtex'
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
-Plug 'ray-x/lsp_signature.nvim'
 Plug 'rhysd/conflict-marker.vim'
 Plug 'andymass/vim-matchup'
 Plug 'ntpeters/vim-better-whitespace'
@@ -178,23 +189,8 @@ Plug 'haya14busa/vim-asterisk'
 Plug 'stevearc/stickybuf.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'othree/html5.vim'
-Plug 'Julian/lean.nvim'
 Plug 'tami5/sqlite.lua'
 Plug 'AckslD/nvim-neoclip.lua'
-Plug 'iguanacucumber/magazine.nvim', { 'as': 'nvim-cmp' }
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'lukas-reineke/cmp-under-comparator'
-Plug 'kdheepak/cmp-latex-symbols'
-Plug 'octaltree/cmp-look'
-Plug 'L3MON4D3/LuaSnip'
-Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'zbirenbaum/copilot.lua'
-Plug 'zbirenbaum/copilot-cmp'
-Plug 'tamago324/cmp-zsh'
-Plug 'onsails/lspkind-nvim'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'dstein64/nvim-scrollview'
 Plug 'machakann/vim-highlightedyank'
@@ -232,5 +228,8 @@ Plug 'nvzone/volt'
 Plug 'nvzone/typr'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'stevearc/aerial.nvim'
+Plug 'folke/zen-mode.nvim'
+Plug 'saecki/crates.nvim'
+Plug 'famiu/bufdelete.nvim'
 
 call plug#end()

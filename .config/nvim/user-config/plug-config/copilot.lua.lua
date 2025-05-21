@@ -14,6 +14,4 @@ vim.defer_fn(function()
       yaml = false,
     },
   }
-
-  require 'copilot_cmp'.setup {}
 end, 200)

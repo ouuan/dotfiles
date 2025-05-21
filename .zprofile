@@ -14,6 +14,8 @@ export SCCACHE_CACHE_SIZE=4G
 export TYPST_FONT_PATHS="/usr/share/fonts/Windows"
 export WAKATIME_HOME="$HOME/.local/share/wakatime"
 
+eval "$(luarocks path)"
+
 path=(
     "$HOME/.cargo/bin"
     "$PYENV_ROOT/bin"

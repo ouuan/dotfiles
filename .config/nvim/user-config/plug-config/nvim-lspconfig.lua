@@ -21,14 +21,19 @@ local on_attach = function(client, bufnr)
     end
   end
 
+  buf_set_keymap('n', '<leader>L', vim.diagnostic.open_float, 'Open diagnostics float')
   buf_set_keymap('n', '<leader>l', function()
     virtual_lines = not virtual_lines
     vim.diagnostic.config({ virtual_lines = virtual_lines, virtual_text = not virtual_lines })
   end, 'Toggle diagnostics display')
 
   buf_set_keymap_capability('hover', 'n', 'H', vim.lsp.buf.hover, 'Show hover')
-  buf_set_keymap_capability('documentFormatting', 'n', '<leader>f', vim.lsp.buf.format, 'Format codes')
-  buf_set_keymap_capability('documentRangeFormatting', 'x', '<leader>f', vim.lsp.buf.format, 'Format codes')
+  buf_set_keymap_capability('documentFormatting', 'n', '<leader>f', function()
+    vim.lsp.buf.format({ timeout_ms = 3000 })
+  end, 'Format codes')
+  buf_set_keymap_capability('documentRangeFormatting', 'x', '<leader>f', function()
+    vim.lsp.buf.format({ timeout_ms = 3000 })
+  end, 'Format codes')
 
   buf_set_keymap_capability('definition', 'n', 'gd', '<cmd>Trouble lsp_definitions toggle<cr>')
   buf_set_keymap_capability('typeDefinition', 'n', 'gD', '<cmd>Trouble lsp_type_definitions toggle<cr>')
@@ -43,12 +48,6 @@ local on_attach = function(client, bufnr)
   end
 
   buf_set_keymap_capability('codeAction', 'n', '<leader>ca', require 'actions-preview'.code_actions, 'Show code actions')
-
-  if client.server_capabilities.signatureHelpProvider then
-    require 'lsp_signature'.on_attach {
-      auto_close_after = 3,
-    }
-  end
 end
 
 local no_setup_servers = {
@@ -67,7 +66,7 @@ local no_setup_servers = {
   'yamlls',
 }
 
-local capabilities = require 'cmp_nvim_lsp'.default_capabilities()
+local capabilities = require 'blink.cmp'.get_lsp_capabilities()
 
 for _, server in pairs(no_setup_servers) do
   lsp[server].setup {
@@ -84,7 +83,7 @@ lsp.rust_analyzer.setup {
       cargo = {
         allFeatures = true,
       },
-      checkOnSave = {
+      check = {
         command = 'clippy',
       }
     }
@@ -197,10 +196,29 @@ lsp.veridian.setup {
   root_dir = util.root_pattern('*.xpr', '*.qpf', '.git'),
 }
 
+lsp.stylelint_lsp.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    autoFixOnFormat = true,
+  },
+}
+
 lsp.tinymist.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   settings = {
     formatterMode = 'typstyle',
+  },
+}
+
+require 'crates'.setup {
+  thousands_separator = ',',
+  lsp = {
+    enabled = true,
+    on_attach = on_attach,
+    actions = true,
+    completion = true,
+    hover = true,
   },
 }
