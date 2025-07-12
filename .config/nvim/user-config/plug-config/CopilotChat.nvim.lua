@@ -1,5 +1,5 @@
 require 'CopilotChat'.setup {
-  model = 'claude-3.7-sonnet-thought',
+  model = 'gemini-2.5-pro',
   proxy = 'socks5h://127.0.0.1:7891',
   log_level = 'warn',
   window = {

@@ -37,6 +37,7 @@ verbose:
   - firefox
   - systemd
   - grub
+  - discord
   regex: linux(-(lts|zen|hardened))?|.+-dkms
   allGroups: true
 - packages:
