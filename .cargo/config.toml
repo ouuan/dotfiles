@@ -11,8 +11,8 @@ pub = ["publish", "--registry", "crates-io"]
 replace-with = 'mirror'
 
 [source.mirror]
-# registry = "sparse+https://mirrors.ustc.edu.cn/crates.io-index/"
-registry = "sparse+https://mirrors.tuna.tsinghua.edu.cn/crates.io-index/"
+registry = "sparse+https://mirrors.ustc.edu.cn/crates.io-index/"
+# registry = "sparse+https://mirrors.tuna.tsinghua.edu.cn/crates.io-index/"
 
 [build]
 rustc-wrapper = "/usr/bin/sccache"
