@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -euo pipefail
+
+if [[ "$#" == 0 || "$*" == "--edition 20"[0-9][0-9] ]]; then
+    tmp=$(mktemp --tmpdir verusfmt.XXXX.rs)
+    cat > "$tmp"
+    verusfmt --verus-only "$tmp"
+    "$(rustup which rustfmt)" < "$tmp"
+    rm "$tmp"
+else
+    "$(rustup which rustfmt)" "$@"
+fi

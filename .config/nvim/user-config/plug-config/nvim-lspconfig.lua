@@ -78,6 +78,28 @@ end
 lsp.rust_analyzer.setup {
   on_attach = on_attach,
   capabilities = capabilities,
+  on_init = function(client)
+    local path = os.getenv('PATH')
+
+    if path and path:find('verus') then
+      client.config.settings['rust-analyzer'] = {
+        check = {
+          extraArgs = { '--expand-errors' },
+        },
+        procMacro = {
+          enable = false,
+        },
+        diagnostics = {
+          disabled = {
+            'unresolved-proc-macro',
+          },
+        },
+      }
+      client.notify('workspace/didChangeConfiguration', { settings = client.config.settings })
+    end
+
+    return true
+  end,
   settings = {
     ['rust-analyzer'] = {
       cargo = {
@@ -126,11 +148,12 @@ lsp.ts_ls.setup {
   on_attach = del_format_attach,
   capabilities = capabilities,
   init_options = {
+    -- https://github.com/vuejs/language-tools/tree/master/packages/typescript-plugin
     plugins = {
       {
         name = "@vue/typescript-plugin",
-        location = "/usr/lib/node_modules/@vue/typescript-plugin",
-        languages = { "vue", "typescript", "javascript" },
+        location = "/usr/lib/node_modules/@vue/language-server",
+        languages = { "vue" },
       },
     },
   },

@@ -18,6 +18,8 @@
 [url "git@gitlab.com:"]
     insteadOf = git://gitlab.com/
     insteadOf = https://gitlab.com/
+[url "git@git.tsinghua.edu.cn:"]
+    insteadOf = https://git.tsinghua.edu.cn/
 [hub]
     protocol = ssh
 [advice]

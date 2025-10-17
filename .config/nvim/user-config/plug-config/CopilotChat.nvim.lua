@@ -1,5 +1,5 @@
 require 'CopilotChat'.setup {
-  model = 'gemini-2.5-pro',
+  model = 'claude-sonnet-4.5',
   proxy = 'socks5h://127.0.0.1:7891',
   log_level = 'warn',
   window = {
@@ -30,7 +30,7 @@ require 'CopilotChat'.setup {
   prompts = {
     CtfWeb = {
       prompt = [[
-You are a CTF Web challenge expert. Analyze the given code or challenge description and assist with:
+You are a CTF Web challenge expert. Analyze the given CTF challenge and assist with:
 
 1. VULNERABILITIES:
    - Identify potential security issues (XSS, SQLi, SSRF, command injection, file upload, deserialization, prototype pollution, logic flaws, etc.)
@@ -62,15 +62,7 @@ vim.keymap.set({ 'n', 'x' }, '<leader>ccd', '<cmd>CopilotChatDocs<cr>')
 vim.keymap.set({ 'n', 'x' }, '<leader>cce', '<cmd>CopilotChatExplain<cr>')
 vim.keymap.set({ 'n', 'x' }, '<leader>ccf', '<cmd>CopilotChatFix<cr>')
 vim.keymap.set({ 'n', 'x' }, '<leader>cco', '<cmd>CopilotChatOptimize<cr>')
+vim.keymap.set({ 'n', 'x' }, '<leader>ccp', '<cmd>CopilotChatPrompts<cr>')
 vim.keymap.set({ 'n', 'x' }, '<leader>ccr', '<cmd>CopilotChatReview<cr>')
 vim.keymap.set({ 'n', 'x' }, '<leader>cct', '<cmd>CopilotChatTests<cr>')
 vim.keymap.set({ 'n', 'x' }, '<leader>ccw', '<cmd>CopilotChatCtfWeb<cr>')
-
-local actions = require 'CopilotChat.actions'
-local picker = require 'CopilotChat.integrations.fzflua'
-vim.keymap.set(
-  { 'n', 'x' },
-  '<leader>ccp',
-  function() picker.pick(actions.prompt_actions()) end,
-  { desc = 'Copilot Chat Prompt Actions' }
-)

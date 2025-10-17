@@ -1,36 +1,12 @@
--- https://github.com/Saghen/blink.cmp/issues/569#issuecomment-2543882960
 local function select_next_count(count, dir)
   return function()
     local list = require 'blink.cmp.completion.list'
 
-    dir = dir or 1
-
-    if #list.items == 0 then
-      return
+    if dir == 1 then
+      list.select_next({ count = count })
+    elseif dir == -1 then
+      list.select_prev({ count = count })
     end
-
-    local target_idx
-    if list.selected_item_idx == nil then
-      if dir == 1 then
-        target_idx = count
-      else
-        target_idx = #list.items - count + 1
-      end
-    elseif list.selected_item_idx == #list.items and dir == 1 then
-      target_idx = 1
-    elseif list.selected_item_idx == 1 and dir == -1 then
-      target_idx = #list.items - count + 1
-    else
-      target_idx = list.selected_item_idx + (count * dir)
-    end
-
-    if target_idx < 1 then
-      target_idx = 1
-    elseif target_idx > #list.items then
-      target_idx = #list.items
-    end
-
-    list.select(target_idx)
   end
 end
 

@@ -42,11 +42,12 @@ au FileType markdown set suffixesadd+=.md
 au FileType systemverilog set suffixesadd+=.sv commentstring=//\ %s
 au FileType typst set commentstring=//\ %s
 
-au BufNewFile,BufRead *.mdx set filetype=markdown
-au BufNewFile,BufRead *.phar set filetype=php
-au BufNewFile,BufRead *.vh set filetype=systemverilog
-au BufNewFile,BufRead *.zsh-theme set filetype=zsh
-au BufNewFile,BufRead Makefrag set filetype=make
+au BufNewFile,BufRead *.mdx setfiletype markdown
+au BufNewFile,BufRead *.phar setfiletype php
+au BufNewFile,BufRead *.vest setfiletype vest
+au BufNewFile,BufRead *.vh setfiletype systemverilog
+au BufNewFile,BufRead *.zsh-theme setfiletype zsh
+au BufNewFile,BufRead Makefrag setfiletype make
 
 let mapleader=' '
 

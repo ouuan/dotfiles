@@ -6,6 +6,8 @@ fz.setup {
   }
 }
 
+fz.register_ui_select {}
+
 local function globlize(func)
   return function()
     func { rg_glob = true }

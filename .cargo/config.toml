@@ -17,6 +17,4 @@ registry = "sparse+https://mirrors.ustc.edu.cn/crates.io-index/"
 [build]
 rustc-wrapper = "/usr/bin/sccache"
 
-# no mold, unfortunately
-# rust-lld is coming: https://blog.rust-lang.org/2024/05/17/enabling-rust-lld-on-linux.html, https://github.com/rust-lang/rust/pull/140525
-# rustflags may override project-local config: https://github.com/rust-lang/cargo/issues/5376#issuecomment-1241338420
+# no mold, because rustflags may overwrite project-local config: https://github.com/rust-lang/cargo/issues/5376#issuecomment-1241338420
