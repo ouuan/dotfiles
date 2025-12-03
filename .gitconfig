@@ -81,11 +81,7 @@
     plus-emph-style = "#fbf1c7" "#2b6436"
     minus-emph-style = "#fbf1c7" "#903c38"
     whitespace-error-style = "#ce4942" reverse
-    map-styles = \
-        bold purple => syntax "#4c2a41", \
-        bold cyan => syntax "#2b4742", \
-        bold blue => syntax "#4c382a", \
-        bold yellow => syntax "#3b472b"
+    map-styles = bold purple => syntax "#4c2a41", bold cyan => syntax "#2b4742", bold blue => syntax "#4c382a", bold yellow => syntax "#3b472b"
 
 [diff "typst"]
     xfuncname = "^(={1,3} .*|#\\w+.*[({])$"

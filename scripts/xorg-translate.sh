@@ -26,7 +26,7 @@ original="${*:-$(xclip -o)}"
 if [[ $(echo "$original" | wc -w) == 1 && ${#original} -lt 20 ]]; then
     is_word=true
     original="$(echo "$original" | sed 's/^[[:punct:]]//g;s/[[:punct:]]$//g')"
-    url="https://fanyi.baidu.com/#auto/zh/$original"
+    url="https://oalecd10.cp.com.cn/#/desktop/dict/search-result/$original"
 else
     is_word=false
     url="https://translate.google.com/?sl=auto&tl=zh-CN&text=$(jq -rn --arg x "$original" '$x|@uri')"

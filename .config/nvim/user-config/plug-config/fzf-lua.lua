@@ -8,14 +8,8 @@ fz.setup {
 
 fz.register_ui_select {}
 
-local function globlize(func)
-  return function()
-    func { rg_glob = true }
-  end
-end
-
 vim.keymap.set({ 'n', 'x' }, '<leader>o', fz.files, { desc = "fzf open file" })
-vim.keymap.set({ 'n' }, '<leader>/', fz.live_grep_glob, { desc = "fzf live grep" })
-vim.keymap.set({ 'x' }, '<leader>/', globlize(fz.grep_visual), { desc = "fzf grep selected" })
-vim.keymap.set({ 'n' }, '<leader>*', globlize(fz.grep_cword), { desc = "fzf grep word under cursor" })
-vim.keymap.set({ 'n', 'x' }, '@/', globlize(fz.grep_last), { desc = "fzf grep last" })
+vim.keymap.set({ 'n' }, '<leader>/', fz.live_grep, { desc = "fzf live grep" })
+vim.keymap.set({ 'x' }, '<leader>/', fz.grep_visual, { desc = "fzf grep selected" })
+vim.keymap.set({ 'n' }, '<leader>*', fz.grep_cword, { desc = "fzf grep word under cursor" })
+vim.keymap.set({ 'n', 'x' }, '@/', function() fz.grep({ resume = true }) end, { desc = "fzf grep last" })
