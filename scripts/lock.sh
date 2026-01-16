@@ -29,7 +29,7 @@ i3lock \
     --time-pos "ix:iy+h/8+100" \
     --time-color=ffffff66 \
     --pass-media-key \
-    --nofork
+    --nofork || true # restore if locking fails
 
 picom -b
 

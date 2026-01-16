@@ -147,7 +147,7 @@ Plug 'ouuan/vim-plug-config'
 Plug 'numToStr/Comment.nvim'
 Plug 'nvim-lua/plenary.nvim'
 
-Plug 'Saghen/blink.cmp', { 'do': 'cargo build --release' }
+Plug 'Saghen/blink.cmp', { 'do': 'cargo clean && cargo build --release' }
 Plug 'fang2hou/blink-copilot'
 Plug 'zbirenbaum/copilot.lua'
 Plug 'Kaiser-Yang/blink-cmp-dictionary'
@@ -175,7 +175,7 @@ Plug 'rktjmp/lush.nvim'
 Plug 'npxbr/gruvbox.nvim'
 Plug 'pchynoweth/vim-gencode-cpp', { 'for': 'cpp' }
 Plug 'nacitar/a.vim', { 'for': 'cpp' }
-Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+Plug 'nvim-treesitter/nvim-treesitter', { 'branch': 'master', 'do': ':TSUpdate' }
 Plug 'nacro90/numb.nvim'
 Plug 'cespare/vim-toml'
 Plug 'psliwka/vim-smoothie'

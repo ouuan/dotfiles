@@ -6,7 +6,6 @@ vim.diagnostic.config {
   virtual_lines = virtual_lines,
 }
 
-local lsp = require 'lspconfig'
 local util = require 'lspconfig.util'
 
 vim.keymap.set('n', 'H', '<cmd>echo "Hover is not available"<cr>', { desc = 'Hover is not available' })
@@ -50,7 +49,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap_capability('codeAction', 'n', '<leader>ca', require 'actions-preview'.code_actions, 'Show code actions')
 end
 
-local no_setup_servers = {
+local default_servers = {
   'cmake',
   'cssls',
   'dockerls',
@@ -68,14 +67,19 @@ local no_setup_servers = {
 
 local capabilities = require 'blink.cmp'.get_lsp_capabilities()
 
-for _, server in pairs(no_setup_servers) do
-  lsp[server].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
+local function setup_lsp(server, config)
+  vim.lsp.config(server, config)
+  vim.lsp.enable(server)
 end
 
-lsp.rust_analyzer.setup {
+for _, server in pairs(default_servers) do
+  setup_lsp(server, {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  })
+end
+
+setup_lsp('rust_analyzer', {
   on_attach = on_attach,
   capabilities = capabilities,
   on_init = function(client)
@@ -110,12 +114,9 @@ lsp.rust_analyzer.setup {
       }
     }
   }
-}
+})
 
-local snippetcaps = vim.lsp.protocol.make_client_capabilities()
-snippetcaps.textDocument.completion.completionItem.snippetSupport = true
-
-lsp.jsonls.setup {
+setup_lsp('jsonls', {
   on_attach = on_attach,
   capabilities = capabilities,
   commands = {
@@ -125,13 +126,13 @@ lsp.jsonls.setup {
       end
     }
   }
-}
+})
 
-lsp.clangd.setup {
+setup_lsp('clangd', {
   on_attach = on_attach,
   capabilities = capabilities,
   cmd = { 'clangd', '--background-index' },
-}
+})
 
 local add_format_attach = function(client, bufnr)
   client.server_capabilities.documentFormattingProvider = true
@@ -144,7 +145,7 @@ local del_format_attach = function(client, bufnr)
   on_attach(client, bufnr)
 end
 
-lsp.ts_ls.setup {
+setup_lsp('ts_ls', {
   on_attach = del_format_attach,
   capabilities = capabilities,
   init_options = {
@@ -166,74 +167,69 @@ lsp.ts_ls.setup {
     'typescript.tsx',
     'vue',
   },
-}
+})
 
-lsp.eslint.setup {
+setup_lsp('eslint', {
   on_attach = add_format_attach,
   capabilities = capabilities,
   settings = {
     packageManager = 'pnpm',
   },
-}
+})
 
-lsp.bashls.setup {
+setup_lsp('bashls', {
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = { 'sh', 'zsh', 'PKGBUILD' }
-}
+})
 
-lsp.lua_ls.setup {
+setup_lsp('lua_ls', {
   cmd = { '/usr/bin/lua-language-server' },
   on_attach = on_attach,
   capabilities = capabilities,
   settings = {
     Lua = {
       runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
         version = 'LuaJIT',
-        -- Setup your lua path
         path = vim.split(package.path, ';'),
       },
       diagnostics = {
-        -- Get the language server to recognize the `vim` global
         globals = { 'vim' },
       },
       workspace = {
-        -- Make the server aware of Neovim runtime files
         library = {
           [vim.fn.expand('$VIMRUNTIME/lua')] = true,
           [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
         },
       },
-      -- Do not send telemetry data containing a randomized but unique identifier
       telemetry = {
         enable = false,
       },
     },
   },
-}
+})
 
-lsp.veridian.setup {
+setup_lsp('veridian', {
   on_attach = on_attach,
   capabilities = capabilities,
   root_dir = util.root_pattern('*.xpr', '*.qpf', '.git'),
-}
+})
 
-lsp.stylelint_lsp.setup {
+setup_lsp('stylelint_lsp', {
   on_attach = on_attach,
   capabilities = capabilities,
   settings = {
     autoFixOnFormat = true,
   },
-}
+})
 
-lsp.tinymist.setup {
+setup_lsp('tinymist', {
   on_attach = on_attach,
   capabilities = capabilities,
   settings = {
     formatterMode = 'typstyle',
   },
-}
+})
 
 require 'crates'.setup {
   thousands_separator = ',',

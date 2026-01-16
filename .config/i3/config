@@ -211,7 +211,7 @@ bindsym $mod+c exec --no-startup-id copyq toggle
 for_window [class="copyq"] floating enable
 
 bindsym $mod+q exec --no-startup-id dunstctl close
-bindsym $mod+o exec --no-startup-id dunstctl context 0
+bindsym $mod+o exec --no-startup-id dunstctl action 0
 bindsym $mod+h exec --no-startup-id dunstctl history-pop
 
 # vim: filetype=i3config
