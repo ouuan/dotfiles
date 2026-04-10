@@ -60,7 +60,7 @@ local function confirm_not_stereo()
     return
   end
   local channel_count = audio['demux-channel-count'];
-  if channel_count ~= 2 then
+  if channel_count > 2 then
     mp.set_property('pause', 'yes')
     select_track('audio')
     mp.set_property('pause', 'no')

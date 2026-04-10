@@ -6,6 +6,7 @@ export EDITOR="/usr/bin/nvim"
 export FZF_DEFAULT_COMMAND='fd -H --type f -E .git'
 GEM_HOME="$(gem env user_gemhome)"
 export GEM_HOME
+export HF_ENDPOINT='https://hf-mirror.com'
 export MANPAGER='nvim "+call ManPager()"'
 export MANWIDTH=80
 export PNPM_HOME="$HOME/.local/share/pnpm"
