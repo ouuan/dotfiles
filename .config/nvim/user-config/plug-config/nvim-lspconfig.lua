@@ -15,7 +15,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, silent = true, desc = desc })
   end
   local function buf_set_keymap_capability(capability, mode, lhs, rhs, desc)
-    if client.supports_method(capability) then
+    if client:supports_method(capability) then
       buf_set_keymap(mode, lhs, rhs, desc)
     end
   end
@@ -40,7 +40,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap_capability('implementation', 'n', 'gI', '<cmd>Trouble lsp_implementations toggle<cr>')
 
   buf_set_keymap_capability('rename', { 'n', 'x' }, '<leader>r', ':IncRename ', 'Rename (empty input)')
-  if client.supports_method('rename') then
+  if client:supports_method('rename') then
     vim.keymap.set({ 'n', 'x' }, '<leader>R', function()
       return ":IncRename " .. vim.fn.expand("<cword>")
     end, { buffer = bufnr, silent = true, desc = 'Rename (keep original)', expr = true })

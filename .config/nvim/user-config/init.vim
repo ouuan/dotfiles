@@ -175,7 +175,7 @@ Plug 'rktjmp/lush.nvim'
 Plug 'npxbr/gruvbox.nvim'
 Plug 'pchynoweth/vim-gencode-cpp', { 'for': 'cpp' }
 Plug 'nacitar/a.vim', { 'for': 'cpp' }
-Plug 'nvim-treesitter/nvim-treesitter', { 'branch': 'master', 'do': ':TSUpdate' }
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'nacro90/numb.nvim'
 Plug 'cespare/vim-toml'
 Plug 'psliwka/vim-smoothie'
