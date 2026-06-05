@@ -42,6 +42,7 @@ au FileType markdown set suffixesadd+=.md
 au FileType systemverilog set suffixesadd+=.sv commentstring=//\ %s
 au FileType typst set commentstring=//\ %s
 
+au BufNewFile,BufRead *.j2 setfiletype jinja
 au BufNewFile,BufRead *.mdx setfiletype markdown
 au BufNewFile,BufRead *.phar setfiletype php
 au BufNewFile,BufRead *.vest setfiletype vest
@@ -147,7 +148,7 @@ Plug 'ouuan/vim-plug-config'
 Plug 'numToStr/Comment.nvim'
 Plug 'nvim-lua/plenary.nvim'
 
-Plug 'Saghen/blink.cmp', { 'do': 'cargo clean && cargo build --release' }
+Plug 'Saghen/blink.cmp', { 'branch': 'v1', 'do': 'cargo clean && cargo build --release' }
 Plug 'fang2hou/blink-copilot'
 Plug 'zbirenbaum/copilot.lua'
 Plug 'Kaiser-Yang/blink-cmp-dictionary'
